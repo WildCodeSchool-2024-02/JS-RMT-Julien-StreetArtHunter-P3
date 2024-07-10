@@ -58,21 +58,11 @@ CREATE TABLE seen (
     FOREIGN KEY (streetArt_id) REFERENCES streetArt(id)
 );
 
-INSERT INTO city (name) VALUES ('paris');
-INSERT INTO city (name) VALUES ('lisbon');
-INSERT INTO city (name) VALUES ('madrid');
+INSERT INTO city (name) VALUES ('Paris');
+INSERT INTO city (name) VALUES ('Lisbon');
+INSERT INTO city (name) VALUES ('Madrid');
 INSERT INTO city (name) VALUES ('Bordeaux');
 INSERT INTO city (name) VALUES ('Bangkok');
-
-UPDATE city
-SET name = 'Paris'
-WHERE name = 'paris';
-UPDATE city
-SET name = 'Lisbon'
-WHERE name = 'lisbon';
-UPDATE city
-SET name = 'Madrid'
-WHERE name = 'madrid';
 
 
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('john_doe', 'johndoe@yopmail.com', '1234', 1);
@@ -90,22 +80,10 @@ INSERT INTO artist (name) VALUES ('Okuda');
 
 
 
-INSERT INTO streetart (title,imageUrl, city_id, artist_id) VALUES ('Chuuuttt','assets/images/Chuuuttt.jpg' 1, 5);
+INSERT INTO streetart (title,imageUrl, city_id, artist_id) VALUES ('Chuuuttt','assets/images/Chuuuttt.jpg', 1, 5);
 INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Amor com as Mulheres','asset/images/amor-com-as-mulheres.jpg', 3, 7);
-INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Deux dimensions','assets/images/deux-dimensions.jpg', 5, 6);
+INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Deux dimensions','assets/images/deux-dimensions.jpg', 4, 6);
 INSERT INTO streetart (title,imageUrl,city_id, artist_id) VALUES ('The cat','assets/images/the-cat.jpg',1,4);
-INSERT INTO streetart (title, city_id, artist_id) VALUES ('La Petite Fille au ballon', 1, 1);
-
-UPDATE streetart
-SET city_id = 4
-WHERE city_id = 5;
-
-
-UPDATE streetart
-SET title = 'Champagne Rat'
-WHERE title = 'La Petite Fille au ballon';
-UPDATE streetart
-SET imageUrl = 'assets/images/rat-champagne.jpg'
-WHERE id = 1;
+INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Champagne Rat','assets/images/rat-champagne.jpg', 1, 1);
 
 INSERT INTO seen (user_id, streetArt_id) VALUES (1, 1);
