@@ -59,6 +59,30 @@ CREATE TABLE seen (
 INSERT INTO city (name) VALUES ('paris');
 INSERT INTO city (name) VALUES ('lisbon');
 INSERT INTO city (name) VALUES ('madrid');
+UPDATE city
+SET name = 'Paris'
+WHERE name = 'paris';
+UPDATE city
+SET name = 'Lisbon'
+WHERE name = 'lisbon';
+UPDATE city
+SET name = 'Madrid'
+WHERE name = 'madrid';
+
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('john_doe', 'johndoe@yopmail.com', '1234', 1);
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('jean_french', 'jeanfrench@yopmail.com', '4567', 0);
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('juana_latina', 'juanalatina@yopmail.com', '8910', 0);
+
+INSERT INTO artist (name) VALUES ('Banksy');
+INSERT INTO artist (name) VALUES ('Os Gêmeos');
+INSERT INTO artist (name) VALUES ('Invader');
+
+INSERT INTO streetart (title, city_id, artist_id) VALUES ('La Petite Fille au ballon', 1, 1);
+UPDATE streetart
+SET title = 'Champagne Rat'
+WHERE title = 'La Petite Fille au ballon';
+UPDATE streetart
+SET imageUrl = 'assets/images/rat-champagne.jpg'
+WHERE id = 1;
+
+INSERT INTO seen (user_id, streetArt_id) VALUES (1, 1);
