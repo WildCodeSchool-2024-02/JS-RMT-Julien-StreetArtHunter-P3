@@ -1,3 +1,4 @@
+-- SQLBook: Code
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pseudo VARCHAR(255),
@@ -18,6 +19,7 @@ CREATE TABLE city (
 
 CREATE TABLE artist (
     id INT AUTO_INCREMENT PRIMARY KEY,
+
     name VARCHAR(255),
     points INT
 );
@@ -59,6 +61,9 @@ CREATE TABLE seen (
 INSERT INTO city (name) VALUES ('paris');
 INSERT INTO city (name) VALUES ('lisbon');
 INSERT INTO city (name) VALUES ('madrid');
+INSERT INTO city (name) VALUES ('Bordeaux');
+INSERT INTO city (name) VALUES ('Bangkok');
+
 UPDATE city
 SET name = 'Paris'
 WHERE name = 'paris';
@@ -69,6 +74,7 @@ UPDATE city
 SET name = 'Madrid'
 WHERE name = 'madrid';
 
+
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('john_doe', 'johndoe@yopmail.com', '1234', 1);
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('jean_french', 'jeanfrench@yopmail.com', '4567', 0);
 INSERT INTO user (pseudo, email, password, is_admin) VALUES ('juana_latina', 'juanalatina@yopmail.com', '8910', 0);
@@ -76,8 +82,25 @@ INSERT INTO user (pseudo, email, password, is_admin) VALUES ('juana_latina', 'ju
 INSERT INTO artist (name) VALUES ('Banksy');
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
 INSERT INTO artist (name) VALUES ('Invader');
+INSERT INTO artist (name) VALUES ('C215');
+INSERT INTO artist (name) VALUES ('Jef Aérosol');
+INSERT INTO artist (name) VALUES ('Paola Delfin');
+INSERT INTO artist (name) VALUES ('Okuda');
 
+
+
+
+INSERT INTO streetart (title,imageUrl, city_id, artist_id) VALUES ('Chuuuttt','assets/images/Chuuuttt.jpg' 1, 5);
+INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Amor com as Mulheres','asset/images/amor-com-as-mulheres.jpg', 3, 7);
+INSERT INTO streetart (title, imageUrl, city_id, artist_id) VALUES ('Deux dimensions','assets/images/deux-dimensions.jpg', 5, 6);
+INSERT INTO streetart (title,imageUrl,city_id, artist_id) VALUES ('The cat','assets/images/the-cat.jpg',1,4);
 INSERT INTO streetart (title, city_id, artist_id) VALUES ('La Petite Fille au ballon', 1, 1);
+
+UPDATE streetart
+SET city_id = 4
+WHERE city_id = 5;
+
+
 UPDATE streetart
 SET title = 'Champagne Rat'
 WHERE title = 'La Petite Fille au ballon';
