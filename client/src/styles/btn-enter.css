@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://www.dafont.com/fr/retrotech.font");
 
 :root {
   --glow-color: hsl(286, 84%, 66%);
@@ -34,7 +34,7 @@ body {
   border-radius: 0.45em;
   background: none;
   perspective: 2em;
-  font-family: "Raleway", sans-serif;
+  font-family: "retrotech", sans-serif;
   font-size: 2em;
   font-weight: 900;
   letter-spacing: 1em;
@@ -222,7 +222,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 390px) {
   .glowing-btn {
     font-size: 1em;
   }
