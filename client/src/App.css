@@ -13,3 +13,11 @@
   --font-subtitle: "VT323", sans serif;
   --font-text: "Space Mono", sans serif;
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}

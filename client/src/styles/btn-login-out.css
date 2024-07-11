@@ -104,11 +104,3 @@ btn-login-out {
 }
 
 /* Page styling, ignore */
-body {
-  background: var(--page-background);
-  display: flex;
-  min-height: 100vh;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
