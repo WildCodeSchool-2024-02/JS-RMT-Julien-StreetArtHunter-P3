@@ -15,6 +15,9 @@ const browse = async (req, res) => {
   }
 };
 
+// The E of BREAD - Edit (Update) operation
+// This operation is not yet implemented
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
