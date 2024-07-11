@@ -1,11 +1,11 @@
 // Import access to database tables
-const client = require("../../database/client");
+const tables = require("../../database/tables");
 
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const [streetart] = await client.query("SELECT * FROM streetart");
+    const streetart = await tables.streetart.readAll();
 
     // Respond with the items in JSON format
     res.status(200).json(streetart);

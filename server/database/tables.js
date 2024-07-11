@@ -1,8 +1,11 @@
 // Import the repository modules responsible for handling data operations on the tables
 const ItemRepository = require("./models/ItemRepository");
+const StreetartRepository = require("./models/StreetartRepository");
 
 // Create an empty object to hold data repositories for different tables
-const tables = {};
+const tables = {
+  streetart: new StreetartRepository(),
+};
 
 /* ************************************************************************* */
 // Register data repositories for tables
