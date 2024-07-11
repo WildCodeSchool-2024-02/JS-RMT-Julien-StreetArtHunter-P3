@@ -7,16 +7,16 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const itemActions = require("./controllers/itemActions");
+const userActions = require("./controllers/userActions");
 
 // Route to get a list of items
-router.get("/", itemActions.browse);
+router.get("/user", userActions.browse);
 
 // Route to get a specific item by ID
-router.get("/:id", itemActions.read);
+router.get("/:id", userActions.read);
 
 // Route to add a new item
-router.post("/", itemActions.add);
+router.post("/", userActions.add);
 
 /* ************************************************************************* */
 
