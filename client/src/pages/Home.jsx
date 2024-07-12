@@ -1,5 +1,5 @@
 import Geolocation from "../components/Geolocation";
-import "../styles/geolocation.css";
+import "../styles/Geolocation.css";
 
 function Home() {
   return (

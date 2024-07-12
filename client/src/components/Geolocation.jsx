@@ -11,7 +11,7 @@ import "leaflet/dist/leaflet.css";
 import { Icon, divIcon, point } from "leaflet";
 import connexion from "../services/connexion";
 import LocationMarker from "./LocationMarker";
-import "../styles/geolocation.css";
+import "../styles/Geolocation.css";
 import "../App.css";
 
 export default function Geolocation() {
