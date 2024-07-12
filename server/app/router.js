@@ -10,7 +10,7 @@ const router = express.Router();
 const itemActions = require("./controllers/itemActions");
 const userActions = require("./controllers/userActions");
 
-// Route to get a list of items
+// Route to get a list of users
 router.get("/users", userActions.browse);
 
 // Route to get a specific item by ID
