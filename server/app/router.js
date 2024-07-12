@@ -11,7 +11,7 @@ const itemActions = require("./controllers/itemActions");
 const streetartActions = require("./controllers/streetartActions");
 
 // Route to get a list of items
-router.get("/streetart", streetartActions.browse);
+router.get("/streetarts", streetartActions.browse);
 
 // Route to get a specific item by ID
 router.get("/:id", itemActions.read);

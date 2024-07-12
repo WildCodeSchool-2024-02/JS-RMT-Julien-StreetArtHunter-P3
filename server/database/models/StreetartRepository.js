@@ -36,7 +36,18 @@ class StreetartRepository extends AbstractRepository {
   async readAll() {
     // Execute the SQL SELECT query to retrieve all streetarts from the "streetart" table
     const [rows] = await this.database.query(
-      `select title,geolocation_x,geolocation_y,imageUrl,imageAlt,city_id,artist_id from ${this.table}`
+      `SELECT 
+        s.id, 
+        s.title, 
+        s.geolocation_x, 
+        s.geolocation_y, 
+        s.imageUrl, 
+        s.imageAlt, 
+        s.city_id, 
+        a.name FROM 
+        ${this.table} AS s INNER JOIN 
+        artist AS a ON 
+        s.artist_id = a.id `
     );
 
     // Return the array of streetarts

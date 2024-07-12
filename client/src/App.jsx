@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import Geolocation from "./components/Geolocation";
+import "./styles/Geolocation.css";
 import "./App.css";
 
 function App() {
@@ -7,12 +9,8 @@ function App() {
       <header>
         <h1 className="logo">Harmonia</h1>
       </header>
-      <img
-        src={`${import.meta.env.VITE_API_URL}/assets/images/rat-champagne.jpg`}
-        alt=""
-      />
       <Outlet />
-
+      <Geolocation />
       <footer>
         Développé par la&nbsp;
         <a
