@@ -10,6 +10,7 @@ class UserRepository extends AbstractRepository {
   // The C of CRUD - Create operation
 
   /** 
+
   async create(user) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await this.database.query(
@@ -20,9 +21,14 @@ class UserRepository extends AbstractRepository {
     // Return the ID of the newly inserted user
     return result.insertId;
   }
+<<<<<<< HEAD
 */
   // The Rs of CRUD - Read operations
   /** 
+=======
+
+  // The Rs of CRUD - Read operations
+
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
@@ -33,6 +39,7 @@ class UserRepository extends AbstractRepository {
     // Return the first row of the result, which represents the user
     return rows[0];
   }
+<<<<<<< HEAD
 */
 
   async readAll() {
