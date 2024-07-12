@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import connexion from "../services/connexion";
 
 function User() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3310/api/user")
+    connexion
+      .get("api/users")
       .then((response) => {
         setUsers(response.data);
       })
