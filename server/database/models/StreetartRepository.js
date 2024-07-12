@@ -9,7 +9,7 @@ class StreetartRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  async create(streetart) {
+  /** async create(streetart) {
     // Execute the SQL INSERT query to add a new streetart to the "streetart" table
     const [result] = await this.database.query(
       `insert into ${this.table} (title, user_id) values (?, ?)`,
@@ -18,11 +18,11 @@ class StreetartRepository extends AbstractRepository {
 
     // Return the ID of the newly inserted streetart
     return result.insertId;
-  }
-
+  } 
+*/
   // The Rs of CRUD - Read operations
 
-  async read(id) {
+  /** async read(id) {
     // Execute the SQL SELECT query to retrieve a specific streetart by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
@@ -32,6 +32,7 @@ class StreetartRepository extends AbstractRepository {
     // Return the first row of the result, which represents the streetart
     return rows[0];
   }
+ */
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all streetarts from the "streetart" table

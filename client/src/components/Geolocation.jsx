@@ -7,13 +7,12 @@ import {
   ZoomControl,
 } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import "../styles/Geolocation.css";
-import "../App.css";
 import "leaflet/dist/leaflet.css";
-
 import { Icon, divIcon, point } from "leaflet";
 import connexion from "../services/connexion";
 import LocationMarker from "./LocationMarker";
+import "../styles/geolocation.css";
+import "../App.css";
 
 export default function Geolocation() {
   const [streetArts, setStreetArts] = useState([]);

@@ -1,6 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Geolocation from "./components/Geolocation";
-import "./styles/Geolocation.css";
 import "./App.css";
 
 function App() {
@@ -10,7 +8,6 @@ function App() {
         <h1 className="logo">Harmonia</h1>
       </header>
       <Outlet />
-      <Geolocation />
       <footer>
         Développé par la&nbsp;
         <a
