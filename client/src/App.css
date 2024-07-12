@@ -1,15 +1,20 @@
-@import url("https://www.dafont.com/fr/retrotech.font");
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=VT323&display=swap");
 
-* {
+@font-face {
+  font-family: "retrotech";
+  src: url(./assets/retrotech.ttf);
+}
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   --main-bg-color: #250632;
   --main-text-color: #ffffff;
   --main-text-describ: black;
-  --font-title: "Retrotech", sans serif;
+  --font-title: "retrotech", sans serif;
   --font-subtitle: "VT323", sans serif;
   --font-text: "Space Mono", sans serif;
 }

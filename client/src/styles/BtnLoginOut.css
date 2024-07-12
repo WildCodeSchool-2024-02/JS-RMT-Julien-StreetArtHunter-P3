@@ -1,17 +1,16 @@
-btn-login-out {
-  --hue: 310; /* change me (0-360) */
-  --hue-adjust: 135; /* and me */
-
+:root {
+  --hue: 310;
+  --hue-adjust: 135;
   --hue-2: calc(var(--hue) + var(--hue-adjust));
+  --page-background: oklch(10% 0.0666 var(--hue));
+}
 
+button {
   --button-background: oklch(20% 0.0666 var(--hue));
   --text-base: oklch(45% 0.175 var(--hue));
   --text-hover: oklch(95% 0.145 calc(var(--hue) + 30));
-
   --shadow-start: oklch(95% 0.145 var(--hue-2));
   --shadow-end: oklch(60% 0.29 var(--hue));
-
-  /* No color function, so we can use different opacity values */
   --shadow-inner: 60% 0.29 var(--hue);
 
   all: unset;
@@ -19,7 +18,7 @@ btn-login-out {
   /* Text */
   color: var(--text-base);
   font:
-    700 1.125rem/1.2 Raleway,
+    700 1.125rem/1.2 VT323,
     sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -102,5 +101,3 @@ btn-login-out {
     }
   }
 }
-
-/* Page styling, ignore */

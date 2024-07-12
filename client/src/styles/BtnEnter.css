@@ -1,13 +1,5 @@
-@import url("https://www.dafont.com/fr/retrotech.font");
-
 :root {
   --glow-color: hsl(286, 84%, 66%);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 .glowing-btn {
