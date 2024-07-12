@@ -1,4 +1,4 @@
-:root {
+.root-btn-login {
   --hue: 310;
   --hue-adjust: 135;
   --hue-2: calc(var(--hue) + var(--hue-adjust));
