@@ -21,12 +21,11 @@ class UserRepository extends AbstractRepository {
     // Return the ID of the newly inserted user
     return result.insertId;
   }
-<<<<<<< HEAD
-*/
-  // The Rs of CRUD - Read operations
-  /** 
-=======
 
+*/
+
+  /** 
+   * 
   // The Rs of CRUD - Read operations
 
   async read(id) {
@@ -39,7 +38,7 @@ class UserRepository extends AbstractRepository {
     // Return the first row of the result, which represents the user
     return rows[0];
   }
-<<<<<<< HEAD
+
 */
 
   async readAll() {
@@ -59,7 +58,15 @@ class UserRepository extends AbstractRepository {
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
+  async destroy(userID) {
+    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    const [rows] = await this.database.query("DELETE FROM user WHERE id=?", [
+      userID,
+    ]);
 
+    // Return the array of users
+    return rows;
+  }
   // async delete(id) {
   //   ...
   // }

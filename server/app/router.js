@@ -19,6 +19,8 @@ router.get("/:id", itemActions.read);
 // Route to add a new item
 router.post("/", itemActions.add);
 
+router.delete("/users/:id", userActions.destroy);
+
 /* ************************************************************************* */
 
 module.exports = router;

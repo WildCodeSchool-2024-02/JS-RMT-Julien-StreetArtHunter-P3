@@ -16,6 +16,17 @@ function User() {
       });
   }, []);
 
+  const handleDelete = (userId) => {
+    connexion
+      .delete(`api/users/${userId}`)
+      .then(() => {
+        setUsers(users.filter((user) => user.id !== userId));
+      })
+      .catch((error) => {
+        console.error("There was an error deleting the user!", error);
+      });
+  };
+
   return (
     <div className="users">
       <h1>Users</h1>
@@ -23,6 +34,9 @@ function User() {
         <div key={user.id}>
           <h2>Pseudo: {user.pseudo}</h2>
           <p>Email: {user.email}</p>
+          <button type="button" onClick={() => handleDelete(user.id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
