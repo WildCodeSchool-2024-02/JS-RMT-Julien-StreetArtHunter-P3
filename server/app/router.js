@@ -14,7 +14,7 @@ const userActions = require("./controllers/userActions");
 router.get("/users", userActions.browse);
 
 // Route to get a specific item by ID
-router.get("/:id", itemActions.read);
+router.get("/users/:id", itemActions.read);
 
 // Route to add a new item
 router.post("/users", userActions.create);
