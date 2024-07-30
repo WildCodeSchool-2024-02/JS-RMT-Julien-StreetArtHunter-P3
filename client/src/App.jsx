@@ -7,12 +7,7 @@ function App() {
       <header>
         <h1 className="logo">Harmonia</h1>
       </header>
-      <img
-        src={`${import.meta.env.VITE_API_URL}/assets/images/rat-champagne.jpg`}
-        alt=""
-      />
       <Outlet />
-
       <footer>
         Développé par la&nbsp;
         <a
