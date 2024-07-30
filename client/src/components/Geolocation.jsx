@@ -23,7 +23,7 @@ export default function Geolocation() {
         setStreetArts(response.data);
       })
       .catch((error) => {
-        console.error("There war an error fetching the users!", error);
+        console.error("There war an error fetching the Streetarts!", error);
       });
   }, []);
 
