@@ -15,8 +15,41 @@ const browse = async (req, res) => {
   }
 };
 
+// The A of BREAD - Add (Create) operation
+const create = async (req, res, next) => {
+  // Extract the item data from the request body
+  const user = req.body;
+
+  try {
+    // Insert the item into the database
+    const insertId = await tables.user.create(user);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
+
+const update = async (req, res, next) => {
+  // Extract the user data from the request body and params
+  const userId = { ...req.body, id: req.params.id };
+
+  try {
+    // Update the user in the database
+    await tables.user.update(userId);
+
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
@@ -31,9 +64,9 @@ const destroy = async (req, res) => {
 
     // Check if any rows were affected (meaning the user was deleted)
     if (rows.affectedRows > 0) {
-      res.sendStatus(200); // No Content
+      res.sendStatus(200);
     } else {
-      res.sendStatus(404); // Not Found
+      res.sendStatus(404);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -46,4 +79,6 @@ const destroy = async (req, res) => {
 module.exports = {
   browse,
   destroy,
+  create,
+  update,
 };

@@ -17,9 +17,12 @@ router.get("/users", userActions.browse);
 router.get("/:id", itemActions.read);
 
 // Route to add a new item
-router.post("/", itemActions.add);
+router.post("/users", userActions.create);
 
 router.delete("/users/:id", userActions.destroy);
+
+// Route to update a user by ID
+router.put("/users/:id", userActions.update);
 
 /* ************************************************************************* */
 

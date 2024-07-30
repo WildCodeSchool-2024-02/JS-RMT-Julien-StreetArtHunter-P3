@@ -9,20 +9,16 @@ class UserRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  /** 
-
   async create(user) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [user.title, user.user_id]
+      `insert into ${this.table} (pseudo, email) values (?, ?)`,
+      [user.pseudo, user.email]
     );
 
     // Return the ID of the newly inserted user
     return result.insertId;
   }
-
-*/
 
   /** 
    * 
@@ -52,7 +48,16 @@ class UserRepository extends AbstractRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
-  // async update(user) {
+  async update(user) {
+    // Execute the SQL UPDATE query to update a specific category
+    const [result] = await this.database.query(
+      `update ${this.table} set pseudo = ?, email = ? where id = ?`,
+      [user.pseudo, user.email, user.id]
+    );
+
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
   //   ...
   // }
 
