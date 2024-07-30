@@ -5,7 +5,7 @@
   --page-background: oklch(10% 0.0666 var(--hue));
 }
 
-button {
+button.login {
   --button-background: oklch(20% 0.0666 var(--hue));
   --text-base: oklch(45% 0.175 var(--hue));
   --text-hover: oklch(95% 0.145 calc(var(--hue) + 30));
