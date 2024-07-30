@@ -19,8 +19,8 @@ function User() {
       });
   }, []);
 
-  const handleDelete = async (userId) => {
-    await connexion
+  const handleDelete = (userId) => {
+    connexion
       .delete(`api/users/${userId}`)
       .then(() => {
         setUsers(users.filter((user) => user.id !== userId));
@@ -29,11 +29,11 @@ function User() {
         console.error("There was an error deleting the user!", error);
       });
   };
-  const handleAdd = async (event) => {
+  const handleAdd = (event) => {
     event.preventDefault();
     const newUser = { pseudo, email };
 
-    await connexion
+    connexion
       .post("/api/users", newUser)
       .then((response) => {
         setUsers([...users, response.data]);
@@ -45,11 +45,11 @@ function User() {
       });
   };
 
-  const handleUpdate = async (event) => {
+  const handleUpdate = (event) => {
     event.preventDefault();
     const updatedUser = { pseudo, email };
 
-    await connexion
+    connexion
       .put(`/api/users/${editingUser.id}`, updatedUser)
       .then(() => {
         setUsers(
@@ -104,7 +104,7 @@ function User() {
           <button type="button" onClick={() => handleDelete(user.id)}>
             Delete
           </button>
-          <button type="button" onClick={() => startEditing(user.id)}>
+          <button type="button" onClick={() => startEditing(user)}>
             Edit
           </button>
         </div>
