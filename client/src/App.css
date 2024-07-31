@@ -1,8 +1,8 @@
- @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=VT323&display=swap");
 
 @font-face {
-  font-family: "arial";
+  font-family: "retrotech";
   src: url(./assets/retrotech.ttf);
 } 
 *,
@@ -18,11 +18,3 @@
   --font-subtitle: "VT323", sans serif;
   --font-text: "Space Mono", sans serif;
 }
-
-/* body {
-  display: flex;
-  min-height: 100vh;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-} */
