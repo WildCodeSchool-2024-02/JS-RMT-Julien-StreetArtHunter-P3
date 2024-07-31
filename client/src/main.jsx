@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import User from "./components/User";
 
 import "./App.css";
 
-import Admin from "./pages/Admin";
+import Admin from "./pages/Layout/Admin";
+import User from "./pages/Admin/User";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
@@ -26,6 +26,12 @@ const router = createBrowserRouter([
   {
     path: "/admin/",
     element: <Admin />,
+    children: [
+      {
+        path: "users",
+        element: <User />,
+      },
+    ],
   },
   {
     path: "/login",
@@ -34,10 +40,6 @@ const router = createBrowserRouter([
   {
     path: "/gallery",
     element: <Gallery />,
-  },
-  {
-    path: "/admin/users",
-    element: <User />,
   },
 ]);
 
