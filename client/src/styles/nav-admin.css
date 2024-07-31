@@ -1,0 +1,17 @@
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--main-bg-color);
+  font-family: var(--font-subtitle);
+  padding: 1em;
+}
+
+.nav-button {
+  color: var(--main-text-color);
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import NavAdmin from "./components/NavAdmin";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <header>
         <h1 className="logo">Harmonia</h1>
       </header>
+      <NavAdmin />
       <Outlet />
       <footer>
         Développé par la&nbsp;
