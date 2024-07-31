@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import connexion from "../services/connexion";
-import "../styles/Users.css";
 
 function User() {
   const [users, setUsers] = useState([]);
@@ -17,18 +16,30 @@ function User() {
   }, []);
 
   return (
-    <div className="users">
+    <div className="admin-table-container">
       <h1>Users</h1>
-      {/* List of users */}
-      {users.map((user) => (
-        <div key={user.id}>
-          <h2>Pseudo: {user.pseudo}</h2>
-          <p>Email: {user.email}</p>
-          <p>Points: {user.points}</p>
-          <p>Created at: {user.created_at}</p>
-          <p>Updated at: {user.updated_at}</p>
-        </div>
-      ))}
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>Points</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.pseudo}</td>
+              <td>{user.email}</td>
+              <td>{user.points}</td>
+              <td>{user.created_at}</td>
+              <td>{user.updated_at}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

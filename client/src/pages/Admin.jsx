@@ -1,4 +1,7 @@
+import User from "../components/User";
+import "../styles/styles-pages/Admin.css";
+
 function Admin() {
-  return <h1>hello Admin</h1>;
+  return <User />;
 }
 export default Admin;

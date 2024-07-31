@@ -7,9 +7,7 @@ function App() {
       <header>
         <h1 className="logo">Harmonia</h1>
       </header>
-
       <Outlet />
-
       <footer>
         Développé par la&nbsp;
         <a
