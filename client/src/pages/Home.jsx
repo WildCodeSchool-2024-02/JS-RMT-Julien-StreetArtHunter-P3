@@ -3,10 +3,7 @@ import "../styles/Geolocation.css";
 
 function Home() {
   return (
-    <div>
-      Home
       <Geolocation />
-    </div>
   );
 }
 

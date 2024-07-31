@@ -9,6 +9,8 @@ import Artist from "./pages/admin/Artist";
 import Category from "./pages/admin/Category";
 import StreetArt from "./pages/admin/StreetArt";
 import User from "./pages/admin/User";
+import Admin from "./pages/Layout/Admin";
+import Gallery from "./pages/Gallery";
 import App from "./App";
 
 const router = createBrowserRouter([
@@ -23,33 +25,36 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/admin",
-    element: <admin />,
+    path: "/admin/",
+    element: <Admin />,
     children: [
       {
-        path: "/Users",
+        path: "users",
         element: <User />,
       },
       {
-        path: "/Artists",
+        path: "artists",
         element: <Artist />,
       },
       {
-        path: "/Categories",
+        path: "categories",
         element: <Category />,
       },
       {
-        path: "/StreetArts",
+        path: "streetArts",
         element: <StreetArt />,
       },
     ],
   },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/gallery",
+    element: <Gallery />,
+  },
 ]);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
