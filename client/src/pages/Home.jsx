@@ -1,5 +1,5 @@
 import Geolocation from "../components/Geolocation";
-import Header from "./components/Header";
+import Header from "../components/Header";
 import "../styles/Geolocation.css";
 
 function Home() {
