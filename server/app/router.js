@@ -19,6 +19,8 @@ const userActions = require("./controllers/userActions");
 // Route to get a list of users
 router.get("/users", userActions.browse);
 
+router.post("/login", userActions.login);
+
 // Route to get a specific item by ID
 // router.get("/:id", itemActions.read);
 

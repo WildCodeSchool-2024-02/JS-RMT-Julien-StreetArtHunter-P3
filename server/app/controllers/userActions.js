@@ -15,6 +15,9 @@ const browse = async (req, res) => {
   }
 };
 
+const login = async (rec, res) => {
+  res.send("hello world");
+};
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
@@ -24,4 +27,5 @@ const browse = async (req, res) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
+  login,
 };
