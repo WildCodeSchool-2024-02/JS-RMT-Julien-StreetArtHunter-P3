@@ -7,6 +7,7 @@ class UserRepository extends AbstractRepository {
     super({ table: "user" });
   }
 
+  /** 
   // The C of CRUD - Create operation
 
   async create(user) {
@@ -20,8 +21,9 @@ class UserRepository extends AbstractRepository {
     return result.insertId;
   }
 
+*/
+
   /** 
-   * 
   // The Rs of CRUD - Read operations
 
   async read(id) {
@@ -48,6 +50,7 @@ class UserRepository extends AbstractRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
+  /** 
   async update(user) {
     // Execute the SQL UPDATE query to update a specific category
     const [result] = await this.database.query(
@@ -60,7 +63,9 @@ class UserRepository extends AbstractRepository {
   }
   //   ...
   // }
+*/
 
+  /** 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
   async destroy(userID) {
@@ -75,6 +80,7 @@ class UserRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
-}
 
+*/
+}
 module.exports = UserRepository;

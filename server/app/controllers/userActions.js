@@ -15,6 +15,7 @@ const browse = async (req, res) => {
   }
 };
 
+/** 
 // The A of BREAD - Add (Create) operation
 const create = async (req, res, next) => {
   // Extract the item data from the request body
@@ -31,7 +32,9 @@ const create = async (req, res, next) => {
     next(err);
   }
 };
+*/
 
+/** 
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
@@ -50,7 +53,9 @@ const update = async (req, res, next) => {
     next(err);
   }
 };
+*/
 
+/** 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -74,11 +79,9 @@ const destroy = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+*/
 
 // Ready to export the controller functions
 module.exports = {
   browse,
-  destroy,
-  create,
-  update,
 };
