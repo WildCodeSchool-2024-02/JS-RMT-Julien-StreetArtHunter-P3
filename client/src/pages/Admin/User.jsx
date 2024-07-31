@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import connexion from "../services/connexion";
+import connexion from "../../services/connexion";
+
+import Rows from "../../components/Table/Rows";
+import Head from "../../components/Table/Head";
 
 function User() {
   const [users, setUsers] = useState([]);
@@ -19,24 +22,10 @@ function User() {
     <div className="admin-table-container">
       <h1>Users</h1>
       <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Pseudo</th>
-            <th>Email</th>
-            <th>Points</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-          </tr>
-        </thead>
+        <thead>{users[0] && <Head data={users[0]} key={users[0].id} />}</thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.pseudo}</td>
-              <td>{user.email}</td>
-              <td>{user.points}</td>
-              <td>{user.created_at}</td>
-              <td>{user.updated_at}</td>
-            </tr>
+            <Rows data={user} key={user.id} />
           ))}
         </tbody>
       </table>
