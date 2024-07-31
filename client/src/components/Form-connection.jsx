@@ -1,36 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import connexion from "../services/connexion";
 import "../styles/Form-connection.css";
 import "../styles/button-login.css";
 
 function FormConnection() {
-  const [formData, setFormData] = useState({
+  const [connect, setConnect] = useState({
     email: "",
-    motdepasse: "",
+    password: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
+    setConnect((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await connexion.post("/api/login", connect);
+    } catch (error) {
+      console.error("There was an error connecting the user!", error);
+    }
   };
-
-  useEffect(() => {
-    connexion
-      .get("api/users")
-      .then((response) => {
-        setFormData(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the users!", error);
-      });
-  }, []);
 
   return (
     <main className="form-connection">
@@ -42,7 +36,7 @@ function FormConnection() {
               type="email"
               placeholder="Email"
               name="email"
-              value={formData.email}
+              value={connect.email}
               onChange={handleChange}
               required
             />
@@ -54,8 +48,8 @@ function FormConnection() {
             <input
               type="password"
               placeholder="Mot de passe"
-              name="motdepasse"
-              value={formData.motdepasse}
+              name="password"
+              value={connect.motdepasse}
               onChange={handleChange}
               required
             />
