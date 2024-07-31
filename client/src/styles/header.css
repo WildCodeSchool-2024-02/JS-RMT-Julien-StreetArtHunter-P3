@@ -20,7 +20,6 @@
 .navigation {
   display: flex;
   gap: 20px;
-
   .button {
     display: flex;
     justify-content: center;
