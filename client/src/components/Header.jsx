@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/header.css";
-import "../styles/button-login.css";
+import "../styles/button.css";
 import logo from "../assets/logo.png";
 
 function Header() {
@@ -11,14 +11,14 @@ function Header() {
       </Link>
       <nav className="navigation">
         <Link to="/gallery">
-          <button type="button" className="button-login">
-          Galerie
-          </button>
+          <p className="button">
+            Galerie
+          </p>
         </Link>
         <Link to="/login">
-          <button type="button" className="button-login">
-          Connexion
-          </button>
+          <p className="button">
+            Connexion
+          </p>
         </Link>
       </nav>
     </header>

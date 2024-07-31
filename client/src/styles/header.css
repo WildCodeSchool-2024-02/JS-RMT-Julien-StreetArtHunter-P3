@@ -3,29 +3,29 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--main-bg-color); 
+  background-color: var(--main-bg-color);
   padding: 5px 20px;
   height: 70px;
   position: sticky;
 }
- 
+
 .logo {
   display: flex;
   justify-content: center;
   margin-right: 1rem;
-  padding-bottom: 1rem;
   width: 5rem;
-  height: 4rem; 
+  height: 4rem;
 }
 
 .navigation {
   display: flex;
   gap: 20px;
-  .button-login {
+
+  .button {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    height:10px;
- }
+    height: 10px;
+  }
 }

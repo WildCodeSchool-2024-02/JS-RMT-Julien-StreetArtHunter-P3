@@ -1,4 +1,4 @@
-.button-login {
+.button {
   --button-background: oklch(20% 0.0666 var(--hue));
   --text-base: oklch(45% 0.175 var(--hue));
   --text-hover: oklch(95% 0.145 calc(var(--hue) + 30));
@@ -22,7 +22,7 @@
   text-align: center;
 
   /* Button sizing */
-  padding: 0.50em;
+  padding: 0.5em;
   max-width: 100%;
   width: 5em;
 
