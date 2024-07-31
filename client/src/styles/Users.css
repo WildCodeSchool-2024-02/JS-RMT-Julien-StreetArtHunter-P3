@@ -1,0 +1,11 @@
+.users h1 {
+  font-family: var(--font-title);
+}
+
+.users h2 {
+  font-family: var(--font-subtitle);
+}
+
+.users p {
+  font-family: var(--font-text);
+}

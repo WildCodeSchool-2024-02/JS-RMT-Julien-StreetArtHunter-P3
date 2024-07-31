@@ -81,9 +81,11 @@ INSERT INTO artist (name) VALUES ('Okuda');
 
 
 INSERT INTO streetart (title,imageUrl, city_id, artist_id, geolocation_x, geolocation_y) VALUES ('Chuuuttt','assets/images/Chuuuttt.jpg', 1, 5, 2.287592, 48.862725);
-INSERT INTO streetart (title, imageUrl, city_id, artist_id, geolocation_x, geolocation_y) VALUES ('Amor com as Mulheres','asset/images/amor-com-as-mulheres.jpg', 3, 7,2.421488873012425, 48.817102111250094);
-INSERT INTO streetart (title, imageUrl, city_id, artist_id,geolocation_x, geolocation_y) VALUES ('Deux dimensions','assets/images/deux-dimensions.jpg', 4, 6, -3.701897, 40.391846);
+INSERT INTO streetart (title, imageUrl, city_id, artist_id, geolocation_x, geolocation_y) VALUES ('Amor com as Mulheres','assets/images/amor-com-as-mulheres.jpg', 3, 7,2.421488873012425, 48.817102111250094);
 INSERT INTO streetart (title,imageUrl,city_id, artist_id, geolocation_x, geolocation_y) VALUES ('The cat','assets/images/the-cat.jpg',1,4, 2.317891232021214, 48.76220516624343);
 INSERT INTO streetart (title, imageUrl, city_id, artist_id, geolocation_x, geolocation_y) VALUES ('Champagne Rat','assets/images/rat-champagne.jpg', 1, 1, -3.698358,40.410928);
+INSERT INTO streetart (title, imageUrl, city_id, artist_id, geolocation_x, geolocation_y) 
+VALUES ('Petite fille, espoir', 'assets/images/petite-fille-espoir.jpg', 4, 5, -0.6032733, 44.830324);
+
 
 INSERT INTO seen (user_id, streetArt_id, points) VALUES (1, 1, 20);
