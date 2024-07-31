@@ -8,6 +8,7 @@ import "./App.css";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Gallery from "./pages/Gallery";
 import App from "./App";
 
 const router = createBrowserRouter([
@@ -31,8 +32,11 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: "/gallery",
+    element: <Gallery />,
+  },
+  {
     path: "/admin/users",
-
     element: <User />,
   },
 ]);
