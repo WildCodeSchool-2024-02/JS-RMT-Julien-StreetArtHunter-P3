@@ -1,17 +1,14 @@
-.root-btn-login {
-  --hue: 310;
-  --hue-adjust: 135;
-  --hue-2: calc(var(--hue) + var(--hue-adjust));
-  --page-background: oklch(10% 0.0666 var(--hue));
-}
-
-button {
+.button {
   --button-background: oklch(20% 0.0666 var(--hue));
   --text-base: oklch(45% 0.175 var(--hue));
   --text-hover: oklch(95% 0.145 calc(var(--hue) + 30));
   --shadow-start: oklch(95% 0.145 var(--hue-2));
   --shadow-end: oklch(60% 0.29 var(--hue));
   --shadow-inner: 60% 0.29 var(--hue);
+  --hue: 310;
+  --hue-adjust: 135;
+  --hue-2: calc(var(--hue) + var(--hue-adjust));
+  --page-background: oklch(10% 0.0666 var(--hue));
 
   all: unset;
 
@@ -25,14 +22,14 @@ button {
   text-align: center;
 
   /* Button sizing */
-  padding: 0.85em;
+  padding: 0.5em;
   max-width: 100%;
-  width: 12em;
+  width: 5em;
 
   /* Button styling */
   background-color: var(--button-background);
   background-clip: padding-box;
-  border: 5px solid var(--text-base);
+  border: 1px solid var(--text-base);
   border-radius: 2em;
   cursor: pointer;
 

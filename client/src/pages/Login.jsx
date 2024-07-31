@@ -1,4 +1,6 @@
-function Login() {
-  return <h1>hello Login</h1>;
-}
+
+function Login () {
+  return <div>Login Page</div>;
+};
+
 export default Login;
