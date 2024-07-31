@@ -15,7 +15,10 @@ const browse = async (req, res) => {
   }
 };
 
-const login = async (rec, res) => {
+const login = async (req, res) => {
+  // en s'appuyant sur un modele recuperer l'utilisateur via son email
+  // si utilisateur repondre ok sinon pas ok
+
   res.send("hello world");
 };
 // The E of BREAD - Edit (Update) operation
