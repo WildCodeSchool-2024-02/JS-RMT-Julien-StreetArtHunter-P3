@@ -11,14 +11,10 @@ function Header() {
       </Link>
       <nav className="navigation">
         <Link to="/gallery">
-          <p className="button">
-            Galerie
-          </p>
+          <p className="button">Galerie</p>
         </Link>
         <Link to="/login">
-          <p className="button">
-            Connexion
-          </p>
+          <p className="button">Connexion</p>
         </Link>
       </nav>
     </header>
