@@ -25,7 +25,7 @@ CREATE TABLE category (
     title VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE streetArt (
+CREATE TABLE streetart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
@@ -47,11 +47,11 @@ CREATE TABLE streetArt (
 
 CREATE TABLE seen (
     user_id INT,
-    streetArt_id INT,
+    streetart_id INT,
     points INT,
-    PRIMARY KEY (user_id, streetArt_id),
+    PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetArt_id) REFERENCES streetArt (id)
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id)
 );
 
 INSERT INTO city (name) VALUES ('Paris');
@@ -210,4 +210,4 @@ VALUES (
         44.830324
     );
 
-INSERT INTO seen (user_id, streetArt_id, points) VALUES (1, 1, 20);
+INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);
