@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin/",
+    path: "/admin",
     element: <Admin />,
     children: [
       {
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <Category />,
       },
       {
-        path: "streetArts",
+        path: "streetarts",
         element: <StreetArt />,
       },
     ],
