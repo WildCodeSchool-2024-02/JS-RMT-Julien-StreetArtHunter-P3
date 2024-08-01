@@ -9,12 +9,7 @@ function Rows({ data, handleDelete }) {
       ))}
 
       <td>
-        <Button
-          label="Delete"
-          handleClick={handleDelete}
-          className="delete-button"
-          id={data.id}
-        />
+        <Button label="Delete" handleClick={handleDelete} id={data.id} />
       </td>
     </tr>
   );
