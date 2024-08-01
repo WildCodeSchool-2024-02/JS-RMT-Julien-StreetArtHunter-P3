@@ -15,11 +15,35 @@ const browse = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
-  // en s'appuyant sur un modele recuperer l'utilisateur via son email
-  // si utilisateur repondre ok sinon pas ok
+// const login = async (req, res, next) => {
+//   try {
+//     const user = await tables.user.readByEmail(req.body.email);
+//     if (user == null) {
+//       res.sendStatus(422);
+//       return;
+//     }
+//   } catch (err) {
+//     next(err);
+//   }
+//   //   en s'appuyant sur un modele recuperer l'utilisateur via son email
+//   //   si utilisateur repondre ok sinon pas ok
 
-  res.send("hello world");
+//   res.send("hello world");
+// };
+const login = async (req, res, next) => {
+  try {
+    const user = await tables.user.readByEmail(req.body.email);
+
+    if (user == null) {
+      res.sendStatus(403);
+    }
+    if (req.body.password === user.password) {
+      res.status(200).json({ connected: true });
+    }
+    res.sendStatus(403);
+  } catch (err) {
+    next(err);
+  }
 };
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
