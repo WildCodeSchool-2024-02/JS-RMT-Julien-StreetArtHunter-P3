@@ -67,7 +67,6 @@ class UserRepository extends AbstractRepository {
   // }
 */
 
-  /** 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
   async destroy(userID) {
@@ -82,7 +81,5 @@ class UserRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
-
-*/
 }
 module.exports = UserRepository;

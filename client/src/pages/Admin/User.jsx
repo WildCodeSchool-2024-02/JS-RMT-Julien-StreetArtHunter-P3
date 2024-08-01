@@ -18,6 +18,17 @@ function User() {
       });
   }, []);
 
+  const handleDelete = (userId) => {
+    connexion
+      .delete(`api/users/${userId}`)
+      .then(() => {
+        setUsers(users.filter((user) => user.id !== userId));
+      })
+      .catch((error) => {
+        console.error("There was an error deleting the user!", error);
+      });
+  };
+
   return (
     <div className="admin-table-container">
       <h1>Users</h1>
@@ -25,7 +36,7 @@ function User() {
         <thead>{users[0] && <Head data={users[0]} key={users[0].id} />}</thead>
         <tbody>
           {users.map((user) => (
-            <Rows data={user} key={user.id} />
+            <Rows data={user} key={user.id} handleDelete={handleDelete} />
           ))}
         </tbody>
       </table>

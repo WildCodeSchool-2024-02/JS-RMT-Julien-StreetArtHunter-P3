@@ -16,4 +16,7 @@ const userActions = require("./controllers/userActions");
 // Route to get a list of users
 router.get("/users", userActions.browse);
 
+// Route to delete a list of users
+router.delete("/users/:id", userActions.destroy);
+
 module.exports = router;

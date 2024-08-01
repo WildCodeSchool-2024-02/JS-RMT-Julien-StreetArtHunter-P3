@@ -105,7 +105,110 @@ VALUES (
         '8910',
         0
     );
-
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina1@yopmail.com',
+        '8910',
+        0
+    );
+INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina2@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina3@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina4@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina5@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina6@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina7@yopmail.com',
+        '8910',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina8@yopmail.com',
+        '8910',
+        0
+    );
 INSERT INTO artist (name) VALUES ('Banksy');
 
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
