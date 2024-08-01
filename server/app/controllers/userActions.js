@@ -36,11 +36,11 @@ const login = async (req, res, next) => {
 
     if (user == null) {
       res.sendStatus(403);
-    }
-    if (req.body.password === user.password) {
+    } else if (req.body.password === user.password) {
       res.status(200).json({ connected: true });
+    } else {
+      res.sendStatus(403);
     }
-    res.sendStatus(403);
   } catch (err) {
     next(err);
   }
