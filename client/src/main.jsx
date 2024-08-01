@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { LoginProvider } from "./context/LoginContext";
+
 import User from "./components/User";
 
 import "./App.css";
@@ -41,6 +43,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LoginProvider>
+      <RouterProvider router={router} />
+    </LoginProvider>
   </React.StrictMode>
 );
