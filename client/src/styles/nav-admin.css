@@ -1,15 +1,34 @@
+.nav-bar-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 200px;
+  background-color: var(--main-bg-color);
+  height: 100vh;
+}
+
+.logo-nav {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 1rem;
+  width: 80%;
+  height: 15%;
+}
+
 .action-buttons {
   display: flex;
-  justify-content: space-around;
-  background-color: var(--main-bg-color);
-  font-family: var(--font-subtitle);
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 1em;
+  gap: 3em;
 }
 
 .nav-button {
   color: var(--main-text-color);
+  font-family: var(--font-subtitle);
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 30px;
 }
 
 .nav-button:hover {
