@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 
 import Admin from "./pages/Layout/Admin";
-import User from "./pages/Admin/User";
+import User from "./pages/admin/User";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";

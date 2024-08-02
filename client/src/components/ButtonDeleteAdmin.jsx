@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { BsTrash3 } from "react-icons/bs";
+import "../styles/button.css";
 
 function ButtonDeleteAdmin({ label, handleClick, id }) {
   return (

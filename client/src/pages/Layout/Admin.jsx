@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import "../../styles/styles-pages/Admin.css";
+import "../../styles/styles-pages/admin.css";
 
 function Admin() {
   return (
