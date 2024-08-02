@@ -23,11 +23,12 @@ class UserRepository extends AbstractRepository {
 
 */
 
+  // The Rs of CRUD - Read operations
   /** 
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
       [id]
@@ -67,22 +68,16 @@ class UserRepository extends AbstractRepository {
   // }
 */
 
-  /** 
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an user by its ID
-  async destroy(userID) {
-    // Execute the SQL SELECT query to retrieve all users from the "user" table
-    const [rows] = await this.database.query("DELETE FROM user WHERE id=?", [
-      userID,
-    ]);
+  async readByEmail(email) {
+    // Execute the SQL SELECT query to retrieve a specific user by its email
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where email = ?`,
+      [email]
+    );
 
-    // Return the array of users
-    return rows;
+    // Return the first row of the result, which represents the user
+    return rows[0];
   }
-  // async delete(id) {
-  //   ...
-  // }
-
-*/
 }
+
 module.exports = UserRepository;
