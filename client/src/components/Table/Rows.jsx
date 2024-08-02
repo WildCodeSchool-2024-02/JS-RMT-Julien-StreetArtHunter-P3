@@ -9,7 +9,11 @@ function Rows({ data, handleDelete }) {
       ))}
 
       <td>
-        <Button label="Delete" handleClick={handleDelete} id={data.id} />
+        <Button
+          aria-label="delete-button"
+          handleClick={handleDelete}
+          id={data.id}
+        />
       </td>
     </tr>
   );
