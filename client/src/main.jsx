@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginProvider } from "./context/LoginContext";
 
 import Admin from "./pages/Layout/Admin";
-import User from "./pages/Admin/User";
 
 
 import "./App.css";
