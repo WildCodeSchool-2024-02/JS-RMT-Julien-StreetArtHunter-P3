@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LoginProvider } from "./context/LoginContext";
-
 import User from "./components/User";
 
-import "./App.css";
-
-import Admin from "./pages/Admin";
+import Admin from "./pages/Layout/Admin";
+import User from "./pages/Admin/User";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Gallery from "./pages/Gallery";
 import App from "./App";
+
+import "./App.css";
 
 const router = createBrowserRouter([
   {
@@ -27,15 +28,20 @@ const router = createBrowserRouter([
   {
     path: "/admin/",
     element: <Admin />,
+    children: [
+      {
+        path: "users",
+        element: <User />,
+      },
+    ],
   },
   {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/admin/users",
-
-    element: <User />,
+    path: "/gallery",
+    element: <Gallery />,
   },
 ]);
 

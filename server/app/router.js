@@ -6,9 +6,6 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-// Import item-related actions
-// const itemActions = require("./controllers/itemActions");
-
 const streetartActions = require("./controllers/streetartActions");
 
 // Route to get a list of items
@@ -18,6 +15,7 @@ const userActions = require("./controllers/userActions");
 
 // Route to get a list of users
 router.get("/users", userActions.browse);
+
 
 router.post("/login", userActions.login);
 
