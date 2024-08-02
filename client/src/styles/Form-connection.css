@@ -46,6 +46,11 @@
 .form-connection button {
   margin-top: 3rem;
 }
+.popup-content {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  font-family: var(--font-subtitle);
+}
 @media (max-width: 390px) {
   .login-connexion {
     height: 125vh;

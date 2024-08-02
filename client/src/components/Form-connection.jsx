@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
+import { useLogin } from "../context/LoginContext";
 import "../styles/Form-connection.css";
 import "../styles/button-login.css";
 
@@ -8,6 +10,9 @@ function FormConnection() {
     email: "",
     password: "",
   });
+  const [showPopup, setShowPopup] = useState(false);
+  const { setUser } = useLogin();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +25,13 @@ function FormConnection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await connexion.post("/api/login", connect);
+      const user = await connexion.post("/api/login", connect);
+      setUser(user.data);
+      navigate("/");
     } catch (error) {
       console.error("There was an error connecting the user!", error);
+      setConnect({ email: "", password: "" });
+      setShowPopup(true);
     }
   };
 
@@ -49,7 +58,7 @@ function FormConnection() {
               type="password"
               placeholder="Mot de passe"
               name="password"
-              value={connect.motdepasse}
+              value={connect.password} // Corrected value attribute
               onChange={handleChange}
               required
             />
@@ -61,6 +70,12 @@ function FormConnection() {
           </button>
         </div>
       </form>
+
+      {showPopup && (
+        <div className="popup-content">
+          <p>Connexion impossible. Email ou Mot de passe invalide.</p>
+        </div>
+      )}
     </main>
   );
 }
