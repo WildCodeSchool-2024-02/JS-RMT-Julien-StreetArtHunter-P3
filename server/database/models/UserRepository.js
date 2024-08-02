@@ -23,9 +23,7 @@ class UserRepository extends AbstractRepository {
 
 */
 
-
-// The Rs of CRUD - Read operations
-=======
+  // The Rs of CRUD - Read operations
   /** 
   // The Rs of CRUD - Read operations
 
@@ -70,22 +68,6 @@ class UserRepository extends AbstractRepository {
   // }
 */
 
-  /** 
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an user by its ID
-  async destroy(userID) {
-    // Execute the SQL SELECT query to retrieve all users from the "user" table
-    const [rows] = await this.database.query("DELETE FROM user WHERE id=?", [
-      userID,
-    ]);
-
-    // Return the array of users
-    return rows;
-  }
-  // async delete(id) {
-  //   ...
-  // }
-
   async readByEmail(email) {
     // Execute the SQL SELECT query to retrieve a specific user by its email
     const [rows] = await this.database.query(
@@ -98,6 +80,4 @@ class UserRepository extends AbstractRepository {
   }
 }
 
-*/
-}
 module.exports = UserRepository;
