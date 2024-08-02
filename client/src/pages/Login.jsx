@@ -1,5 +1,5 @@
-import FormConnection from "../components/Form-connection";
-import "../styles/Form-connection.css";
+import FormConnection from "../components/FormConnection";
+import "../styles/form-connection.css";
 
 function Login() {
   return (
