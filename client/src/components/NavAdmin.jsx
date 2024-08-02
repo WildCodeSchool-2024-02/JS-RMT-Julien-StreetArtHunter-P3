@@ -5,7 +5,9 @@ import "../styles/nav-admin.css";
 function NavAdmin() {
   return (
     <div className="nav-bar-container">
-      <img src={logo} alt="logo" className="logo-nav" />
+      <Link to="/" className="logo-nav">
+        <img src={logo} alt="logo" className="logo-nav" />
+      </Link>
       <nav className="action-buttons">
         <Link to="/admin/users" className="nav-button">
           Utilisateurs

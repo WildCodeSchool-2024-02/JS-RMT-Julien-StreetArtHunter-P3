@@ -4,10 +4,10 @@ import "../../styles/styles-pages/Admin.css";
 
 function Admin() {
   return (
-    <>
+    <div className="admin-container">
       <NavAdmin />
       <Outlet />
-    </>
+    </div>
   );
 }
 

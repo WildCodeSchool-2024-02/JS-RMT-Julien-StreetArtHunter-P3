@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 200px;
+  width: 300px;
   background-color: var(--main-bg-color);
   height: 100vh;
 }
@@ -10,9 +10,9 @@
 .logo-nav {
   display: flex;
   justify-content: center;
-  margin: 1rem 1rem;
-  width: 80%;
-  height: 15%;
+  margin: 2rem 1rem;
+  width: 15rem;
+  height: 8rem;
 }
 
 .action-buttons {
@@ -20,15 +20,16 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1em;
-  gap: 3em;
+  padding: 2em;
+  margin-top: 3rem;
+  gap: 3.5em;
 }
 
 .nav-button {
   color: var(--main-text-color);
   font-family: var(--font-subtitle);
   text-decoration: none;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .nav-button:hover {
