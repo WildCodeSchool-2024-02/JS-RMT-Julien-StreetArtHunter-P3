@@ -4,11 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { LoginProvider } from "./context/LoginContext";
 
-import Admin from "./pages/Layout/Admin";
-
-
-import "./App.css";
-
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Artist from "./pages/admin/Artist";
