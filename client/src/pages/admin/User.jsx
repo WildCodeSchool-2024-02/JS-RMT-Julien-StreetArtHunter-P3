@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import connexion from "../../services/connexion";
-
 import Rows from "../../components/table/Rows";
 import Head from "../../components/table/Head";
 import "../../styles/reactModal.css";
@@ -81,4 +80,5 @@ function User() {
     </div>
   );
 }
+
 export default User;
