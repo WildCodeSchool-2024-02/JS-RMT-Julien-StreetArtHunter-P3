@@ -19,4 +19,6 @@ router.get("/users", userActions.browse);
 // Route to delete a list of users
 router.delete("/users/:id", userActions.destroy);
 
+router.post("/login", userActions.login);
+
 module.exports = router;

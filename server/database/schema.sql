@@ -25,14 +25,14 @@ CREATE TABLE category (
     title VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE streetArt (
+CREATE TABLE streetart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     geolocation_x DECIMAL(8, 6) NOT NULL,
     geolocation_y DECIMAL(9, 6) NOT NULL,
-    imageUrl VARCHAR(255) NOT NULL,
-    imageAlt VARCHAR(255),
+    image_url VARCHAR(255) NOT NULL,
+    image_alt VARCHAR(255),
     points INT DEFAULT 0,
     city_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -47,11 +47,11 @@ CREATE TABLE streetArt (
 
 CREATE TABLE seen (
     user_id INT,
-    streetArt_id INT,
+    streetart_id INT,
     points INT,
-    PRIMARY KEY (user_id, streetArt_id),
+    PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetArt_id) REFERENCES streetArt (id)
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id)
 );
 
 INSERT INTO city (name) VALUES ('Paris');
@@ -226,7 +226,7 @@ INSERT INTO artist (name) VALUES ('Okuda');
 INSERT INTO
     streetart (
         title,
-        imageUrl,
+        image_url,
         city_id,
         artist_id,
         geolocation_x,
@@ -244,7 +244,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
-        imageUrl,
+        image_url,
         city_id,
         artist_id,
         geolocation_x,
@@ -262,7 +262,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
-        imageUrl,
+        image_url,
         city_id,
         artist_id,
         geolocation_x,
@@ -280,7 +280,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
-        imageUrl,
+        image_url,
         city_id,
         artist_id,
         geolocation_x,
@@ -298,7 +298,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
-        imageUrl,
+        image_url,
         city_id,
         artist_id,
         geolocation_x,
@@ -313,4 +313,4 @@ VALUES (
         44.830324
     );
 
-INSERT INTO seen (user_id, streetArt_id, points) VALUES (1, 1, 20);
+INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);

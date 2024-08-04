@@ -15,6 +15,21 @@ const browse = async (req, res) => {
   }
 };
 
+const login = async (req, res, next) => {
+  try {
+    const user = await tables.user.readByEmail(req.body.email);
+
+    if (user == null) {
+      res.sendStatus(403);
+    } else if (req.body.password === user.password) {
+      res.status(200).json({ connected: true });
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 /** 
 // The A of BREAD - Add (Create) operation
 const create = async (req, res, next) => {
@@ -83,4 +98,5 @@ const destroy = async (req, res) => {
 module.exports = {
   browse,
   destroy,
+  login,
 };
