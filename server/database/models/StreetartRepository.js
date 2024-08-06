@@ -42,8 +42,8 @@ class StreetartRepository extends AbstractRepository {
         s.title, 
         s.geolocation_x, 
         s.geolocation_y, 
-        s.imageUrl, 
-        s.imageAlt, 
+        s.image_url, 
+        s.image_alt, 
         s.city_id, 
         a.name FROM 
         ${this.table} AS s INNER JOIN 

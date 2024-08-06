@@ -8,7 +8,7 @@ const router = express.Router();
 
 const streetartActions = require("./controllers/streetartActions");
 
-// Route to get a list of items
+// Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
 
 const userActions = require("./controllers/userActions");

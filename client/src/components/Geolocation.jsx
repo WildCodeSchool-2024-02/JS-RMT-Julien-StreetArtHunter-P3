@@ -23,7 +23,7 @@ export default function Geolocation() {
         setStreetArts(response.data);
       })
       .catch((error) => {
-        console.error("There war an error fetching the Streetarts!", error);
+        console.error("There was an error fetching the Streetarts!", error);
       });
   }, []);
 
@@ -66,8 +66,8 @@ export default function Geolocation() {
               <h4>Titre de l'oeuvre:{streetArt.title}</h4>
               <p>Artiste:{streetArt.name}</p>
               <img
-                src={`${import.meta.env.VITE_API_URL}/${streetArt.imageUrl}`}
-                alt={streetArt.imageAlt}
+                src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                alt={streetArt.image_alt}
               />
             </Popup>
           </Marker>
