@@ -48,11 +48,10 @@
     width: 100%;
     min-height: 10rem;
     max-height: 15rem;
-  } 
+  }
   .carousel-item-details {
     background: white;
     padding: 0.5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
- }
- 
+}
