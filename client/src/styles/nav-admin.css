@@ -1,0 +1,37 @@
+.nav-bar-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 300px;
+  background-color: var(--main-bg-color);
+  height: 100vh;
+}
+
+.logo-nav {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 1rem;
+  width: 15rem;
+  height: 8rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2em;
+  margin-top: 3rem;
+  gap: 3.5em;
+}
+
+.nav-button {
+  color: var(--main-text-color);
+  font-family: var(--font-subtitle);
+  text-decoration: none;
+  font-size: 35px;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+}
