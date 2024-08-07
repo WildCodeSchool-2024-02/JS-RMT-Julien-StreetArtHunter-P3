@@ -1,7 +1,6 @@
 .mapContainer {
-  height: 90vh;
-  width: 90vh;
-  border-radius: 1.5rem;
+  height: 60vh;
+  width: 100%;
 }
 .leaflet-popup-content {
   max-width: 100%;
