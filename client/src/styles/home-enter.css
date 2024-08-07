@@ -16,76 +16,64 @@
   align-items: center;
   padding: 20px;
 }
+
 .about-section {
   background-color: var(--main-bg-color);
   color: white;
-  height: 100vh;
-  position: sticky;
-  h2 {
-    display: flex;
-    justify-content: center;
-    padding: 3rem;
-  }
-  p {
-    font-size: 1.5rem;
-    padding: 0rem 10rem;
-  }
+  min-height: 45vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-section h2 {
+  padding: 3rem;
+  font-family: var(--font-title);
+}
+
+.about-section p {
+  font-size: 1.5rem;
+  padding: 0rem 10rem;
+  font-family: var(--font-subtitle);
 }
 
 .title-image {
   width: 50%;
   min-height: 20vw;
-  max-height: 20vw; /* Ajustez la taille selon vos besoins */
-  animation: bounce 2s infinite; /* Animation de rebond */
+  max-height: 20vw;
+  animation: slideDown 2s ease-out;
   position: relative;
-  z-index: 3; /* Assure que l'image est au-dessus de tout autre contenu */
+  z-index: 3;
 }
 
-/* Définir l'animation */
-@keyframes bounce {
+@keyframes slideDown {
   0% {
-    animation-timing-function: ease-in;
-    opacity: 1;
-    transform: translateY(-45px);
+    transform: translateY(-100%);
+    opacity: 0;
   }
-
-  24% {
-    opacity: 1;
-  }
-
-  40% {
-    animation-timing-function: ease-in;
-    transform: translateY(-24px);
-  }
-
-  65% {
-    animation-timing-function: ease-in;
-    transform: translateY(-12px);
-  }
-
-  82% {
-    animation-timing-function: ease-in;
-    transform: translateY(-6px);
-  }
-
-  93% {
-    animation-timing-function: ease-in;
-    transform: translateY(-4px);
-  }
-
-  25%,
-  55%,
-  75%,
-  87% {
-    animation-timing-function: ease-out;
-    transform: translateY(0px);
-  }
-
   100% {
-    animation-timing-function: ease-out;
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0px);
   }
 }
 
-/* Section about-positionnée en bas */
+@media (max-width: 390px) {
+  .App-background {
+    max-height: 100vw;
+  }
+  .about-section h2 {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .about-section p {
+    font-size: 1.3rem;
+    padding: 0rem 2rem;
+  }
+  .title-image {
+    width: 100%;
+    min-height: 50vw;
+    max-height: 50vw;
+  }
+}
