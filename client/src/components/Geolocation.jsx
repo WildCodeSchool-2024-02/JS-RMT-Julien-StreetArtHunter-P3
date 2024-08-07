@@ -14,21 +14,7 @@ import "../styles/Geolocation.css";
 import "../App.css";
 
 export default function Geolocation() {
-
-  const [streetArts, setStreetArts] = useState([]);
-  useEffect(() => {
-    connexion
-      .get("api/streetarts")
-      .then((response) => {
-        setStreetArts(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the Streetarts!", error);
-      });
-  }, []);
-
   const streetArts = useLoaderData();
-
 
   // custom cluster icon
   const createClusterCustomIcon = (cluster) =>
