@@ -70,7 +70,6 @@ const update = async (req, res, next) => {
 };
 */
 
-/** 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -94,10 +93,10 @@ const destroy = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-*/
 
 // Ready to export the controller functions
 module.exports = {
   browse,
+  destroy,
   login,
 };

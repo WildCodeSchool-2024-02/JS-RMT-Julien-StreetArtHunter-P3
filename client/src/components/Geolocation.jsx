@@ -55,8 +55,8 @@ export default function Geolocation() {
               <h4>Titre de l'oeuvre:{streetArt.title}</h4>
               <p>Artiste:{streetArt.name}</p>
               <img
-                src={`${import.meta.env.VITE_API_URL}/${streetArt.imageUrl}`}
-                alt={streetArt.imageAlt}
+                src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                alt={streetArt.image_alt}
               />
             </Popup>
           </Marker>

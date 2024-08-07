@@ -40,13 +40,13 @@ function Carousel() {
           {streetArts.map((streetart) => (
             <div key={streetart.id} className="carousel-streetart">
               <img
-                src={`${import.meta.env.VITE_API_URL}/${streetart.imageUrl}`}
-                alt={streetart.imageAlt}
+                src={`${import.meta.env.VITE_API_URL}/${streetart.image_url}`}
+                alt={streetart.image_alt}
               />
               <div className="carousel-item-details">
                 <h3>{streetart.title}</h3>
-                <p>Artist: {streetart.artist_id}</p>
-                <p>City: {streetart.city_id}</p>
+                <p>Artist: {streetart.name}</p>
+                <p>City: {streetart.city_name}</p>
               </div>
             </div>
           ))}
