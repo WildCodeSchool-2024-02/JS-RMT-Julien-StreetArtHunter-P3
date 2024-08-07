@@ -3,6 +3,8 @@ import Modal from "react-modal";
 import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
+import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
+
 import "../../styles/reactModal.css";
 
 Modal.setAppElement("#root");
@@ -69,13 +71,10 @@ function User() {
         overlayClassName="ReactModal_Overlay"
         contentLabel="Confirmation Modal"
       >
-        <h2>Supprimer cet utilisateur ?</h2>
-        <button type="button" onClick={handleDelete}>
-          Oui, supprimer
-        </button>
-        <button type="button" onClick={closeModal}>
-          Annuler
-        </button>
+        <DeleteModalConfirmation
+          onDelete={handleDelete}
+          onCancel={closeModal}
+        />
       </Modal>
     </div>
   );
