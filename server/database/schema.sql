@@ -43,7 +43,7 @@ CREATE TABLE streetart (
     category_id INT,
     FOREIGN KEY (city_id) REFERENCES city (id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (artist_id) REFERENCES artist (id),
+    FOREIGN KEY (artist_id) REFERENCES artist (id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
