@@ -76,7 +76,7 @@ INSERT INTO
 VALUES (
         'john_doe',
         'johndoe@yopmail.com',
-        '1234',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         1
     );
 
@@ -90,7 +90,7 @@ INSERT INTO
 VALUES (
         'jean_french',
         'jeanfrench@yopmail.com',
-        '4567',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
 
@@ -104,7 +104,7 @@ INSERT INTO
 VALUES (
         'juana_latina',
         'juanalatina@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -117,7 +117,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina1@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
 INSERT INTO
@@ -130,7 +130,7 @@ INSERT INTO
 VALUES (
         'juana_latina',
         'juanalatina2@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -143,7 +143,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina3@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -156,7 +156,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina4@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -169,7 +169,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina5@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -182,7 +182,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina6@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -195,7 +195,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina7@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
     INSERT INTO
@@ -208,7 +208,7 @@ VALUES (
 VALUES (
         'juana_latina',
         'juanalatina8@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
 INSERT INTO artist (name) VALUES ('Banksy');
