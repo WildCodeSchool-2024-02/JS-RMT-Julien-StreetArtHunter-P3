@@ -14,6 +14,8 @@ import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
 
+import connexion from "./services/connexion";
+
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -24,6 +26,16 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+        loader: () => connexion
+          .get("api/streetarts")
+          .then((response) => response.data)
+          .catch((error) => {
+            console.error(
+              "Erreur lors de la récupération des données de StreetArt:",
+              error
+            );
+            return []
+          })
       },
     ],
   },
