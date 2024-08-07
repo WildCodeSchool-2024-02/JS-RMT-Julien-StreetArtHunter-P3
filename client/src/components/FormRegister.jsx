@@ -1,19 +1,18 @@
 
 
-function FormInscription() {
+function FormRegister() {
   const handleSubmit = async event => {
     event.preventDefault();
 
   }
   return (
-    <main className="form-inscription">
+    <main className="form-register">
       <form onSubmit={handleSubmit}>
         <div>
           <label>
             Pseudo
             <input
               type="text"
-              placeholder="Pseudo"
               name="pseudo"
             />
           </label>
@@ -21,24 +20,33 @@ function FormInscription() {
             Email
             <input
               type="email"
-              placeholder="Email"
               name="email"
             />
           </label>
           <label>
-            Pseudo
+            Mot de passe
             <input
-              type="text"
-              placeholder="Pseudo"
-              name="pseudo"
+              type="password"
+              name="password"
+            />
+          </label>
+          <label>
+            Confirmation de Mot Passe
+            <input
+              type="password"
+              name="password"
             />
           </label>
         </div>
-
+        <div className="inscription-button">
+          <button className="button" type="button">
+            S'inscrire
+          </button>
+        </div>
       </form>
     </main>
   );
 }
 
 
-export default FormInscription;
+export default FormRegister;

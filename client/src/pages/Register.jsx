@@ -1,13 +1,15 @@
-import "../styles/form-connection.css";
-import FormInscription from "../components/FormInscription";
+import FormRegister from "../components/FormRegister";
+import logo from "../assets/logo.png";
+import "../styles/form-register.css";
 
-function Login() {
+function Register() {
   return (
-    <div className="login-connexion">
+    <div className="register-connexion">
+      <img src={logo} alt="logo" />
       <h2>Inscription</h2>
-      <FormInscription />
+      <FormRegister />
     </div>
   );
 }
 
-export default Login;
+export default Register;
