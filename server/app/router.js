@@ -19,6 +19,13 @@ router.get("/users", userActions.browse);
 // Route to delete a list of users
 router.delete("/users/:id", userActions.destroy);
 
+const artistActions = require("./controllers/artistActions")
+
+// Route to get a list of artists
+router.get("/artists", artistActions.browse);
+
+// Route to delete a list of artists
+
 router.post("/login", userActions.login);
 
 const categoryActions = require("./controllers/categoryActions");
