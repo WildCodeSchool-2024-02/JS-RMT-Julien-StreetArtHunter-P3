@@ -4,7 +4,6 @@ import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
 import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
-
 import "../../styles/reactModal.css";
 
 Modal.setAppElement("#root");
