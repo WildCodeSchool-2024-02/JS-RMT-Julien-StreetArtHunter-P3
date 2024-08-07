@@ -44,11 +44,12 @@ class StreetartRepository extends AbstractRepository {
         s.geolocation_y, 
         s.image_url, 
         s.image_alt, 
-        s.city_id, 
+        c.name AS city_name, 
         a.name FROM 
         ${this.table} AS s INNER JOIN 
         artist AS a ON 
-        s.artist_id = a.id `
+        s.artist_id = a.id INNER JOIN
+        city AS c ON s.city_id = c.id `
     );
 
     // Return the array of streetarts
