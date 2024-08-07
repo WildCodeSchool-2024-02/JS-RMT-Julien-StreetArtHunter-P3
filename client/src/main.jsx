@@ -13,6 +13,7 @@ import User from "./pages/admin/User";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
+import Enter from "./pages/Enter";
 
 import connexion from "./services/connexion";
 
@@ -26,16 +27,21 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
-        loader: () => connexion
-          .get("api/streetarts")
-          .then((response) => response.data)
-          .catch((error) => {
-            console.error(
-              "Erreur lors de la récupération des données de StreetArt:",
-              error
-            );
-            return []
-          })
+        loader: () =>
+          connexion
+            .get("api/streetarts")
+            .then((response) => response.data)
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données de StreetArt:",
+                error
+              );
+              return [];
+            }),
+      },
+      {
+        path: "/Home",
+        element: <Enter />,
       },
     ],
   },

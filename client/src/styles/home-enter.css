@@ -1,0 +1,91 @@
+.App-header-enter {
+  background-color: var(--main-bg-color);
+  height: 100%;
+}
+
+.App-background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  max-height: 40vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.about-section {
+  background-color: var(--main-bg-color);
+  color: white;
+  height: 100vh;
+  position: sticky;
+  h2 {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+  }
+  p {
+    font-size: 1.5rem;
+    padding: 0rem 10rem;
+  }
+}
+
+.title-image {
+  width: 50%;
+  min-height: 20vw;
+  max-height: 20vw; /* Ajustez la taille selon vos besoins */
+  animation: bounce 2s infinite; /* Animation de rebond */
+  position: relative;
+  z-index: 3; /* Assure que l'image est au-dessus de tout autre contenu */
+}
+
+/* Définir l'animation */
+@keyframes bounce {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateY(-45px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateY(-24px);
+  }
+
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateY(-12px);
+  }
+
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6px);
+  }
+
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateY(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Section about-positionnée en bas */
