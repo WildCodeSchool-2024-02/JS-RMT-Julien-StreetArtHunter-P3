@@ -21,4 +21,8 @@ router.delete("/users/:id", userActions.destroy);
 
 router.post("/login", userActions.login);
 
+const categoryActions = require("./controllers/categoryActions");
+
+router.get("/categories", categoryActions.browse);
+
 module.exports = router;

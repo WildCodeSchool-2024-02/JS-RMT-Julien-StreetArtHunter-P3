@@ -316,3 +316,14 @@ VALUES (
     );
 
 INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);
+
+INSERT INTO category (title) VALUES ('Graffiti');
+INSERT INTO category (title) VALUES ('Pochoirs');
+INSERT INTO category (title) VALUES ('Mosaïques');
+INSERT INTO category (title) VALUES ('Sculptures et installations urbaines');
+INSERT INTO category (title) VALUES ('Fresques murales');
+INSERT INTO category (title) VALUES ('Street art 3D');
+INSERT INTO category (title) VALUES ('Stickering');
+INSERT INTO category (title) VALUES ('Art activiste');
+INSERT INTO category (title) VALUES ('Yarn bombing');
+
