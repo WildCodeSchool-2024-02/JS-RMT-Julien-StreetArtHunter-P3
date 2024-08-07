@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        element: <Enter />,
+      },
+      {
+        path: "/street-art",
         element: <Home />,
         loader: () =>
           connexion
@@ -38,10 +42,6 @@ const router = createBrowserRouter([
               );
               return [];
             }),
-      },
-      {
-        path: "/Home",
-        element: <Enter />,
       },
     ],
   },

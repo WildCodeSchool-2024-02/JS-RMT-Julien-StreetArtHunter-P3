@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import citybackground from "../assets/city-background.png";
 import logo from "../assets/logo.png";
 import "../App.css";
@@ -6,20 +6,14 @@ import "../styles/home-enter.css";
 import "../styles/button.css";
 
 function HomeEnter() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/");
-  };
-
   return (
     <div className="App-header-enter">
       <img src={citybackground} className="App-background" alt="background" />
       <div className="content">
         <img src={logo} className="title-image" alt="Street Art Hunter" />
-        <button type="button" className="button" onClick={handleClick}>
-          Entrer
-        </button>
+        <Link to="/street-art">
+          <p className="button">Entrer dans StreetArt Hunter</p>
+        </Link>
       </div>
       <div className="about-section">
         <h2>A Propos</h2>
