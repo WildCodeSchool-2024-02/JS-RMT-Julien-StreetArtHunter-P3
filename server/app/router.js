@@ -33,4 +33,6 @@ const categoryActions = require("./controllers/categoryActions");
 
 router.get("/categories", categoryActions.browse);
 
+router.delete("/categories/:id", categoryActions.destroy);
+
 module.exports = router;
