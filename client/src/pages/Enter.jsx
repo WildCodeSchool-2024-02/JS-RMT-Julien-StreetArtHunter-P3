@@ -7,15 +7,15 @@ import "../styles/button.css";
 
 function Enter() {
   return (
-    <div className="App-header-enter">
+    <main className="App-header-enter">
       <img src={citybackground} className="App-background" alt="background" />
-      <div className="content">
+      <section className="content">
         <img src={logo} className="title-image" alt="Street Art Hunter" />
         <Link to="/street-art">
           <p className="button">Entrer dans StreetArt Hunter</p>
         </Link>
-      </div>
-      <div className="about-section">
+      </section>
+      <section className="about-section">
         <h2>A Propos</h2>
         <p>
           Nous préparons un prototype d’appli web pour tous les amateurs de
@@ -28,8 +28,8 @@ function Enter() {
           dans une aventure qui mêle exploration urbaine et culture artistique,
           le tout dans une ambiance ludique et rétro !
         </p>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 
