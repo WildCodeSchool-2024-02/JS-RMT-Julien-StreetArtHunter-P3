@@ -27,7 +27,12 @@ function FormConnection() {
     try {
       const user = await connexion.post("/api/login", connect);
       setUser(user.data);
-      navigate("/");
+
+      if (user.data.is_admin) {
+        navigate("/admin/streetarts");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error("There was an error connecting the user!", error);
       setConnect({ email: "", password: "" });

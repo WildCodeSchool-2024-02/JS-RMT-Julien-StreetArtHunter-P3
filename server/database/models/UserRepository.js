@@ -7,22 +7,21 @@ class UserRepository extends AbstractRepository {
     super({ table: "user" });
   }
 
-  /** 
   // The C of CRUD - Create operation
 
+  /** 
   async create(user) {
+    const hashedPassword = await argon2.hash(user.password);
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (pseudo, email) values (?, ?)`,
-      [user.pseudo, user.email]
+      `insert into ${this.table} (pseudo, email, password) values (?, ?, )`,
+      [user.pseudo, user.email, hashedPassword]
     );
 
     // Return the ID of the newly inserted user
     return result.insertId;
   }
-
 */
-
   // The Rs of CRUD - Read operations
   /** 
   // The Rs of CRUD - Read operations
