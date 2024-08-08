@@ -1,46 +1,46 @@
-
-
 function FormRegister() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-  }
+  };
   return (
     <main className="form-register">
       <form onSubmit={handleSubmit}>
         <div>
-          <label>
-            Pseudo
+          <div className="user-info">
+            <label htmlFor="pseudo">
+              Pseudo
+            </label>
             <input
               type="text"
               name="pseudo"
             />
-          </label>
-          <label>
-            Email
+            <label htmlFor="email">
+              Email </label>
             <input
               type="email"
               name="email"
             />
-          </label>
-          <label>
-            Mot de passe
+          </div>
+          <div className="user-password">
+            <label htmlFor="password">
+              Mot de passe </label>
             <input
               type="password"
               name="password"
             />
-          </label>
-          <label>
-            Confirmation de Mot Passe
+          </div>
+          <div className="user-password">
+            <label htmlFor="password_confirmation">
+              Confirmation de Mot Passe </label>
             <input
               type="password"
               name="password"
             />
-          </label>
+          </div>
         </div>
-        <div className="inscription-button">
-          <button className="button" type="button">
-            S'inscrire
+        <div className="register-button">
+          <button className="button" type="button">S'inscrire
           </button>
         </div>
       </form>
