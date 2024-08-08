@@ -19,7 +19,7 @@ class CategoryRepository extends AbstractRepository {
   async destroy(categoryID) {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await this.database.query(
-      "DELETE FROM category WHERE id=?",
+      `DELETE FROM ${this.table} WHERE id=?`,
       [categoryID]
     );
     return rows;
