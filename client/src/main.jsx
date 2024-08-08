@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Enter />,
       },
       {
-        path: "/street-art",
+        path: "/street-arts",
         element: <Home />,
         loader: () =>
           connexion
