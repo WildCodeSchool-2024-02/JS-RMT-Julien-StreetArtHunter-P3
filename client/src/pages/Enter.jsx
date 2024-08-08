@@ -11,7 +11,7 @@ function Enter() {
       <img src={citybackground} className="App-background" alt="background" />
       <section className="content">
         <img src={logo} className="title-image" alt="Street Art Hunter" />
-        <Link to="/street-art">
+        <Link to="/street-arts">
           <p className="button">Entrer dans StreetArt Hunter</p>
         </Link>
       </section>
