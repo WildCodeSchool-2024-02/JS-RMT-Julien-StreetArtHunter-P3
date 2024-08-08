@@ -14,6 +14,7 @@ import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
 import Enter from "./pages/Enter";
+import Detail from "./pages/Detail";
 
 import connexion from "./services/connexion";
 
@@ -43,6 +44,29 @@ const router = createBrowserRouter([
               return [];
             }),
       },
+      {
+        path: "/street-art-detail/:id",
+        element: <Detail />,
+        loader: ({params}) =>
+          connexion
+            .get(`api/streetarts/${params.id}`)
+            .then((response) => response.data)
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données de StreetArt:",
+                error
+              );
+              return [];
+            }),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />,
+      },
     ],
   },
   {
@@ -67,14 +91,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/gallery",
-    element: <Gallery />,
-  },
+ 
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
