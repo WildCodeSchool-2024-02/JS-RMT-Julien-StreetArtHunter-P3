@@ -11,6 +11,8 @@ const streetartActions = require("./controllers/streetartActions");
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
 
+router.delete("/streetarts/:id", streetartActions.destroy);
+
 const userActions = require("./controllers/userActions");
 
 // Route to get a list of users

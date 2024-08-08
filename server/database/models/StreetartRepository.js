@@ -69,6 +69,13 @@ class StreetartRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
+  async destroy(streetartID) {
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [streetartID]
+    );
+    return rows;
+  }
 }
 
 module.exports = StreetartRepository;
