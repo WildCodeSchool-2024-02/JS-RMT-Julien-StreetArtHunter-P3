@@ -11,7 +11,7 @@ Modal.setAppElement("#root");
 function StreetArt() {
   const [streetArts, setstreetArts] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedStreetartId, setSelectedStreetartId] = useState(null);
 
   useEffect(() => {
     connexion
@@ -25,22 +25,24 @@ function StreetArt() {
   }, []);
 
   const openModal = (userId) => {
-    setSelectedUserId(userId);
+    setSelectedStreetartId(userId);
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedUserId(null);
+    setSelectedStreetartId(null);
     setModalIsOpen(false);
   };
 
   const handleDelete = () => {
-    if (selectedUserId !== null) {
+    if (selectedStreetartId !== null) {
       connexion
-        .delete(`api/users/${selectedUserId}`)
+        .delete(`api/streetarts/${selectedStreetartId}`)
         .then(() => {
           setstreetArts(
-            streetArts.filter((user) => user.id !== selectedUserId)
+            streetArts.filter(
+              (streetart) => streetart.id !== selectedStreetartId
+            )
           );
           closeModal();
         })
