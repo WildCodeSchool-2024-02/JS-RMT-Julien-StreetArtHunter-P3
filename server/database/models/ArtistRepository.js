@@ -72,9 +72,10 @@ class ArtistRepository extends AbstractRepository {
   // TODO: Implement the delete operation to remove an user by its ID
   async destroy(artistID) {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
-    const [rows] = await this.database.query("DELETE FROM user WHERE id=?", [
-      artistID,
-    ]);
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [artistID]
+    );
     return rows;
   }
 }

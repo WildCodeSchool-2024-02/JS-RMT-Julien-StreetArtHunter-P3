@@ -37,7 +37,7 @@ function Artist() {
   const handleDelete = () => {
     if (selectedArtistId !== null) {
       connexion
-        .delete(`api/artist/${selectedArtistId}`)
+        .delete(`api/artists/${selectedArtistId}`)
         .then(() => {
           setArtists(
             artists.filter((artist) => artist.id !== selectedArtistId)
