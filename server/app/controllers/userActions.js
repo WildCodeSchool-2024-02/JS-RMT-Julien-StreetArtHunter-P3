@@ -31,14 +31,20 @@ const login = async (req, res, next) => {
       // Respond with the user and a signed token in JSON format (but without the hashed password)
       delete user.password;
 
-      const token = await jwt.sign({ sub: user.id }, process.env.APP_SECRET, {
-        expiresIn: "1h",
-      });
+      const token = await jwt.sign(
+        { sub: user.id, is_admin: user.is_admin },
+        process.env.APP_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
 
-      res.json({
-        token,
-        user,
-      });
+      res
+        .status(200)
+        .cookie("token", token, {
+          httpOnly: true,
+        })
+        .json(user);
     } else {
       res.sendStatus(422);
     }
