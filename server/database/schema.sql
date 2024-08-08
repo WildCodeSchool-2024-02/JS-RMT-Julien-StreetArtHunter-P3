@@ -53,7 +53,7 @@ CREATE TABLE seen (
     points INT,
     PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetart_id) REFERENCES streetart (id)
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE
 );
 
 INSERT INTO city (name) VALUES ('Paris');
