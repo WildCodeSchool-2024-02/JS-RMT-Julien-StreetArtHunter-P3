@@ -15,6 +15,7 @@
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: var(--font-subtitle), serif;
+  width: 60%;
 }
 
 .user-info {
@@ -61,6 +62,10 @@
 
   .user-info {
     flex-direction: column;
+  }
+
+  .form-register {
+    width: auto;
   }
 
   .form-register label {
