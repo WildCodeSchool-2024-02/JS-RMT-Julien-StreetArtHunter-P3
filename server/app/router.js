@@ -11,6 +11,8 @@ const streetartActions = require("./controllers/streetartActions");
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
 
+router.delete("/streetarts/:id", streetartActions.destroy);
+
 const userActions = require("./controllers/userActions");
 
 // Route to get a list of users
@@ -33,6 +35,6 @@ const categoryActions = require("./controllers/categoryActions");
 
 router.get("/categories", categoryActions.browse);
 
-router.delete("/streetarts/:id", streetartActions.destroy);
+router.delete("/categories/:id", categoryActions.destroy);
 
 module.exports = router;

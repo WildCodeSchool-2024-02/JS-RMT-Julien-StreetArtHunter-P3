@@ -14,7 +14,27 @@ const browse = async (req, res) => {
     res.status(500).json(err);
   }
 };
+const destroy = async (req, res) => {
+  try {
+    // Fetch the userId from the request parameters
+    const categoryId = req.params.id;
 
+    // Attempt to delete the user from the database
+    const rows = await tables.category.destroy(categoryId);
+
+    // Check if any rows were affected (meaning the user was deleted)
+    if (rows.affectedRows > 0) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    console.error("Error deleting category:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 module.exports = {
   browse,
+  destroy,
 };
