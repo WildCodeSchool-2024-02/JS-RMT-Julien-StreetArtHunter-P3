@@ -1,12 +1,11 @@
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Carousel from "../components/Carousel"; 
 import "../styles/detail.css";
 
 function Detail() {
   const streetArts = useLoaderData(); 
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get('id'); // Récupère l'ID de l'œuvre via les paramètres de recherche
+  const { id } = useParams();
   
   // Trouver l'œuvre qui correspond à l'ID
   const streetArt = streetArts.find((art) => art.id === Number(id));
