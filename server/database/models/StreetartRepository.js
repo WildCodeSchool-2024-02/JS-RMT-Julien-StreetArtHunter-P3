@@ -71,7 +71,7 @@ class StreetartRepository extends AbstractRepository {
   // }
   async destroy(streetartID) {
     const [rows] = await this.database.query(
-      "DELETE FROM streetart WHERE id=?",
+      `DELETE FROM ${this.table} WHERE id=?`,
       [streetartID]
     );
     return rows;
