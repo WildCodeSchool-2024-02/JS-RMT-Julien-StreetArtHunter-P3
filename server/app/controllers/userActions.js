@@ -30,8 +30,8 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
-/** 
-// The A of BREAD - Add (Create) operation
+
+// The of BREAD - Add (Create) operation
 const create = async (req, res, next) => {
   // Extract the item data from the request body
   const user = req.body;
@@ -47,7 +47,6 @@ const create = async (req, res, next) => {
     next(err);
   }
 };
-*/
 
 /** 
 // The E of BREAD - Edit (Update) operation
@@ -99,4 +98,5 @@ module.exports = {
   browse,
   destroy,
   login,
+  create,
 };

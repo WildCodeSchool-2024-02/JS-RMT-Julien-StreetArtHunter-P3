@@ -13,45 +13,34 @@
 .form-register {
   margin: 1.5rem;
   padding: 2rem;
-  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: var(--font-subtitle), serif;
 }
 
 .user-info {
   display: flex;
+  flex-direction: row;
+}
+
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.5rem;
 }
 
 .form-register label {
-  display: flex;
-  flex-direction: row;
-  height: auto;
   font-size: 2rem;
-  align-items: center;
-  color: white;
+  text-align: center;
 }
 
 .form-register input {
-  width: 30rem;
-  max-width: 100%;
+  width: 100%;
   height: 2.5rem;
   max-height: 100%;
-  padding: 0.5rem;
-  margin: 1rem 1rem;
+  margin-top: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.user-password {
-  display: flex;
-}
-
-.user-password label {
-  white-space: nowrap;
-}
-
-.user-password input {
-  width: 100%;
 }
 
 .register-button {
@@ -72,17 +61,14 @@
 
   .user-info {
     flex-direction: column;
-    align-items: center;
   }
 
-  .user-password {
-    flex-direction: column;
-    align-items: center;
+  .form-register label {
+    white-space: nowrap;
   }
 
-  .register-connexion input {
-    width: 20rem;
-    max-width: 90%;
-    margin-bottom: 2rem;
+  .form-register input {
+    margin: 0 auto;
+    width: 100%;
   }
 }
