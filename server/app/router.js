@@ -29,4 +29,8 @@ router.get("/artists", artistActions.browse);
 // Route to delete a list of artists
 router.delete("/artists/:id", artistActions.destroy);
 
+const categoryActions = require("./controllers/categoryActions");
+
+router.get("/categories", categoryActions.browse);
+
 module.exports = router;
