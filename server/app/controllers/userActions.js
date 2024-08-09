@@ -53,7 +53,7 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
-/** 
+/**
 // The A of BREAD - Add (Create) operation
 const create = async (req, res, next) => {
   // Extract the item data from the request body
@@ -72,7 +72,7 @@ const create = async (req, res, next) => {
 };
 */
 
-/** 
+/**
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
