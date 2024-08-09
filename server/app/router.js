@@ -9,6 +9,7 @@ const router = express.Router();
 const streetartActions = require("./controllers/streetartActions");
 
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
+const { validateLogin } = require("./services/validation/user");
 
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
@@ -28,7 +29,7 @@ router.get("/users", checkCookie, checkAdmin, userActions.browse);
 // Route to delete a list of users
 router.delete("/users/:id", checkCookie, checkAdmin, userActions.destroy);
 
-router.post("/login", userActions.login);
+router.post("/login", validateLogin, userActions.login);
 
 const artistActions = require("./controllers/artistActions");
 

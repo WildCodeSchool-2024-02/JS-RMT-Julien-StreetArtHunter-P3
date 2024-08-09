@@ -46,7 +46,7 @@ const login = async (req, res, next) => {
         })
         .json(user);
     } else {
-      res.sendStatus(422);
+      res.sendStatus(403);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
