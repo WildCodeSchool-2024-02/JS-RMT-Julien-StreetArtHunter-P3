@@ -10,6 +10,7 @@ import Artist from "./pages/adminInterface/Artist";
 import Category from "./pages/adminInterface/Category";
 import StreetArt from "./pages/adminInterface/StreetArt";
 import User from "./pages/adminInterface/User";
+import City from "./pages/adminInterface/City";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "streetarts",
         element: <StreetArt />,
+      },
+      {
+        path: "cities",
+        element: <City />,
       },
     ],
   },
