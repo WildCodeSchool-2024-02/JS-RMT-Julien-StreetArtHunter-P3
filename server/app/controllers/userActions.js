@@ -46,14 +46,14 @@ const login = async (req, res, next) => {
         })
         .json(user);
     } else {
-      res.sendStatus(422);
+      res.sendStatus(403);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
 };
-/** 
+/**
 // The A of BREAD - Add (Create) operation
 const create = async (req, res, next) => {
   // Extract the item data from the request body
@@ -72,7 +72,7 @@ const create = async (req, res, next) => {
 };
 */
 
-/** 
+/**
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
