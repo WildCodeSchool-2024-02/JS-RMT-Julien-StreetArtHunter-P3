@@ -37,4 +37,12 @@ router.get("/categories", categoryActions.browse);
 
 router.delete("/categories/:id", categoryActions.destroy);
 
+const cityActions = require("./controllers/cityActions");
+
+// Route to get a list of cities
+router.get("/cities", cityActions.browse);
+
+// Route to delete a list of cities
+router.delete("/cities/:id", cityActions.destroy);
+
 module.exports = router;
