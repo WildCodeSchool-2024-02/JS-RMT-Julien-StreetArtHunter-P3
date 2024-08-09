@@ -1,5 +1,12 @@
 const argon2 = require("argon2");
 
+const hashingOptions = {
+  type: argon2.argon2id,
+  memoryCost: 19 * 2 ** 10,
+  timeCost: 2,
+  parallelism: 1,
+};
+
 // Import access to database tables
 const tables = require("../../database/tables");
 
@@ -39,7 +46,7 @@ const create = async (req, res, next) => {
   const user = req.body;
 
   try {
-    const hashedPassword = await argon2.hash(user.password);
+    const hashedPassword = await argon2.hash(user.password, hashingOptions);
 
     // Modify user data to include hashed password
     const userData = {
