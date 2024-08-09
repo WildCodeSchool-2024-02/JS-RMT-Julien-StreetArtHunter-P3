@@ -11,6 +11,9 @@ const streetartActions = require("./controllers/streetartActions");
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
 
+// Route to get a specific streetart by ID
+router.get("/streetarts/:id", streetartActions.read);
+
 const userActions = require("./controllers/userActions");
 
 // Route to get a list of users

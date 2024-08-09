@@ -56,6 +56,32 @@ class StreetartRepository extends AbstractRepository {
     return rows;
   }
 
+  // Method to read a specific streetart by its ID
+async readById(id) {
+  // Execute the SQL SELECT query to retrieve a specific streetart by its ID
+  const [rows] = await this.database.query(
+  `SELECT 
+          s.id, 
+          s.title, 
+          s.geolocation_x, 
+          s.geolocation_y, 
+          s.image_url, 
+          s.image_alt, 
+          c.name AS city_name, 
+          a.name AS artist_name
+        FROM ${this.table} AS s
+        INNER JOIN artist AS a ON s.artist_id = a.id
+        INNER JOIN city AS c ON s.city_id = c.id
+        WHERE s.id = ?`,
+        [id]
+      );
+  
+      return rows[0];
+    }
+  
+    
+    }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing streetart
 
@@ -69,6 +95,5 @@ class StreetartRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
-}
 
 module.exports = StreetartRepository;
