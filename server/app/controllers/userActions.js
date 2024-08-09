@@ -1,5 +1,4 @@
 const argon2 = require("argon2");
-const jwt = require("jsonwebtoken");
 
 // Import access to database tables
 const tables = require("../../database/tables");
@@ -51,23 +50,8 @@ const create = async (req, res, next) => {
     // Insert the item into the database
     await tables.user.create(userData);
 
-    // Remove hashed password
-    delete userData.password;
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { sub: userData.id, is_admin: userData.is_admin },
-      process.env.APP_SECRET,
-      { expiresIn: "1h" }
-    );
-
-    // Set token in cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-    });
-
     // Respond with HTTP 200 (OK) and the user data (without password)
-    res.status(200).json(userData);
+    res.sendStatus(201)
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
