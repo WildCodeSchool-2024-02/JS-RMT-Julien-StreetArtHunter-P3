@@ -10,9 +10,11 @@ import Artist from "./pages/adminInterface/Artist";
 import Category from "./pages/adminInterface/Category";
 import StreetArt from "./pages/adminInterface/StreetArt";
 import User from "./pages/adminInterface/User";
+import City from "./pages/adminInterface/City";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
+import Enter from "./pages/Enter";
 
 import connexion from "./services/connexion";
 
@@ -26,17 +28,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        element: <Enter />,
+      },
+      {
+        path: "/street-arts",
         element: <Home />,
-        loader: () => connexion
-          .get("api/streetarts")
-          .then((response) => response.data)
-          .catch((error) => {
-            console.error(
-              "Erreur lors de la récupération des données de StreetArt:",
-              error
-            );
-            return []
-          })
+        loader: () =>
+          connexion
+            .get("api/streetarts")
+            .then((response) => response.data)
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données de StreetArt:",
+                error
+              );
+              return [];
+            }),
       },
     ],
   },
@@ -59,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "streetarts",
         element: <StreetArt />,
+      },
+      {
+        path: "cities",
+        element: <City />,
       },
     ],
   },

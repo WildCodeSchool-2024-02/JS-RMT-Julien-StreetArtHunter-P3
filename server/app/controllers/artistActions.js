@@ -5,22 +5,26 @@ const tables = require("../../database/tables");
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const streetart = await tables.streetart.readAll();
+    const artist = await tables.artist.readAll();
 
     // Respond with the items in JSON format
-    res.status(200).json(streetart);
+    res.status(200).json(artist);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     res.status(500).json(err);
   }
 };
+
+// The D of BREAD - Destroy (Delete) operation
+// This operation is not yet implemented
+
 const destroy = async (req, res) => {
   try {
     // Fetch the userId from the request parameters
-    const streetartID = req.params.id;
+    const artistId = req.params.id;
 
     // Attempt to delete the user from the database
-    const rows = await tables.streetart.destroy(streetartID);
+    const rows = await tables.artist.destroy(artistId);
 
     // Check if any rows were affected (meaning the user was deleted)
     if (rows.affectedRows > 0) {
@@ -30,11 +34,12 @@ const destroy = async (req, res) => {
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
-    console.error("Error deleting streetart:", err);
+    console.error("Error deleting artist:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
+// Ready to export the controller functions
 module.exports = {
   browse,
   destroy,

@@ -21,6 +21,9 @@ function NavAdmin() {
         <Link to="/admin/categories" className="nav-button">
           Catégories
         </Link>
+        <Link to="/admin/cities" className="nav-button">
+          Villes
+        </Link>
       </nav>
     </div>
   );

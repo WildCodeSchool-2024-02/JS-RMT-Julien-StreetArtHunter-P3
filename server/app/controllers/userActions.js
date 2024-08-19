@@ -1,4 +1,5 @@
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -30,17 +31,38 @@ const login = async (req, res, next) => {
 
     if (user == null) {
       res.sendStatus(403);
-    } else if (req.body.password === user.password) {
-      res.status(200).json({ connected: true });
+    }
+
+    const verified = await argon2.verify(user.password, req.body.password);
+    if (verified) {
+      // Respond with the user and a signed token in JSON format (but without the hashed password)
+      delete user.password;
+
+      const token = await jwt.sign(
+        { sub: user.id, is_admin: user.is_admin },
+        process.env.APP_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
+
+      res
+        .status(200)
+        .cookie("token", token, {
+          httpOnly: true,
+        })
+        .json(user);
     } else {
       res.sendStatus(403);
     }
   } catch (err) {
+    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
-// The of BREAD - Add (Create) operation
+// The A of BREAD - Add (Create) operation
+
 const create = async (req, res, next) => {
   // Extract the item data from the request body
   const user = req.body;
@@ -64,6 +86,10 @@ const create = async (req, res, next) => {
     next(err);
   }
 };
+
+/**
+// The E of BREAD - Edit (Update) operation
+// This operation is not yet implemented
 
 
 

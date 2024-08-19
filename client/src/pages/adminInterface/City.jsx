@@ -8,65 +8,59 @@ import "../../styles/reactModal.css";
 
 Modal.setAppElement("#root");
 
-function StreetArt() {
-  const [streetArts, setstreetArts] = useState([]);
+function City() {
+  const [cities, setCities] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedStreetartId, setSelectedStreetartId] = useState(null);
+  const [selectedCityId, setSelectedCityId] = useState(null);
 
   useEffect(() => {
     connexion
-      .get("api/streetarts")
+      .get("api/cities")
       .then((response) => {
-        setstreetArts(response.data);
+        setCities(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the users!", error);
+        console.error("There was an error fetching the city!", error);
       });
   }, []);
 
-  const openModal = (userId) => {
-    setSelectedStreetartId(userId);
+  const openModal = (artistId) => {
+    setSelectedCityId(artistId);
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedStreetartId(null);
+    setSelectedCityId(null);
     setModalIsOpen(false);
   };
 
   const handleDelete = () => {
-    if (selectedStreetartId !== null) {
+    if (selectedCityId !== null) {
       connexion
-        .delete(`api/streetarts/${selectedStreetartId}`)
+        .delete(`api/artists/${selectedCityId}`)
         .then(() => {
-          setstreetArts(
-            streetArts.filter(
-              (streetart) => streetart.id !== selectedStreetartId
-            )
-          );
+          setCities(cities.filter((city) => city.id !== selectedCityId));
           closeModal();
         })
         .catch((error) => {
-          console.error("There was an error deleting the user!", error);
+          console.error("There was an error deleting the city!", error);
         });
     }
   };
 
   return (
     <div className="admin-table-container">
-      <h1>streetArts</h1>
+      <h1>Villes</h1>
       <table className="admin-table">
         <thead>
-          {streetArts[0] && (
-            <Head data={streetArts[0]} key={streetArts[0].id} />
-          )}
+          {cities[0] && <Head data={cities[0]} key={cities[0].id} />}
         </thead>
         <tbody>
-          {streetArts.map((streetArt) => (
+          {cities.map((city) => (
             <Rows
-              data={streetArt}
-              key={streetArt.id}
-              handleDelete={() => openModal(streetArt.id)}
+              data={city}
+              key={city.id}
+              handleDelete={() => openModal(city.id)}
             />
           ))}
         </tbody>
@@ -87,4 +81,4 @@ function StreetArt() {
   );
 }
 
-export default StreetArt;
+export default City;

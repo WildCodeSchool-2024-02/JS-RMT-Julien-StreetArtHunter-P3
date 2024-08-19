@@ -5,10 +5,10 @@ const tables = require("../../database/tables");
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const streetart = await tables.streetart.readAll();
+    const category = await tables.category.readAll();
 
     // Respond with the items in JSON format
-    res.status(200).json(streetart);
+    res.status(200).json(category);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     res.status(500).json(err);
@@ -17,10 +17,10 @@ const browse = async (req, res) => {
 const destroy = async (req, res) => {
   try {
     // Fetch the userId from the request parameters
-    const streetartID = req.params.id;
+    const categoryId = req.params.id;
 
     // Attempt to delete the user from the database
-    const rows = await tables.streetart.destroy(streetartID);
+    const rows = await tables.category.destroy(categoryId);
 
     // Check if any rows were affected (meaning the user was deleted)
     if (rows.affectedRows > 0) {
@@ -30,11 +30,10 @@ const destroy = async (req, res) => {
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
-    console.error("Error deleting streetart:", err);
+    console.error("Error deleting category:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 module.exports = {
   browse,
   destroy,

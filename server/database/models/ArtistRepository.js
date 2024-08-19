@@ -1,21 +1,20 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class UserRepository extends AbstractRepository {
+class ArtistRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
     // and pass the table name "user" as configuration
-    super({ table: "user" });
+    super({ table: "artist" });
   }
 
+  /** 
   // The C of CRUD - Create operation
 
-  /** 
   async create(user) {
-    const hashedPassword = await argon2.hash(user.password);
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (pseudo, email, password) values (?, ?, ?)`,
-      [user.pseudo, user.email, user.password]
+      `insert into ${this.table} (pseudo, email) values (?, ?)`,
+      [user.pseudo, user.email]
     );
 
     // Return the ID of the newly inserted user
@@ -23,6 +22,7 @@ class UserRepository extends AbstractRepository {
   }
 
 */
+
   // The Rs of CRUD - Read operations
   /** 
   // The Rs of CRUD - Read operations
@@ -41,9 +41,9 @@ class UserRepository extends AbstractRepository {
 */
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    // Execute the SQL SELECT query to retrieve all artists from the "artist" table
     const [rows] = await this.database.query(
-      `select id, pseudo, email, points, created_at, updated_at from ${this.table}`
+      `select id, name, points from ${this.table}`
     );
 
     // Return the array of users
@@ -70,24 +70,13 @@ class UserRepository extends AbstractRepository {
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
-  async destroy(userID) {
+  async destroy(artistID) {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
-    const [rows] = await this.database.query("DELETE FROM user WHERE id=?", [
-      userID,
-    ]);
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [artistID]
+    );
     return rows;
   }
-
-  async readByEmail(email) {
-    // Execute the SQL SELECT query to retrieve a specific user by its email
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where email = ?`,
-      [email]
-    );
-
-    // Return the first row of the result, which represents the user
-    return rows[0];
-  }
 }
-
-module.exports = UserRepository;
+module.exports = ArtistRepository;
