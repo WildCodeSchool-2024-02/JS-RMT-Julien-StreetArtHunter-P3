@@ -14,13 +14,14 @@ class UserRepository extends AbstractRepository {
     const hashedPassword = await argon2.hash(user.password);
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (pseudo, email, password) values (?, ?, )`,
-      [user.pseudo, user.email, hashedPassword]
+      `insert into ${this.table} (pseudo, email, password) values (?, ?, ?)`,
+      [user.pseudo, user.email, user.password]
     );
 
     // Return the ID of the newly inserted user
     return result.insertId;
   }
+
 */
   // The Rs of CRUD - Read operations
   /** 

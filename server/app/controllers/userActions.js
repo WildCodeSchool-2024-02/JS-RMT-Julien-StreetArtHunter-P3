@@ -1,6 +1,13 @@
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 
+const hashingOptions = {
+  type: argon2.argon2id,
+  memoryCost: 19 * 2 ** 10,
+  timeCost: 2,
+  parallelism: 1,
+};
+
 // Import access to database tables
 const tables = require("../../database/tables");
 
@@ -53,45 +60,59 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
-/**
+
 // The A of BREAD - Add (Create) operation
+
 const create = async (req, res, next) => {
   // Extract the item data from the request body
   const user = req.body;
 
   try {
-    // Insert the item into the database
-    const insertId = await tables.user.create(user);
+    const hashedPassword = await argon2.hash(user.password, hashingOptions);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId });
+    // Modify user data to include hashed password
+    const userData = {
+      ...user,
+      password: hashedPassword,
+    };
+
+    // Insert the item into the database
+    await tables.user.create(userData);
+
+    // Respond with HTTP 200 (OK) and the user data (without password)
+    res.sendStatus(201)
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
 };
-*/
 
 /**
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
-const update = async (req, res, next) => {
-  // Extract the user data from the request body and params
-  const userId = { ...req.body, id: req.params.id };
 
-  try {
-    // Update the user in the database
-    await tables.user.update(userId);
 
-    // Respond with HTTP 204 (No Content)
-    res.sendStatus(204);
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
-  }
-};
-*/
+/**
+ // The E of BREAD - Edit (Update) operation
+ // This operation is not yet implemented
+
+ const update = async (req, res, next) => {
+ // Extract the user data from the request body and params
+ const userId = { ...req.body, id: req.params.id };
+
+ try {
+ // Update the user in the database
+ await tables.user.update(userId);
+
+ // Respond with HTTP 204 (No Content)
+ res.sendStatus(204);
+ } catch (err) {
+ // Pass any errors to the error-handling middleware
+ next(err);
+ }
+ };
+ */
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
@@ -122,4 +143,5 @@ module.exports = {
   browse,
   destroy,
   login,
+  create,
 };

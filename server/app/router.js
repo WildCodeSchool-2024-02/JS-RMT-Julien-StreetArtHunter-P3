@@ -58,4 +58,6 @@ router.get("/cities", checkCookie, checkAdmin, cityActions.browse);
 // Route to delete a list of cities
 router.delete("/cities/:id", checkCookie, checkAdmin, cityActions.destroy);
 
+router.post("/register", userActions.create);
+
 module.exports = router;
