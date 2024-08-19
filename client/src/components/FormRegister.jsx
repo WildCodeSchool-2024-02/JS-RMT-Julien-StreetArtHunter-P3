@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import connexion from "../services/connexion";
 
 function FormRegister() {
@@ -10,9 +10,6 @@ function FormRegister() {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
-  useEffect(() => {
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +34,6 @@ function FormRegister() {
       await connexion.post("api/register", registerData);
 
       setSuccess("Inscription réussie !");
-      setError("");
 
       setRegisterData({
         pseudo: "",
