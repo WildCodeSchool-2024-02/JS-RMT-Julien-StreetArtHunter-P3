@@ -12,8 +12,16 @@ class CategoryRepository extends AbstractRepository {
     const [rows] = await this.database.query(
       `select id, title from ${this.table}`
     );
-
     // Return the array of users
+    return rows;
+  }
+
+  async destroy(categoryID) {
+    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [categoryID]
+    );
     return rows;
   }
 }
