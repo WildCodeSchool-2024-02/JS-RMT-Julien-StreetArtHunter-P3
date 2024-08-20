@@ -10,6 +10,7 @@ import Artist from "./pages/adminInterface/Artist";
 import Category from "./pages/adminInterface/Category";
 import StreetArt from "./pages/adminInterface/StreetArt";
 import User from "./pages/adminInterface/User";
+import City from "./pages/adminInterface/City";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import App from "./App";
@@ -19,6 +20,7 @@ import Detail from "./pages/Detail";
 import connexion from "./services/connexion";
 
 import "./App.css";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -91,9 +93,24 @@ const router = createBrowserRouter([
         path: "streetarts",
         element: <StreetArt />,
       },
+      {
+        path: "cities",
+        element: <City />,
+      },
     ],
   },
- 
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/gallery",
+    element: <Gallery />,
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

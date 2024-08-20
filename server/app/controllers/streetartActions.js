@@ -42,8 +42,29 @@ const read = async (req, res) => {
     });
   }
 };
+const destroy = async (req, res) => {
+  try {
+    // Fetch the userId from the request parameters
+    const streetartID = req.params.id;
+
+    // Attempt to delete the user from the database
+    const rows = await tables.streetart.destroy(streetartID);
+
+    // Check if any rows were affected (meaning the user was deleted)
+    if (rows.affectedRows > 0) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    console.error("Error deleting streetart:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 module.exports = {
   browse,
   read,
+  destroy,
 };
