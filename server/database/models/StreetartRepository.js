@@ -63,6 +63,7 @@ async readById(id) {
   `SELECT 
           s.id, 
           s.title, 
+          s.description,
           s.geolocation_x, 
           s.geolocation_y, 
           s.image_url, 

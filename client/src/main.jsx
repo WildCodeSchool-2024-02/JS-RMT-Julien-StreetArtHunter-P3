@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <Detail />,
         loader: async ({ params }) => {
           try {
-            const response = await fetch(`/api/streetarts/${params.id}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`);
             if (!response.ok) {
               throw new Error('Network response was not ok.');
             }
