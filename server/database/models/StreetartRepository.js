@@ -102,4 +102,5 @@ class StreetartRepository extends AbstractRepository {
     return rows;
   }
 }
+
 module.exports = StreetartRepository;
