@@ -30,7 +30,7 @@ CREATE TABLE category (
 CREATE TABLE streetart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT,
+    description LONGTEXT NOT NULL,
     geolocation_x DECIMAL(8, 6) NOT NULL,
     geolocation_y DECIMAL(9, 6) NOT NULL,
     image_url VARCHAR(255) NOT NULL,
@@ -228,6 +228,7 @@ INSERT INTO artist (name) VALUES ('Okuda');
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -236,6 +237,7 @@ INSERT INTO
     )
 VALUES (
         'Chuuuttt',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/Chuuuttt.jpg',
         1,
         5,
@@ -246,6 +248,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -254,6 +257,7 @@ INSERT INTO
     )
 VALUES (
         'Amor com as Mulheres',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/amor-com-as-mulheres.jpg',
         3,
         7,
@@ -264,6 +268,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -272,6 +277,7 @@ INSERT INTO
     )
 VALUES (
         'The cat',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/the-cat.jpg',
         1,
         4,
@@ -282,6 +288,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -290,6 +297,7 @@ INSERT INTO
     )
 VALUES (
         'Champagne Rat',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/rat-champagne.jpg',
         1,
         1,
@@ -300,6 +308,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -308,6 +317,7 @@ INSERT INTO
     )
 VALUES (
         'Petite fille, espoir',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/petite-fille-espoir.jpg',
         4,
         5,
