@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -52,14 +52,17 @@ export default function Geolocation() {
             key={streetArt.id}
           >
             <Popup>
-            <a href={`/street-art-detail/${streetArt.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <h4>Titre de l'oeuvre:{streetArt.title}</h4>
-              <p>Artiste:{streetArt.name}</p>
-              <img
-                src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
-                alt={streetArt.image_alt}
-              />
-              </a>
+              <Link
+                to={`/street-art-detail/${streetArt.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <h4>Titre de l'oeuvre:{streetArt.title}</h4>
+                <p>Artiste:{streetArt.name}</p>
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                  alt={streetArt.image_alt}
+                />
+              </Link>
             </Popup>
           </Marker>
         ))}
