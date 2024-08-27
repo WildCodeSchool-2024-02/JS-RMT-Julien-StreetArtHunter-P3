@@ -1,9 +1,9 @@
 .admin-container {
   display: flex;
+  align-items: center;
 }
 
 .admin-table-container {
-  max-width: 1000px;
   height: max-content;
   margin: 0 auto;
   padding: 20px;
