@@ -24,6 +24,8 @@ router.delete(
   streetartActions.destroy
 );
 
+router.post("/streetarts", streetartActions.create);
+
 const userActions = require("./controllers/userActions");
 
 // Route to get a list of users
