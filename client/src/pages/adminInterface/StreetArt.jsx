@@ -4,6 +4,7 @@ import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
 import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
+import AddModalStreetArt from "../../components/AddModalStreetArt";
 import "../../styles/reactModal.css";
 import "../../styles/button.css";
 
@@ -176,80 +177,14 @@ function StreetArt() {
         overlayClassName="ReactModal_Overlay-StreetArt"
         contentLabel="Add Street Art Modal"
       >
-        <h2>Ajouter un nouveau StreetArt</h2>
-        <form onSubmit={handleAddSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Titre"
-            value={newStreetArt.title}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={newStreetArt.description}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="geolocation_x"
-            placeholder="Geolocalisation X"
-            value={newStreetArt.geolocation_x}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="geolocation_y"
-            placeholder="Geolocalisation Y"
-            value={newStreetArt.geolocation_y}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            type="text"
-            name="image_url"
-            placeholder="Image URL"
-            value={newStreetArt.image_url}
-            onChange={handleInputChange}
-            required
-          />
-          <select
-            name="city_id"
-            value={newStreetArt.city_id}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Selectionne une ville</option>
-            {cities.map((city) => (
-              <option key={city.id} value={city.id}>
-                {city.name}
-              </option>
-            ))}
-          </select>
-
-          <select
-            name="artist_id"
-            value={newStreetArt.artist_id}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Selectionne un artiste</option>
-            {artistes.map((artist) => (
-              <option key={artist.id} value={artist.id}>
-                {artist.name}
-              </option>
-            ))}
-          </select>
-          <button type="submit">Ajouter StreetArt</button>
-          <button type="button" onClick={closeAddModal}>
-            Annuler
-          </button>
-        </form>
+        <AddModalStreetArt
+          handleAddSubmit={handleAddSubmit}
+          handleInputChange={handleInputChange}
+          closeAddModal={closeAddModal}
+          newStreetArt={newStreetArt}
+          cities={cities}
+          artistes={artistes}
+        />
       </Modal>
     </div>
   );
