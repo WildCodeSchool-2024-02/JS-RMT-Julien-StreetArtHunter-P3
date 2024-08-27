@@ -49,10 +49,11 @@ const create = async (req, res, next) => {
     const streetart = req.body;
 
     // Create a new character entry in the database
-    await tables.streetart.create(streetart);
+    const createStreet = await tables.streetart.create(streetart);
+    const fusion = { ...streetart, createStreet };
 
     // Respond with HTTP 201 (Created) since the creation was successful
-    res.sendStatus(201);
+    res.status(201).json(fusion);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
