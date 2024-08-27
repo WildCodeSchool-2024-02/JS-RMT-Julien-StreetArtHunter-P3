@@ -24,23 +24,11 @@ function StreetArt() {
     image_alt: "",
     points: "",
     created_at: "",
-    city_id: "", // Ajout d'une propriété city_id
-    artist_id: "", // Ajout d'une propriété artist_id
+    city_name: "",
+    artist_name: "",
   });
 
-  // Fetch des street arts
-  useEffect(() => {
-    connexion
-      .get("api/streetarts")
-      .then((response) => {
-        setStreetArts(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the street arts!", error);
-      });
-  }, []);
-
-  useEffect(() => {
+  const getCities = () => {
     connexion
       .get("api/cities")
       .then((response) => {
@@ -49,9 +37,9 @@ function StreetArt() {
       .catch((error) => {
         console.error("There was an error fetching the cities!", error);
       });
-  }, []);
+  };
 
-  useEffect(() => {
+  const getArtists = () => {
     connexion
       .get("api/artists")
       .then((response) => {
@@ -60,6 +48,23 @@ function StreetArt() {
       .catch((error) => {
         console.error("There was an error fetching the artist!", error);
       });
+  };
+
+  const getStreetArts = () => {
+    connexion
+      .get("api/streetarts")
+      .then((response) => {
+        setStreetArts(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the street arts!", error);
+      });
+  };
+
+  useEffect(() => {
+    getStreetArts();
+    getArtists();
+    getCities();
   }, []);
 
   const openDeleteModal = (streetArtId) => {
@@ -87,8 +92,8 @@ function StreetArt() {
       image_alt: "",
       points: "",
       created_at: "",
-      city_id: "",
-      artist_id: "",
+      city_name: "",
+      artist_name: "",
     });
   };
 
@@ -97,11 +102,7 @@ function StreetArt() {
       connexion
         .delete(`api/streetarts/${selectedStreetArtId}`)
         .then(() => {
-          setStreetArts(
-            streetArts.filter(
-              (streetArt) => streetArt.id !== selectedStreetArtId
-            )
-          );
+          getStreetArts();
           closeDeleteModal();
         })
         .catch((error) => {
@@ -122,8 +123,8 @@ function StreetArt() {
     e.preventDefault();
     connexion
       .post("api/streetarts", newStreetArt)
-      .then((response) => {
-        setStreetArts([...streetArts, response.data]);
+      .then(() => {
+        getStreetArts();
         closeAddModal();
       })
       .catch((error) => {
