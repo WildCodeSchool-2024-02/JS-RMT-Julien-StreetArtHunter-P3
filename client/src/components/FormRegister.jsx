@@ -22,7 +22,6 @@ function FormRegister() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
     if (registerData.password !== registerData.password_confirmation) {
       setError("Les mots de passe ne correspondent pas.");
       return;
@@ -85,7 +84,9 @@ function FormRegister() {
           />
         </div>
         <div className="form-input-group">
-          <label htmlFor="password_confirmation">Confirmation de Mot de Passe</label>
+          <label htmlFor="password_confirmation">
+            Confirmation de Mot de Passe
+          </label>
           <input
             type="password"
             name="password_confirmation"
@@ -98,7 +99,9 @@ function FormRegister() {
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
         <div className="register-button">
-          <button className="button" type="submit">S'inscrire</button>
+          <button className="button" type="submit">
+            S'inscrire
+          </button>
         </div>
       </form>
     </main>
