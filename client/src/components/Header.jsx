@@ -6,11 +6,9 @@ import { useLogin } from "../context/LoginContext";
 
 
 function Header() {
-  // Récupère les infos du context
   const { user, setUser } = useLogin();
   const navigate = useNavigate();
 
-  // Fonction handleLogout qui reset le user (null) et navigate vers la page principale
   const handleLogout = () => {
     setUser(null);
     navigate("/street-arts");
