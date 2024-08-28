@@ -1,0 +1,39 @@
+@media (max-width: 390px) {
+  .hunger-game {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Pour simuler l'écran */
+  }
+
+  .console-background {
+    background-image: url("../assets/backgroundHunterMobile.png"); /* Utilise ton image de console */
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid #fff;
+    font-size: 16px;
+  }
+
+  button:active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}

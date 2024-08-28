@@ -16,6 +16,7 @@ import Gallery from "./pages/Gallery";
 import App from "./App";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
+import HunterMobile from "./pages/HunterGame";
 
 import connexion from "./services/connexion";
 
@@ -65,6 +66,22 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/hunter-game",
+    element: <HunterMobile />,
+    loader: () =>
+      connexion
+        .get("api/streetarts")
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(
+            "Erreur lors de la récupération des données de StreetArt:",
+            error
+          );
+          return [];
+        }),
+},
+
   {
     path: "/admin/",
     element: <Admin />,
