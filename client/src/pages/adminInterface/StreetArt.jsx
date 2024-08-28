@@ -4,7 +4,7 @@ import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
 import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
-import AddModalStreetArt from "../../components/AddModalStreetArt";
+import ModalStreetArt from "../../components/ModalStreetArt";
 import "../../styles/reactModal.css";
 import "../../styles/button.css";
 
@@ -12,45 +12,9 @@ Modal.setAppElement("#root");
 
 function StreetArt() {
   const [streetArts, setStreetArts] = useState([]);
-  const [cities, setCities] = useState([]);
-  const [artistes, setArtistes] = useState([]);
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
   const [addModalIsOpen, setAddModalIsOpen] = useState(false);
   const [selectedStreetArtId, setSelectedStreetArtId] = useState(null);
-  const [newStreetArt, setNewStreetArt] = useState({
-    title: "",
-    description: "",
-    geolocation_x: "",
-    geolocation_y: "",
-    image_url: "",
-    image_alt: "",
-    points: "",
-    created_at: "",
-    city_name: "",
-    artist_name: "",
-  });
-
-  const getCities = () => {
-    connexion
-      .get("api/cities")
-      .then((response) => {
-        setCities(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the cities!", error);
-      });
-  };
-
-  const getArtists = () => {
-    connexion
-      .get("api/artists")
-      .then((response) => {
-        setArtistes(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the artist!", error);
-      });
-  };
 
   const getStreetArts = () => {
     connexion
@@ -65,8 +29,6 @@ function StreetArt() {
 
   useEffect(() => {
     getStreetArts();
-    getArtists();
-    getCities();
   }, []);
 
   const openDeleteModal = (streetArtId) => {
@@ -85,18 +47,6 @@ function StreetArt() {
 
   const closeAddModal = () => {
     setAddModalIsOpen(false);
-    setNewStreetArt({
-      title: "",
-      description: "",
-      geolocation_x: "",
-      geolocation_y: "",
-      image_url: "",
-      image_alt: "",
-      points: "",
-      created_at: "",
-      city_name: "",
-      artist_name: "",
-    });
   };
 
   const handleDelete = () => {
@@ -113,25 +63,9 @@ function StreetArt() {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewStreetArt((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleAddSubmit = (e) => {
-    e.preventDefault();
-    connexion
-      .post("api/streetarts", newStreetArt)
-      .then(() => {
-        getStreetArts();
-        closeAddModal();
-      })
-      .catch((error) => {
-        console.error("There was an error adding the new street art!", error);
-      });
+  const handleRefresh = () => {
+    getStreetArts();
+    closeAddModal();
   };
 
   return (
@@ -177,13 +111,9 @@ function StreetArt() {
         overlayClassName="ReactModal_Overlay-StreetArt"
         contentLabel="Add Street Art Modal"
       >
-        <AddModalStreetArt
-          handleAddSubmit={handleAddSubmit}
-          handleInputChange={handleInputChange}
+        <ModalStreetArt
+          handleRefresh={handleRefresh}
           closeAddModal={closeAddModal}
-          newStreetArt={newStreetArt}
-          cities={cities}
-          artistes={artistes}
         />
       </Modal>
     </div>

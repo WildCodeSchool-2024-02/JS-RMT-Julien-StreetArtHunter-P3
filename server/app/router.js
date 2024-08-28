@@ -9,7 +9,10 @@ const router = express.Router();
 const streetartActions = require("./controllers/streetartActions");
 
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
-const { validateLogin } = require("./services/validation/user");
+const {
+  validateLogin,
+  validateStreetart,
+} = require("./services/validation/user");
 
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
@@ -24,7 +27,13 @@ router.delete(
   streetartActions.destroy
 );
 
-router.post("/streetarts", streetartActions.create);
+router.post(
+  "/streetarts",
+  checkCookie,
+  checkAdmin,
+  validateStreetart,
+  streetartActions.create
+);
 
 const userActions = require("./controllers/userActions");
 
