@@ -27,15 +27,6 @@ function Gallery() {
               alt={streetart.image_alt}
               className="card-image"
             />
-            <div className="card-content">
-              <h2>{streetart.title}</h2>
-              <p>Artiste: {streetart.name}</p>
-              <p>Ville: {streetart.city_name}</p>
-              <p>
-                Géolocalisation: {streetart.geolocation_x},{" "}
-                {streetart.geolocation_y}
-              </p>
-            </div>
           </div>
         ))}
       </div>
