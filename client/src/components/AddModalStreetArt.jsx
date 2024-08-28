@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
+import AddModalSelect from "./AddModalSelect";
+import AddModalButton from "./AddModalButton";
 
 function AddModalStreetArt({
   handleAddSubmit,
   handleInputChange,
-  closeAddModal,
   newStreetArt,
   cities,
   artistes,
@@ -52,36 +53,13 @@ function AddModalStreetArt({
           onChange={handleInputChange}
           required
         />
-        <select
-          name="city_id"
-          value={newStreetArt.city_id}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="">Selectionne une ville</option>
-          {cities.map((city) => (
-            <option key={city.id} value={city.id}>
-              {city.name}
-            </option>
-          ))}
-        </select>
-        <select
-          name="artist_id"
-          value={newStreetArt.artist_id}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="">Selectionne un artiste</option>
-          {artistes.map((artist) => (
-            <option key={artist.id} value={artist.id}>
-              {artist.name}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Ajouter StreetArt</button>
-        <button type="button" onClick={closeAddModal}>
-          Annuler
-        </button>
+        <AddModalSelect
+          cities={cities}
+          artistes={artistes}
+          newStreetArt={newStreetArt}
+          handleInputChange={handleInputChange}
+        />
+        <AddModalButton />
       </form>
     </div>
   );
@@ -90,7 +68,6 @@ function AddModalStreetArt({
 AddModalStreetArt.propTypes = {
   handleAddSubmit: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
-  closeAddModal: PropTypes.func.isRequired,
   newStreetArt: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -113,4 +90,5 @@ AddModalStreetArt.propTypes = {
     })
   ).isRequired,
 };
+
 export default AddModalStreetArt;
