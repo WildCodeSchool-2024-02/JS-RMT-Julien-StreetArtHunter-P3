@@ -22,20 +22,24 @@ function Header() {
         <Link to="/gallery" className="button">
           Galerie
         </Link>
-        {!user &&
-          <Link to="/login" className="button">
-            Connexion
-          </Link>}
-        <Link to="/register" className="button">
-          Inscription
-        </Link>
-        {user &&
+        {user ? (
           <button type="button" className="button" onClick={handleLogout}>
             Déconnexion
-          </button>}
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="button">
+              Connexion
+            </Link>
+            <Link to="/register" className="button">
+              Inscription
+            </Link>
+          </>
+        )}
       </nav>
     </header>
   );
 }
 
 export default Header;
+
