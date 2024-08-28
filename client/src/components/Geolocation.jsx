@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -15,6 +15,7 @@ import "../App.css";
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
+  const navigate = useNavigate();
 
   // custom cluster icon
   const createClusterCustomIcon = (cluster) =>
@@ -31,6 +32,16 @@ export default function Geolocation() {
     // iconUrl: pointerIconUrl,
     iconSize: [38, 38], // size of the icon
   });
+
+  const handleMoreInfo = (streetArt) => {
+    navigate(`/street-art-detail/${streetArt.id}`);
+  };
+
+  // Function to navigate to the hunter game page
+  const handleValidate = () => {
+    navigate("/hunter-game");
+  };
+
   return (
     <MapContainer center={[48.8566, 2.3522]} zoom={5} className="mapContainer">
       {/* OPEN STREEN MAPS TILES */}
@@ -52,17 +63,34 @@ export default function Geolocation() {
             key={streetArt.id}
           >
             <Popup>
-              <Link
-                to={`/street-art-detail/${streetArt.id}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <h4>Titre de l'oeuvre:{streetArt.title}</h4>
-                <p>Artiste:{streetArt.name}</p>
+              <div className="popup-content-wrapper">
+                <h4 className="popup-title">
+                  Titre : {streetArt.title}
+                </h4>
+                <p className="popup-artist">Artiste: {streetArt.name}</p>
                 <img
                   src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
                   alt={streetArt.image_alt}
+                  className="popup-image"
                 />
-              </Link>
+              </div>
+
+              <div className="popup-buttons">
+                <button
+                  type="button"
+                  onClick={() => handleMoreInfo(streetArt)} 
+                  className="btn-more-info"
+                >
+                  Détails
+                </button>
+                <button
+                  type="button"
+                  onClick={handleValidate}
+                  className="btn-validate"
+                >
+                  Valider
+                </button>
+              </div>
             </Popup>
           </Marker>
         ))}

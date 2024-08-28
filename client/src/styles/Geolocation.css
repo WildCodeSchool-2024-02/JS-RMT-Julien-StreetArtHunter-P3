@@ -2,26 +2,11 @@
   height: 60vh;
   width: 100%;
 }
-.leaflet-popup-content {
-  max-width: 100%;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+
+.leaflet-bottom.leaflet-left .leaflet-control-zoom {
+  display: none;
 }
 
-.leaflet-popup-content-wrapper {
-  overflow: hidden;
-  border-radius: 0.5rem;
-}
-
-.leaflet-popup-content img {
-  max-width: 35vh;
-  max-height: 35vh;
-  height: auto;
-  border-radius: 0.5rem;
-}
 .cluster-icon {
   background-color: #333;
   height: 2em;
@@ -34,6 +19,60 @@
   font-size: 1.2rem;
   box-shadow: 0 0 0px 5px #fff;
 }
-.leaflet-bottom.leaflet-left .leaflet-control-zoom {
+
+.popup-content-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.popup-title,
+.popup-artist {
+  font-family: var(--font-title);
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+.popup-image {
+  max-width: 35vh;
+  max-height: 35vh;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.popup-buttons {
   display: none;
+}
+
+@media (max-width: 390px) {
+  .leaflet-popup-content-wrapper {
+    width: 40vh;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+  }
+
+  .btn-more-info,
+  .btn-validate {
+    width: 55px;
+    height: 17px;
+    border-color: rgba(55, 10, 75, 0.384);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-title);
+    font-size: 0.8em;
+    color: black;
+    background-color: rgba(195, 99, 240, 0.158);
+  }
 }
