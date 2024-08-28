@@ -9,10 +9,8 @@ const router = express.Router();
 const streetartActions = require("./controllers/streetartActions");
 
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
-const {
-  validateLogin,
-  validateStreetart,
-} = require("./services/validation/user");
+const { validateLogin } = require("./services/validation/user");
+const { validateStreetart } = require("./services/validation/streetart");
 
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
