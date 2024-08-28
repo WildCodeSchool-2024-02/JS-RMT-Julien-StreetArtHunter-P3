@@ -4,6 +4,7 @@ import "../styles/styles-pages/Gallery.css";
 
 function Gallery() {
   const [streetarts, setStreetarts] = useState([]);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     connexion
