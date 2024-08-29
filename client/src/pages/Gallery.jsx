@@ -67,7 +67,7 @@ function Gallery() {
           </div>
         ))}
       </div>
-      <h1>Ajouté récemment</h1>
+      <h1>Ajoutés récemment</h1>
       <div className="recent-gallery-grid">
         {recentStreetarts.map((streetart) => (
           <div

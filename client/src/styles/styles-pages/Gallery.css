@@ -8,7 +8,7 @@
   color: white;
   text-align: center;
   padding-bottom: 1.5em;
-  font-family: var(--font-title);
+  font-family: var(--font-subtitle);
 }
 
 .gallery-grid {
@@ -19,12 +19,9 @@
 
 .recent-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ); /* 3 colonnes pour les street arts récents */
-  gap: 20px; /* Espacement entre les cartes */
-  margin-top: 40px; /* Espacement en haut de la section */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
 }
 
 .recent-gallery-grid .card {
