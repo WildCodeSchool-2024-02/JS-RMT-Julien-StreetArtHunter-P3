@@ -18,24 +18,25 @@ import "../styles/searchBar.css";
 import "../styles/Geolocation.css";
 import "../App.css";
 
-function RecenterAutomatically({ lat, lng }) {
+function RecenterAutomatically({ lat, lng, zoom }) {
   const map = useMap();
   useEffect(() => {
-    map.setView([lat, lng]);
-  }, [lat, lng, map]);
+    map.setView([lat, lng], zoom); // Mise à jour de la position et du zoom
+  }, [lat, lng, zoom, map]);
   return null;
 }
 
 RecenterAutomatically.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
+  zoom: PropTypes.number.isRequired,
 };
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
-  const [zoom, setZoom] = useState(7);
+  const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
 
   // custom cluster icon
   const createClusterCustomIcon = (cluster) =>
@@ -49,8 +50,7 @@ export default function Geolocation() {
   // create custom icon
   const customIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-    // iconUrl: pointerIconUrl,
-    iconSize: [38, 38], // size of the icon
+    iconSize: [38, 38], // taille de l'icône
   });
 
   const handleInputChange = (e) => {
@@ -63,8 +63,7 @@ export default function Geolocation() {
       if (results.length > 0) {
         const { center } = results[0];
         setPosition([center.lat, center.lng]);
-        setZoom(13);
-        // setErrorMessage("");
+        setZoom(10); // Mise à jour du zoom à 13 après la recherche
       } else {
         // setErrorMessage("Lieu non trouvé");
       }
@@ -93,18 +92,15 @@ export default function Geolocation() {
         </button>
       </form>
       <MapContainer center={position} zoom={zoom} className="mapContainer">
-        {/* OPEN STREEN MAPS TILES */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <SetViewOnClick animateRef={animateRef} /> */}
         <ZoomControl position="bottomleft" />
         <MarkerClusterGroup
           chunkedLoading
           iconCreateFunction={createClusterCustomIcon}
         >
-          {/* Mapping through the markers */}
           {streetArts.map((streetArt) => (
             <Marker
               position={[streetArt.geolocation_y, streetArt.geolocation_x]}
@@ -116,8 +112,8 @@ export default function Geolocation() {
                   to={`/street-art-detail/${streetArt.id}`}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <h4>Titre de l'oeuvre:{streetArt.title}</h4>
-                  <p>Artiste:{streetArt.name}</p>
+                  <h4>Titre de l'oeuvre: {streetArt.title}</h4>
+                  <p>Artiste: {streetArt.name}</p>
                   <img
                     src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
                     alt={streetArt.image_alt}
@@ -128,7 +124,11 @@ export default function Geolocation() {
           ))}
         </MarkerClusterGroup>
         <LocationMarker />
-        <RecenterAutomatically lat={position[0]} lng={position[1]} />
+        <RecenterAutomatically
+          lat={position[0]}
+          lng={position[1]}
+          zoom={zoom}
+        />
       </MapContainer>
     </>
   );
