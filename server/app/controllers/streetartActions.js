@@ -42,6 +42,7 @@ const read = async (req, res) => {
     });
   }
 };
+
 const browseRecentStreetArts = async (req, res) => {
   try {
     // Fetch the most recent street arts, you can limit the number if needed
@@ -55,6 +56,21 @@ const browseRecentStreetArts = async (req, res) => {
       error: "Internal Server Error",
       details: err.message,
     });
+  }
+};
+
+const create = async (req, res, next) => {
+  try {
+    // Extract the item data from the request body
+    const streetart = req.body;
+
+    // Create a new character entry in the database
+    const insertId = await tables.streetart.create(streetart);
+    // Respond with HTTP 201 (Created) since the creation was successful
+    res.status(201).json({ id: insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
   }
 };
 
@@ -84,4 +100,5 @@ module.exports = {
   read,
   destroy,
   browseRecentStreetArts,
+  create,
 };

@@ -102,6 +102,21 @@ class StreetartRepository extends AbstractRepository {
     return rows;
   }
 
+  async create(streetart) {
+    const [result] = await this.database.query(
+      `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [
+        streetart.title,
+        streetart.description,
+        streetart.geolocation_x,
+        streetart.geolocation_y,
+        streetart.image_url,
+        streetart.city_id,
+        streetart.artist_id,
+      ]
+    );
+    return result.insertId;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing streetart
 

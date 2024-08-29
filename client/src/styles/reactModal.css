@@ -57,3 +57,86 @@
 .ReactModal__Content button:nth-of-type(2):hover {
   background-color: #5a6268;
 }
+
+/* Style pour les champs de saisie (input) */
+.ReactModal__Content input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  outline: none;
+}
+
+.ReactModal__Content input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Style pour les listes déroulantes (select) */
+.ReactModal__Content select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  outline: none;
+  background-color: white;
+}
+
+.ReactModal__Content select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.ReactModal_Overlay-StreetArt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ReactModal_Overlay-StreetArt .ReactModal__Content {
+  background: white;
+  border-radius: 6px;
+  padding: 20px; /* Augmentation du padding pour plus de contenu */
+  height: auto; /* Autoriser la hauteur automatique en fonction du contenu */
+  width: 80%; /* Augmenter la largeur du modal à 80% de l'écran */
+  max-width: 800px; /* Limiter la taille maximale du modal */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.ReactModal__Content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 4px;
+  font-family: var(--font-text);
+  font-size: 14px;
+}
+
+.ReactModal__Content button:hover {
+  background-color: #0056b3;
+}
+
+.ReactModal__Content button:nth-of-type(2) {
+  background-color: #6c757d;
+}
+
+.ReactModal__Content button:nth-of-type(2):hover {
+  background-color: #5a6268;
+}
