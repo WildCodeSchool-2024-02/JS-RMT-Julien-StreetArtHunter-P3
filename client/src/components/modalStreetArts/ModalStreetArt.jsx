@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import connexion from "../services/connexion";
+import connexion from "../../services/connexion";
 import ModalSelect from "./ModalSelect";
 import ModalButton from "./ModalButton";
 
