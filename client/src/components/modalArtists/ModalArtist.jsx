@@ -31,7 +31,7 @@ function ModalArtist({ handleRefresh, closeAddModal }) {
 
   return (
     <div>
-      <h2>Ajouter un nouveau artiste</h2>
+      <h2>Ajouter un nouvel artiste</h2>
       <form onSubmit={handleAddSubmit}>
         <input
           type="text"
@@ -49,7 +49,7 @@ function ModalArtist({ handleRefresh, closeAddModal }) {
           value={newArtist.points}
           onChange={handleInputChange}
         />
-        <ModalButton closeAddModal={closeAddModal} />
+        <ModalButton closeAddModal={closeAddModal} label="nouvel artiste" />
       </form>
     </div>
   );
