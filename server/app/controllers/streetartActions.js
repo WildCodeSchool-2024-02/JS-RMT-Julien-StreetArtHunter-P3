@@ -42,6 +42,22 @@ const read = async (req, res) => {
     });
   }
 };
+const browseRecentStreetArts = async (req, res) => {
+  try {
+    // Fetch the most recent street arts, you can limit the number if needed
+    const recentStreetArts = await tables.streetart.readRecent();
+
+    // Respond with the items in JSON format
+    res.status(200).json(recentStreetArts);
+  } catch (err) {
+    // Respond with a 500 Internal Server Error and detailed error message
+    res.status(500).json({
+      error: "Internal Server Error",
+      details: err.message,
+    });
+  }
+};
+
 const destroy = async (req, res) => {
   try {
     // Fetch the userId from the request parameters
@@ -67,4 +83,5 @@ module.exports = {
   browse,
   read,
   destroy,
+  browseRecentStreetArts,
 };

@@ -14,6 +14,8 @@ const { validateLogin } = require("./services/validation/user");
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
 
+router.get("/streetarts/recent", streetartActions.browseRecentStreetArts);
+
 // Route to get a specific streetart by ID
 router.get("/streetarts/:id", streetartActions.read);
 

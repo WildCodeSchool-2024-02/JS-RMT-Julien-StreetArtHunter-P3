@@ -17,6 +17,25 @@
   gap: 20px;
 }
 
+.recent-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* 3 colonnes pour les street arts récents */
+  gap: 20px; /* Espacement entre les cartes */
+  margin-top: 40px; /* Espacement en haut de la section */
+}
+
+.recent-gallery-grid .card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.recent-gallery-grid .card:hover {
+  transform: scale(1.05);
+}
+
 .card {
   background-size: cover;
   border-radius: 4px;
