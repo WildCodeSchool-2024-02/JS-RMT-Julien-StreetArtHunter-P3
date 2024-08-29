@@ -37,6 +37,7 @@ export default function Geolocation() {
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
   const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
+  const [errorMessage, setErrorMessage] = useState(""); // État pour le message d'erreur
 
   // custom cluster icon
   const createClusterCustomIcon = (cluster) =>
@@ -55,6 +56,7 @@ export default function Geolocation() {
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    setErrorMessage(""); // Réinitialiser le message d'erreur lors de la saisie
   };
 
   const handleSearch = (searchQuery) => {
@@ -63,9 +65,12 @@ export default function Geolocation() {
       if (results.length > 0) {
         const { center } = results[0];
         setPosition([center.lat, center.lng]);
-        setZoom(10); // Mise à jour du zoom à 13 après la recherche
+        setZoom(10); // Mise à jour du zoom à 10 après la recherche
+        setErrorMessage(""); // Réinitialiser le message d'erreur
       } else {
-        // setErrorMessage("Lieu non trouvé");
+        setErrorMessage(
+          "Lieu non trouvé, veuillez essayer une autre recherche"
+        ); // Afficher un message d'erreur
       }
     });
   };
@@ -91,6 +96,8 @@ export default function Geolocation() {
           Rechercher
         </button>
       </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
+      {/* Afficher le message d'erreur */}
       <MapContainer center={position} zoom={zoom} className="mapContainer">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
