@@ -1,7 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
-import ModalButton from "../ModalButton";
+import ModalButton from "../modalShared/ModalButton";
+
 
 function ModalUser({ handleRefresh, closeAddModal }) {
   const [newUser, setNewUser] = useState({
@@ -73,7 +74,7 @@ function ModalUser({ handleRefresh, closeAddModal }) {
             }
           />
         </label>
-        <ModalButton closeAddModal={closeAddModal} />
+        <ModalButton closeAddModal={closeAddModal} label="close button" />
       </form>
     </div>
   );
