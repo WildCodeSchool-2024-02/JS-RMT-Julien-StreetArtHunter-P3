@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, useNavigate, Link } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
