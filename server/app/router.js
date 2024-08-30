@@ -72,4 +72,8 @@ router.delete("/cities/:id", checkCookie, checkAdmin, cityActions.destroy);
 
 router.post("/register", userActions.create);
 
+const seenActions = require("./controllers/seenActions");
+
+router.get("/seens", seenActions.browse);
+
 module.exports = router;
