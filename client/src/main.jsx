@@ -82,7 +82,7 @@ const router = createBrowserRouter([
           );
           return [];
         }),
-},
+  },
 
   {
     path: "/admin/",
