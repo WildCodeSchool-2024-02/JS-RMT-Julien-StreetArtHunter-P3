@@ -7,21 +7,18 @@ class ArtistRepository extends AbstractRepository {
     super({ table: "artist" });
   }
 
-  /** 
   // The C of CRUD - Create operation
 
-  async create(user) {
-    // Execute the SQL INSERT query to add a new user to the "user" table
+  async create(artist) {
+    // Execute the SQL INSERT query to add a new artist to the "artist" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (pseudo, email) values (?, ?)`,
-      [user.pseudo, user.email]
+      `insert into ${this.table} (name, points) values (?, ?)`,
+      [artist.name, artist.points]
     );
 
     // Return the ID of the newly inserted user
     return result.insertId;
   }
-
-*/
 
   // The Rs of CRUD - Read operations
   /** 
