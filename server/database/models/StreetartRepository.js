@@ -80,6 +80,28 @@ class StreetartRepository extends AbstractRepository {
     return rows[0];
   }
 
+  async readRecent(limit = 3) {
+    const [rows] = await this.database.query(
+      `SELECT 
+        s.id, 
+        s.title, 
+        s.geolocation_x, 
+        s.geolocation_y, 
+        s.image_url, 
+        s.image_alt, 
+        s.created_at,
+        c.name AS city_name, 
+        a.name FROM 
+        ${this.table} AS s 
+        INNER JOIN artist AS a ON s.artist_id = a.id 
+        INNER JOIN city AS c ON s.city_id = c.id 
+        ORDER BY s.created_at DESC
+        LIMIT ?`,
+      [limit]
+    );
+    return rows;
+  }
+
   async create(streetart) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
