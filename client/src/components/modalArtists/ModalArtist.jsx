@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
-import ModalButton from "./ModalButton";
+import ModalButton from "../modalShared/ModalButton";
 
 function ModalArtist({ handleRefresh, closeAddModal }) {
   const [newArtist, setNewArtist] = useState({
@@ -35,6 +35,7 @@ function ModalArtist({ handleRefresh, closeAddModal }) {
       <form onSubmit={handleAddSubmit}>
         <input
           type="text"
+          aria-label="name"
           name="name"
           placeholder="name"
           value={newArtist.name}
@@ -43,7 +44,8 @@ function ModalArtist({ handleRefresh, closeAddModal }) {
         />
 
         <input
-          type="number" // Use number type for points
+          type="number"
+          aria-label= "points"
           name="points"
           placeholder="Points"
           value={newArtist.points}
