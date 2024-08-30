@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-function StreetArtGallery({
-  title,
-  streetarts,
-  handleCardClick,
-  handleKeyDown,
-}) {
+function StreetArtGallery({ title, streetarts }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = (id) => {
+    navigate(`/street-art-detail/${id}`);
+  };
+
+  const handleKeyDown = (event, id) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleCardClick(id);
+    }
+  };
+
   return (
     <div className="streetart-gallery">
       <h2>{title}</h2>
@@ -42,8 +51,6 @@ StreetArtGallery.propTypes = {
       image_alt: PropTypes.string.isRequired,
     })
   ).isRequired,
-  handleCardClick: PropTypes.func.isRequired,
-  handleKeyDown: PropTypes.func.isRequired,
 };
 
 export default StreetArtGallery;
