@@ -4,7 +4,13 @@ const tables = require("../../database/tables");
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const streetarts = await tables.streetart.readAll();
+    let streetarts = [];
+
+    if (req.query.type === "recent") {
+      streetarts = await tables.streetart.readRecent();
+    } else {
+      streetarts = await tables.streetart.readAll();
+    }
 
     // Respond with the items in JSON format
     res.status(200).json(streetarts);
@@ -34,22 +40,6 @@ const read = async (req, res) => {
         error: "StreetArt not found",
       });
     }
-  } catch (err) {
-    // Respond with a 500 Internal Server Error and detailed error message
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: err.message,
-    });
-  }
-};
-
-const browseRecentStreetArts = async (req, res) => {
-  try {
-    // Fetch the most recent street arts, you can limit the number if needed
-    const recentStreetArts = await tables.streetart.readRecent();
-
-    // Respond with the items in JSON format
-    res.status(200).json(recentStreetArts);
   } catch (err) {
     // Respond with a 500 Internal Server Error and detailed error message
     res.status(500).json({
@@ -99,6 +89,5 @@ module.exports = {
   browse,
   read,
   destroy,
-  browseRecentStreetArts,
   create,
 };

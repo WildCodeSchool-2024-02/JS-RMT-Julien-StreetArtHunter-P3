@@ -22,7 +22,7 @@ function Gallery() {
       });
 
     connexion
-      .get("api/streetarts/recent")
+      .get("api/streetarts/?type=recent")
       .then((response) => {
         setRecentStreetarts(response.data);
       })
