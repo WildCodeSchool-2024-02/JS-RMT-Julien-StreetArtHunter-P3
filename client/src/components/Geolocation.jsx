@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -34,7 +34,6 @@ RecenterAutomatically.propTypes = {
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
-  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
   const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
@@ -54,15 +53,6 @@ export default function Geolocation() {
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
     iconSize: [38, 38], // taille de l'icône
   });
-
-  const handleMoreInfo = (streetArt) => {
-    navigate(`/street-art-detail/${streetArt.id}`);
-  };
-
-  // Function to navigate to the hunter game page
-  const handleValidate = () => {
-    navigate("/hunter-game");
-  };
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -137,20 +127,15 @@ export default function Geolocation() {
                   />
                 </div>
                 <div className="popup-buttons">
-                  <button
-                    type="button"
-                    onClick={() => handleMoreInfo(streetArt)}
-                    className="btn-more-info"
+                  <Link
+                    to={`/street-arts/${streetArt.id}`}
+                    className="more-info"
                   >
                     Détails
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleValidate}
-                    className="btn-validate"
-                  >
+                  </Link>
+                  <Link to="/hunter-game" className="validate">
                     Valider
-                  </button>
+                  </Link>
                 </div>
               </Popup>
             </Marker>
