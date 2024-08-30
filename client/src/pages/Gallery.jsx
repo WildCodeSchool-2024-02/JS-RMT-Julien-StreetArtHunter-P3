@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import StreetArtGallery from "../components/StreetArtGallery";
 import connexion from "../services/connexion";
 import "../styles/styles-pages/Gallery.css";
 
@@ -48,45 +49,18 @@ function Gallery() {
   return (
     <div className="gallery-container">
       <h1>Galerie des Street Arts</h1>
-      <div className="gallery-grid">
-        {streetarts.map((streetart) => (
-          <div
-            key={streetart.id}
-            className="card"
-            role="button"
-            tabIndex={0}
-            aria-label={streetart.title}
-            onClick={() => handleCardClick(streetart.id)}
-            onKeyDown={(event) => handleKeyDown(event, streetart.id)}
-          >
-            <img
-              src={`${import.meta.env.VITE_API_URL}/${streetart.image_url}`}
-              alt={streetart.image_alt}
-              className="card-image"
-            />
-          </div>
-        ))}
-      </div>
-      <h1>Ajoutés récemment</h1>
-      <div className="recent-gallery-grid">
-        {recentStreetarts.map((streetart) => (
-          <div
-            key={streetart.id}
-            className="card"
-            role="button"
-            tabIndex={0}
-            aria-label={streetart.title}
-            onClick={() => handleCardClick(streetart.id)}
-            onKeyDown={(event) => handleKeyDown(event, streetart.id)}
-          >
-            <img
-              src={`${import.meta.env.VITE_API_URL}/${streetart.image_url}`}
-              alt={streetart.image_alt}
-              className="card-image"
-            />
-          </div>
-        ))}
-      </div>
+      <StreetArtGallery
+        title="Tous les Street Arts"
+        streetarts={streetarts}
+        handleCardClick={handleCardClick}
+        handleKeyDown={handleKeyDown}
+      />
+      <StreetArtGallery
+        title="Ajoutés récemment"
+        streetarts={recentStreetarts}
+        handleCardClick={handleCardClick}
+        handleKeyDown={handleKeyDown}
+      />
     </div>
   );
 }

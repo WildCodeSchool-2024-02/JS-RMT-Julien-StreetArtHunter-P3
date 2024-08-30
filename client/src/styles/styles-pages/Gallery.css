@@ -4,7 +4,8 @@
   margin: 0 auto;
 }
 
-.gallery-container h1 {
+.gallery-container h1,
+h2 {
   color: white;
   text-align: center;
   padding-bottom: 1.5em;
