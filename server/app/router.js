@@ -45,6 +45,8 @@ router.delete("/users/:id", checkCookie, checkAdmin, userActions.destroy);
 
 router.post("/login", validateLogin, userActions.login);
 
+router.post("/users", userActions.create);
+
 const artistActions = require("./controllers/artistActions");
 
 // Route to get a list of artists
