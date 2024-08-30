@@ -34,7 +34,8 @@
 .popup-artist {
   font-family: var(--font-title);
   font-size: 0.9em;
-  line-height: 1.2;
+  line-height: 0.2;
+  text-align: center;
 }
 .popup-image {
   max-width: 35vh;
@@ -48,9 +49,9 @@
 }
 
 @media (max-width: 390px) {
-  .leaflet-popup-content-wrapper {
-    width: 40vh;
-    height: 50vh;
+  .popup-content-wrapper {
+    width: 50vh;
+    height: 45vh;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,39 +1,89 @@
-@media (max-width: 390px) {
-  .hunger-game {
+@media only screen and (max-width: 1000px) {
+  .hunter-game-background {
+    background-image: url("../assets/backgroundHunterGame.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
     height: 100vh;
+    transform: scaleX(1.26);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #000; /* Pour simuler l'écran */
   }
 
-  .console-background {
-    background-image: url("../assets/backgroundHunterMobile.png"); /* Utilise ton image de console */
-    background-size: cover;
+  .screen-container {
+    width: 50%;
+    height: 35%;
+    background-color: transparent;
+    border: 2px solid #00000000;
+    border-radius: 9px;
+    display: flex;
+    align-items: stretch;
+    margin-top: 95px;
+    margin-bottom: 117px;
+    overflow: hidden;
+  }
+
+  .captured-image {
     width: 100%;
     height: 100%;
-    position: relative;
+    object-fit: cover;
+    border-radius: 9px;
   }
 
-  .button-container {
-    position: absolute;
-    bottom: 10%;
-    width: 100%;
+  .button-top-container {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
   }
 
-  button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: 2px solid #fff;
-    font-size: 16px;
+  .button-down-container {
+    display: flex;
+    justify-content: center;
+    width: 60%;
   }
 
-  button:active {
-    background-color: rgba(0, 0, 0, 0.8);
+  .return-btn,
+  .valid-btn,
+  .capture-btn {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 2em;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition:
+      box-shadow 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
+    &:hover,
+    &:focus {
+      border-color: #6b2764;
+      box-shadow:
+        0 0 10px 2px #d28eec,
+        0 0 20px 4px #d28eec,
+        0 0 30px 6px #d28eec;
+    }
+  }
+  .return-btn {
+    margin-right: 17px;
+    margin-top: 2px;
+  }
+
+  .capture-btn {
+    margin-left: 4px;
+    margin-top: 3px;
+  }
+
+  .valid-btn {
+    margin-left: 2px;
   }
 }

@@ -64,9 +64,7 @@ export default function Geolocation() {
           >
             <Popup>
               <div className="popup-content-wrapper">
-                <h4 className="popup-title">
-                  Titre : {streetArt.title}
-                </h4>
+                <h4 className="popup-title">Titre : {streetArt.title}</h4>
                 <p className="popup-artist">Artiste: {streetArt.name}</p>
                 <img
                   src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
@@ -74,11 +72,10 @@ export default function Geolocation() {
                   className="popup-image"
                 />
               </div>
-
               <div className="popup-buttons">
                 <button
                   type="button"
-                  onClick={() => handleMoreInfo(streetArt)} 
+                  onClick={() => handleMoreInfo(streetArt)}
                   className="btn-more-info"
                 >
                   Détails
