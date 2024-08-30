@@ -23,7 +23,7 @@ function RecenterAutomatically({ lat, lng, zoom }) {
   useEffect(() => {
     map.setView([lat, lng], zoom); // Mise à jour de la position et du zoom
   }, [lat, lng, zoom, map]);
-  return null;
+return null;
 }
 
 RecenterAutomatically.propTypes = {
