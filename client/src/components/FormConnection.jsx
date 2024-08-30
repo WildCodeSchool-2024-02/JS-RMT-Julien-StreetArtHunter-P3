@@ -29,9 +29,9 @@ function FormConnection() {
       setUser(user.data);
 
       if (user.data.is_admin) {
-        navigate("/admin/streetarts");
+        navigate("/admin/users");
       } else {
-        navigate("/");
+        navigate("/street-arts");
       }
     } catch (error) {
       console.error("There was an error connecting the user!", error);

@@ -1,21 +1,44 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLoaderData, useNavigate , Link } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
   ZoomControl,
+  useMap,
 } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import "leaflet/dist/leaflet.css";
-import { Icon, divIcon, point } from "leaflet";
+import { Icon, divIcon, point, Control } from "leaflet";
+import PropTypes from "prop-types";
 import LocationMarker from "./LocationMarker";
+import "leaflet-control-geocoder";
+import "../styles/searchBar.css";
 import "../styles/Geolocation.css";
 import "../App.css";
+
+function RecenterAutomatically({ lat, lng, zoom }) {
+  const map = useMap();
+  useEffect(() => {
+    map.setView([lat, lng], zoom); // Mise à jour de la position et du zoom
+  }, [lat, lng, zoom, map]);
+  return null;
+}
+
+RecenterAutomatically.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  zoom: PropTypes.number.isRequired,
+};
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
   const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
+  const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
+  const [errorMessage, setErrorMessage] = useState(""); // État pour le message d'erreur
 
   // custom cluster icon
   const createClusterCustomIcon = (cluster) =>
@@ -29,8 +52,7 @@ export default function Geolocation() {
   // create custom icon
   const customIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-    // iconUrl: pointerIconUrl,
-    iconSize: [38, 38], // size of the icon
+    iconSize: [38, 38], // taille de l'icône
   });
 
   const handleMoreInfo = (streetArt) => {
@@ -41,10 +63,52 @@ export default function Geolocation() {
   const handleValidate = () => {
     navigate("/hunter-game");
   };
+  
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+    setErrorMessage(""); // Réinitialiser le message d'erreur lors de la saisie
+  };
 
-  return (
-    <MapContainer center={[48.8566, 2.3522]} zoom={5} className="mapContainer">
-      {/* OPEN STREEN MAPS TILES */}
+  const handleSearch = (searchQuery) => {
+    const geocoder = Control.Geocoder.nominatim();
+    geocoder.geocode(searchQuery, (results) => {
+      if (results.length > 0) {
+        const { center } = results[0];
+        setPosition([center.lat, center.lng]);
+        setZoom(10); // Mise à jour du zoom à 10 après la recherche
+        setErrorMessage(""); // Réinitialiser le message d'erreur
+      } else {
+        setErrorMessage(
+          "Lieu non trouvé, veuillez essayer une autre recherche"
+        ); // Afficher un message d'erreur
+      }
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query) {
+      handleSearch(query);
+    }
+  };
+
+    return (
+    <>
+      <form className="search-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Entrez une ville..."
+          className="search-input"
+          value={query}
+          onChange={handleInputChange}
+        />
+        <button type="submit" className="search-button">
+          Rechercher
+        </button>
+      </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
+      {/* Afficher le message d'erreur */}
+      <MapContainer center={position} zoom={zoom} className="mapContainer">
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -91,8 +155,14 @@ export default function Geolocation() {
             </Popup>
           </Marker>
         ))}
-      </MarkerClusterGroup>
-      <LocationMarker />
-    </MapContainer>
+        </MarkerClusterGroup>
+        <LocationMarker />
+        <RecenterAutomatically
+          lat={position[0]}
+          lng={position[1]}
+          zoom={zoom}
+        />
+      </MapContainer>
+    </>
   );
 }

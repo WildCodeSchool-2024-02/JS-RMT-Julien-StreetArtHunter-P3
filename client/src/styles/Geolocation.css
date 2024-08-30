@@ -3,8 +3,24 @@
   width: 100%;
 }
 
+.leaflet-popup-content {
+  max-width: 100%;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .leaflet-bottom.leaflet-left .leaflet-control-zoom {
   display: none;
+}
+
+.leaflet-popup-content img {
+  max-width: 35vh;
+  max-height: 35vh;
+  height: auto;
+  border-radius: 0.5rem;
 }
 
 .cluster-icon {
@@ -18,6 +34,16 @@
   border-radius: 50%;
   font-size: 1.2rem;
   box-shadow: 0 0 0px 5px #fff;
+}
+
+/* Style pour le message d'erreur */
+.error-message {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  max-width: 80%;
+  margin: 10px auto;
 }
 
 .popup-content-wrapper {

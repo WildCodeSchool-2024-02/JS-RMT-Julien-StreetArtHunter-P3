@@ -10,9 +10,13 @@ const streetartActions = require("./controllers/streetartActions");
 
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
 const { validateLogin } = require("./services/validation/user");
+const { validateStreetart } = require("./services/validation/streetart");
+const { validateArtist } = require("./services/validation/artist");
 
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
+
+router.get("/streetarts/recent", streetartActions.browse);
 
 // Route to get a specific streetart by ID
 router.get("/streetarts/:id", streetartActions.read);
@@ -22,6 +26,14 @@ router.delete(
   checkCookie,
   checkAdmin,
   streetartActions.destroy
+);
+
+router.post(
+  "/streetarts",
+  checkCookie,
+  checkAdmin,
+  validateStreetart,
+  streetartActions.create
 );
 
 const userActions = require("./controllers/userActions");
@@ -34,11 +46,20 @@ router.delete("/users/:id", checkCookie, checkAdmin, userActions.destroy);
 
 router.post("/login", validateLogin, userActions.login);
 
+router.post("/users", userActions.create);
+
 const artistActions = require("./controllers/artistActions");
 
 // Route to get a list of artists
 router.get("/artists", checkCookie, checkAdmin, artistActions.browse);
 
+router.post(
+  "/artists",
+  checkCookie,
+  checkAdmin,
+  validateArtist,
+  artistActions.create
+);
 // Route to delete a list of artists
 router.delete("/artists/:id", checkCookie, checkAdmin, artistActions.destroy);
 
