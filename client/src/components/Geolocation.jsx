@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, useNavigate , Link } from "react-router-dom";
+import { useLoaderData, useNavigate, Link } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -23,7 +23,7 @@ function RecenterAutomatically({ lat, lng, zoom }) {
   useEffect(() => {
     map.setView([lat, lng], zoom); // Mise à jour de la position et du zoom
   }, [lat, lng, zoom, map]);
-return null;
+  return null;
 }
 
 RecenterAutomatically.propTypes = {
@@ -63,7 +63,7 @@ export default function Geolocation() {
   const handleValidate = () => {
     navigate("/hunter-game");
   };
-  
+
   const handleInputChange = (e) => {
     setQuery(e.target.value);
     setErrorMessage(""); // Réinitialiser le message d'erreur lors de la saisie
@@ -92,7 +92,7 @@ export default function Geolocation() {
     }
   };
 
-    return (
+  return (
     <>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
@@ -109,52 +109,52 @@ export default function Geolocation() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
       {/* Afficher le message d'erreur */}
       <MapContainer center={position} zoom={zoom} className="mapContainer">
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {/* <SetViewOnClick animateRef={animateRef} /> */}
-      <ZoomControl position="bottomleft" />
-      <MarkerClusterGroup
-        chunkedLoading
-        iconCreateFunction={createClusterCustomIcon}
-      >
-        {/* Mapping through the markers */}
-        {streetArts.map((streetArt) => (
-          <Marker
-            position={[streetArt.geolocation_y, streetArt.geolocation_x]}
-            icon={customIcon}
-            key={streetArt.id}
-          >
-            <Popup>
-              <div className="popup-content-wrapper">
-                <h4 className="popup-title">Titre : {streetArt.title}</h4>
-                <p className="popup-artist">Artiste: {streetArt.name}</p>
-                <img
-                  src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
-                  alt={streetArt.image_alt}
-                  className="popup-image"
-                />
-              </div>
-              <div className="popup-buttons">
-                <button
-                  type="button"
-                  onClick={() => handleMoreInfo(streetArt)}
-                  className="btn-more-info"
-                >
-                  Détails
-                </button>
-                <button
-                  type="button"
-                  onClick={handleValidate}
-                  className="btn-validate"
-                >
-                  Valider
-                </button>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* <SetViewOnClick animateRef={animateRef} /> */}
+        <ZoomControl position="bottomleft" />
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={createClusterCustomIcon}
+        >
+          {/* Mapping through the markers */}
+          {streetArts.map((streetArt) => (
+            <Marker
+              position={[streetArt.geolocation_y, streetArt.geolocation_x]}
+              icon={customIcon}
+              key={streetArt.id}
+            >
+              <Popup>
+                <div className="popup-content-wrapper">
+                  <h4 className="popup-title">Titre : {streetArt.title}</h4>
+                  <p className="popup-artist">Artiste: {streetArt.name}</p>
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                    alt={streetArt.image_alt}
+                    className="popup-image"
+                  />
+                </div>
+                <div className="popup-buttons">
+                  <button
+                    type="button"
+                    onClick={() => handleMoreInfo(streetArt)}
+                    className="btn-more-info"
+                  >
+                    Détails
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleValidate}
+                    className="btn-validate"
+                  >
+                    Valider
+                  </button>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
         </MarkerClusterGroup>
         <LocationMarker />
         <RecenterAutomatically
