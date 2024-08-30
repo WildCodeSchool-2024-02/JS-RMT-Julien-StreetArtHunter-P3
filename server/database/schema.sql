@@ -7,7 +7,7 @@ CREATE TABLE user (
     password VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    is_admin BOOLEAN
+    is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE city (
@@ -16,9 +16,11 @@ CREATE TABLE city (
     points INT DEFAULT 0
 );
 
-CREATE TABLE artist ( id INT AUTO_INCREMENT PRIMARY KEY, 
-
-name VARCHAR(255) NOT NULL, points INT DEFAULT 0 );
+CREATE TABLE artist ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(255) NOT NULL, 
+    points INT DEFAULT 0 
+);
 
 CREATE TABLE category (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,8 +30,8 @@ CREATE TABLE category (
 CREATE TABLE streetart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    description TEXT,
-    geolocation_x DECIMAL(8, 6) NOT NULL,
+    description LONGTEXT NOT NULL,
+    geolocation_x DECIMAL(10, 6) NOT NULL,
     geolocation_y DECIMAL(9, 6) NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     image_alt VARCHAR(255),
@@ -41,7 +43,7 @@ CREATE TABLE streetart (
     category_id INT,
     FOREIGN KEY (city_id) REFERENCES city (id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (artist_id) REFERENCES artist (id),
+    FOREIGN KEY (artist_id) REFERENCES artist (id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
@@ -51,7 +53,7 @@ CREATE TABLE seen (
     points INT,
     PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetart_id) REFERENCES streetart (id)
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE
 );
 
 INSERT INTO city (name) VALUES ('Paris');
@@ -74,7 +76,7 @@ INSERT INTO
 VALUES (
         'john_doe',
         'johndoe@yopmail.com',
-        '1234',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         1
     );
 
@@ -88,7 +90,7 @@ INSERT INTO
 VALUES (
         'jean_french',
         'jeanfrench@yopmail.com',
-        '4567',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
 
@@ -102,10 +104,113 @@ INSERT INTO
 VALUES (
         'juana_latina',
         'juanalatina@yopmail.com',
-        '8910',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina1@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina2@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina3@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina4@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina5@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina6@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina7@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
+    INSERT INTO
+    user (
+        pseudo,
+        email,
+        password,
+        is_admin
+    )
+VALUES (
+        'juana_latina',
+        'juanalatina8@yopmail.com',
+        '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
+        0
+    );
 INSERT INTO artist (name) VALUES ('Banksy');
 
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
@@ -123,6 +228,7 @@ INSERT INTO artist (name) VALUES ('Okuda');
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -131,6 +237,7 @@ INSERT INTO
     )
 VALUES (
         'Chuuuttt',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/Chuuuttt.jpg',
         1,
         5,
@@ -141,6 +248,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -149,6 +257,7 @@ INSERT INTO
     )
 VALUES (
         'Amor com as Mulheres',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/amor-com-as-mulheres.jpg',
         3,
         7,
@@ -159,6 +268,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -167,6 +277,7 @@ INSERT INTO
     )
 VALUES (
         'The cat',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/the-cat.jpg',
         1,
         4,
@@ -177,6 +288,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -185,6 +297,7 @@ INSERT INTO
     )
 VALUES (
         'Champagne Rat',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/rat-champagne.jpg',
         1,
         1,
@@ -195,6 +308,7 @@ VALUES (
 INSERT INTO
     streetart (
         title,
+        description,
         image_url,
         city_id,
         artist_id,
@@ -203,6 +317,7 @@ INSERT INTO
     )
 VALUES (
         'Petite fille, espoir',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/images/petite-fille-espoir.jpg',
         4,
         5,
@@ -211,3 +326,14 @@ VALUES (
     );
 
 INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);
+
+INSERT INTO category (title) VALUES ('Graffiti');
+INSERT INTO category (title) VALUES ('Pochoirs');
+INSERT INTO category (title) VALUES ('Mosaïques');
+INSERT INTO category (title) VALUES ('Sculptures et installations urbaines');
+INSERT INTO category (title) VALUES ('Fresques murales');
+INSERT INTO category (title) VALUES ('Street art 3D');
+INSERT INTO category (title) VALUES ('Stickering');
+INSERT INTO category (title) VALUES ('Art activiste');
+INSERT INTO category (title) VALUES ('Yarn bombing');
+

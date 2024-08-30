@@ -1,0 +1,95 @@
+body {
+  background-color: var(--main-bg-color);
+  font-family: var(--font-title);
+  font-family: var(--font-subtitle);
+  font-family: var(--font-text);
+}
+
+.container-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.streetart-image {
+  width: auto;
+  max-height: 35rem;
+  border-radius: 8px;
+  margin: 50px;
+  margin-top: 40px;
+}
+
+.detail-streetart-container {
+  padding: 20px;
+  max-width: 100%;
+  color: white;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+h3,
+h4,
+p {
+  font-weight: bold;
+  line-height: 2;
+}
+
+.container-detail > .detail-streetart-container > div {
+  margin: 50px 5px;
+  margin-top: 150px;
+  width: 70%;
+  background-color: #ffffff;
+  opacity: 60%;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.container-detail > .detail-streetart-container > div > h2 {
+  text-decoration: underline;
+  color: black;
+  margin-top: 0;
+}
+
+.streetart-description {
+  color: black;
+  line-height: 1.2;
+}
+
+@media (max-width: 390px) {
+  .container-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .streetart-image {
+    width: 100%;
+    margin: 0;
+  }
+
+  .detail-streetart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3px;
+  }
+
+  .container-detail > .detail-streetart-container > div {
+    margin-top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    opacity: 60%;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  h2 {
+    font-size: 1em;
+  }
+
+  p {
+    font-weight: 100;
+  }
+}

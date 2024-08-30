@@ -1,8 +1,8 @@
 .mapContainer {
-  height: 90vh;
-  width: 90vh;
-  border-radius: 1.5rem;
+  height: 60vh;
+  width: 100%;
 }
+
 .leaflet-popup-content {
   max-width: 100%;
   font-size: 0.9rem;
@@ -23,6 +23,7 @@
   height: auto;
   border-radius: 0.5rem;
 }
+
 .cluster-icon {
   background-color: #333;
   height: 2em;
@@ -35,6 +36,17 @@
   font-size: 1.2rem;
   box-shadow: 0 0 0px 5px #fff;
 }
+
 .leaflet-bottom.leaflet-left .leaflet-control-zoom {
   display: none;
+}
+
+/* Style pour le message d'erreur */
+.error-message {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  max-width: 80%;
+  margin: 10px auto;
 }

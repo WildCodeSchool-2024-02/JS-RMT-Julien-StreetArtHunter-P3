@@ -42,19 +42,81 @@ class StreetartRepository extends AbstractRepository {
         s.title, 
         s.geolocation_x, 
         s.geolocation_y, 
-        s.imageUrl, 
-        s.imageAlt, 
-        s.city_id, 
+        s.image_url, 
+        s.image_alt, 
+        c.name AS city_name, 
         a.name FROM 
         ${this.table} AS s INNER JOIN 
         artist AS a ON 
-        s.artist_id = a.id `
+        s.artist_id = a.id INNER JOIN
+        city AS c ON s.city_id = c.id `
     );
 
     // Return the array of streetarts
     return rows;
   }
 
+  // Method to read a specific streetart by its ID
+  async readById(id) {
+    // Execute the SQL SELECT query to retrieve a specific streetart by its ID
+    const [rows] = await this.database.query(
+      `SELECT 
+          s.id, 
+          s.title, 
+          s.description,
+          s.geolocation_x, 
+          s.geolocation_y, 
+          s.image_url, 
+          s.image_alt, 
+          c.name AS city_name, 
+          a.name AS artist_name
+        FROM ${this.table} AS s
+        INNER JOIN artist AS a ON s.artist_id = a.id
+        INNER JOIN city AS c ON s.city_id = c.id
+        WHERE s.id = ?`,
+      [id]
+    );
+
+    return rows[0];
+  }
+
+  async readRecent(limit = 3) {
+    const [rows] = await this.database.query(
+      `SELECT 
+        s.id, 
+        s.title, 
+        s.geolocation_x, 
+        s.geolocation_y, 
+        s.image_url, 
+        s.image_alt, 
+        s.created_at,
+        c.name AS city_name, 
+        a.name FROM 
+        ${this.table} AS s 
+        INNER JOIN artist AS a ON s.artist_id = a.id 
+        INNER JOIN city AS c ON s.city_id = c.id 
+        ORDER BY s.created_at DESC
+        LIMIT ?`,
+      [limit]
+    );
+    return rows;
+  }
+
+  async create(streetart) {
+    const [result] = await this.database.query(
+      `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [
+        streetart.title,
+        streetart.description,
+        streetart.geolocation_x,
+        streetart.geolocation_y,
+        streetart.image_url,
+        streetart.city_id,
+        streetart.artist_id,
+      ]
+    );
+    return result.insertId;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing streetart
 
@@ -68,6 +130,14 @@ class StreetartRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
+
+  async destroy(streetartID) {
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [streetartID]
+    );
+    return rows;
+  }
 }
 
 module.exports = StreetartRepository;

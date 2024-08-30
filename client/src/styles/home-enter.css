@@ -1,0 +1,79 @@
+.App-header-enter {
+  background-color: var(--main-bg-color);
+  height: 100%;
+}
+
+.App-background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  max-height: 40vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.about-section {
+  background-color: var(--main-bg-color);
+  color: white;
+  min-height: 36vh;
+  margin-top: 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-section h2 {
+  padding: 2rem;
+  font-family: var(--font-title);
+}
+
+.about-section p {
+  font-size: 2rem;
+  padding: 0rem 10rem;
+  font-family: var(--font-subtitle);
+}
+
+.title-image {
+  width: 50%;
+  min-height: 20vw;
+  max-height: 20vw;
+  animation: slideDown 2s ease-out;
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 390px) {
+  .App-background {
+    max-height: 100vw;
+  }
+  .about-section h2 {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .about-section p {
+    font-size: 1.4rem;
+    padding: 0rem 2rem;
+  }
+  .title-image {
+    width: 100%;
+    min-height: 50vw;
+    max-height: 50vw;
+  }
+}

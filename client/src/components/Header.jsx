@@ -1,24 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/header.css";
 import "../styles/button.css";
 import logo from "../assets/logo.png";
+import { useLogin } from "../context/LoginContext";
+
 
 function Header() {
+  const { user, setUser } = useLogin();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/street-arts");
+  };
   return (
     <header className="header">
-      <Link to="/home" className="logo">
+      <Link to="/" className="logo">
         <img src={logo} alt="logo" className="logo" />
       </Link>
       <nav className="navigation">
-        <Link to="/gallery">
-          <p className="button">Galerie</p>
+        <Link to="/gallery" className="button">
+          Galerie
         </Link>
-        <Link to="/login">
-          <p className="button">Connexion</p>
-        </Link>
+        {user ? (
+          <button type="button" className="button" onClick={handleLogout}>
+            Déconnexion
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="button">
+              Connexion
+            </Link>
+            <Link to="/register" className="button">
+              Inscription
+            </Link>
+          </>
+        )}
       </nav>
     </header>
   );
 }
 
 export default Header;
+
