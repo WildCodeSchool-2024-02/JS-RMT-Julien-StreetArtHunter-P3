@@ -51,9 +51,11 @@ const router = createBrowserRouter([
         element: <Detail />,
         loader: async ({ params }) => {
           try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`);
+            const response = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`
+            );
             if (!response.ok) {
-              throw new Error('Network response was not ok.');
+              throw new Error("Network response was not ok.");
             }
             const data = await response.json();
             // Assurez-vous que data est bien un tableau
@@ -62,6 +64,10 @@ const router = createBrowserRouter([
             return []; // Retourner un tableau vide en cas d'erreur
           }
         },
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />,
       },
     ],
   },
@@ -98,10 +104,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
-  },
-  {
-    path: "/gallery",
-    element: <Gallery />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
