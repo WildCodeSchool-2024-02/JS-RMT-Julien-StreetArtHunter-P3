@@ -80,7 +80,7 @@ const create = async (req, res, next) => {
     await tables.user.create(userData);
 
     // Respond with HTTP 200 (OK) and the user data (without password)
-    res.sendStatus(201);
+    res.status(201).json(userData);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
