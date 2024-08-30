@@ -74,7 +74,7 @@ function ModalUser({ handleRefresh, closeAddModal }) {
             }
           />
         </label>
-        <ModalButton closeAddModal={closeAddModal} />
+        <ModalButton closeAddModal={closeAddModal} label="close button" />
       </form>
     </div>
   );
