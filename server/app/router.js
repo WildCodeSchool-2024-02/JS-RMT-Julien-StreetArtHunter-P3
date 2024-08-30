@@ -74,6 +74,6 @@ router.post("/register", userActions.create);
 
 const seenActions = require("./controllers/seenActions");
 
-router.get("/seens", seenActions.browse);
+router.get("/views", seenActions.browse);
 
 module.exports = router;

@@ -16,6 +16,7 @@ import Gallery from "./pages/Gallery";
 import App from "./App";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
+import Seen from "./pages/adminInterface/Seen";
 
 import connexion from "./services/connexion";
 
@@ -51,9 +52,11 @@ const router = createBrowserRouter([
         element: <Detail />,
         loader: async ({ params }) => {
           try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`);
+            const response = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`
+            );
             if (!response.ok) {
-              throw new Error('Network response was not ok.');
+              throw new Error("Network response was not ok.");
             }
             const data = await response.json();
             // Assurez-vous que data est bien un tableau
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "cities",
         element: <City />,
+      },
+      {
+        path: "seen",
+        element: <Seen />,
       },
     ],
   },
