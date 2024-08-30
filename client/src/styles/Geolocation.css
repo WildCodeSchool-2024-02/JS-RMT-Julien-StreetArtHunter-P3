@@ -91,16 +91,16 @@
     margin-top: 5px;
   }
 
-  .btn-more-info,
-  .btn-validate {
-    width: 55px;
+  .more-info,
+  .validate {
+    text-decoration: none;
+    width: 60px;
     height: 17px;
-    border-color: rgba(55, 10, 75, 0.384);
     border-radius: 5px;
     cursor: pointer;
     font-family: var(--font-title);
     font-size: 0.8em;
     color: black;
-    background-color: rgba(195, 99, 240, 0.158);
+    text-align: center;
   }
 }
