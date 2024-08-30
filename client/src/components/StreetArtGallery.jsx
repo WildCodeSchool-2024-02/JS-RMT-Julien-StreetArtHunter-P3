@@ -5,7 +5,7 @@ function StreetArtGallery({ title, streetarts }) {
   const navigate = useNavigate();
 
   const handleCardClick = (id) => {
-    navigate(`/street-art-detail/${id}`);
+    navigate(`/street-arts/${id}`);
   };
 
   const handleKeyDown = (event, id) => {

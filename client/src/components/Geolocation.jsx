@@ -53,7 +53,7 @@ export default function Geolocation() {
           >
             <Popup>
               <Link
-                to={`/street-art-detail/${streetArt.id}`}
+                to={`/street-arts/${streetArt.id}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <h4>Titre de l'oeuvre:{streetArt.title}</h4>
