@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import connexion from "../services/connexion";
+import connexion from "../../services/connexion";
 
 function AddModalSelect({
   handleInputChange,
