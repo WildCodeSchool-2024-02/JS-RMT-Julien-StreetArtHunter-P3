@@ -5,7 +5,6 @@ import connexion from "../../services/connexion";
 import ModalButton from "../modalShared/ModalButton";
 import ModalSelect from "../modalShared/ModalSelect";
 
-
 function ModalStreetArt({ handleRefresh, closeAddModal }) {
   const [newStreetArt, setNewStreetArt] = useState({
     title: "",
@@ -40,7 +39,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
   return (
     <div>
       <h2>Ajouter un nouveau StreetArt</h2>
-      <form onSubmit={handleAddSubmit}>
+      <form onSubmit={handleAddSubmit} encType="multipart/form-data">
         <input
           type="text"
           aria-label=" streetArt titre"
@@ -78,7 +77,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
           required
         />
         <input
-          type="text"
+          type="file"
           aria-label=" streetArt image"
           name="image_url"
           placeholder="Image URL"
@@ -104,7 +103,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
           title="Sélectionne un artiste"
           optionKey="name"
         />
-        <ModalButton closeAddModal={closeAddModal}  label="close button"/>
+        <ModalButton closeAddModal={closeAddModal} label="close button" />
       </form>
     </div>
   );
