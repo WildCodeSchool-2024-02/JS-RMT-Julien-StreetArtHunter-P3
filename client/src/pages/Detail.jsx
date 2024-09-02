@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import "../styles/detail.css";
 
 function Detail() {
@@ -9,7 +8,6 @@ function Detail() {
   }
   return (
     <div>
-      <BackButton />
       <section className="container-detail">
         <img
           className="streetart-image"

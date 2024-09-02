@@ -12,7 +12,6 @@ function BackButton() {
   return (
     <button className="back-button" onClick={handleClick} type="button">
       <img src={flecheRetour} alt="Retour" className="back-button-logo" />
-      Retour
     </button>
   );
 }

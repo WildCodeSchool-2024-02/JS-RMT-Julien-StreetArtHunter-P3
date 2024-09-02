@@ -3,7 +3,7 @@ import "../styles/header.css";
 import "../styles/button.css";
 import logo from "../assets/logo.png";
 import { useLogin } from "../context/LoginContext";
-
+import BackButton from "./BackButton";
 
 function Header() {
   const { user, setUser } = useLogin();
@@ -19,6 +19,7 @@ function Header() {
         <img src={logo} alt="logo" className="logo" />
       </Link>
       <nav className="navigation">
+        <BackButton />
         <Link to="/gallery" className="button">
           Galerie
         </Link>
@@ -42,4 +43,3 @@ function Header() {
 }
 
 export default Header;
-
