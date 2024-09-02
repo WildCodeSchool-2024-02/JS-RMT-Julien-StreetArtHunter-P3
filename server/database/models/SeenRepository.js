@@ -15,7 +15,7 @@ class SeenRepository extends AbstractRepository {
     streetart.image_url as streetart_image,
     streetart.title,
     user.pseudo,
-    seen_status.label
+    seen_status.label as seen_status_select
 FROM 
     ${this.table}
 INNER JOIN 

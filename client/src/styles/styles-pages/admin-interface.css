@@ -48,3 +48,11 @@
 .admin-table tr:hover {
   background-color: #f1f1f1;
 }
+.img_seen {
+  display: flex;
+  width: 100%;
+  min-height: 12rem;
+  max-height: 12rem;
+  object-fit: cover;
+  background-size: contain;
+}
