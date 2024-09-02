@@ -12,6 +12,7 @@ const { checkCookie, checkAdmin } = require("./services/checkAuth");
 const { validateLogin } = require("./services/validation/user");
 const { validateStreetart } = require("./services/validation/streetart");
 const { validateArtist } = require("./services/validation/artist");
+const { validateCity } = require("./services/validation/city");
 
 // Route to get a list of streetarts
 router.get("/streetarts", streetartActions.browse);
@@ -75,6 +76,14 @@ router.delete(
 );
 
 const cityActions = require("./controllers/cityActions");
+
+router.post(
+  "/cities",
+  checkCookie,
+  checkAdmin,
+  validateCity,
+  cityActions.create
+);
 
 // Route to get a list of cities
 router.get("/cities", checkCookie, checkAdmin, cityActions.browse);
