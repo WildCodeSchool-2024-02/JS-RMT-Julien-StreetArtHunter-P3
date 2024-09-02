@@ -4,21 +4,19 @@
 
 .carousel-container {
   margin: 5px 20%;
-  padding: 10px 0;
+  padding: 3px 0;
 }
 
 .carousel-streetart {
-  min-height: 5rem;
-  max-height: 10rem;
-  padding: 10px;
+  max-height: 0rem;
+  max-width: 400px;
+  padding: 8px;
 }
 
 .carousel-streetart img {
   width: 100%;
   min-height: 15rem;
   max-height: 15rem;
-  object-fit: cover;
-  background-size: contain;
 }
 
 .carousel-item-details {
@@ -31,27 +29,38 @@
   display: flex;
   justify-content: center;
   font-family: var(--font-subtitle);
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 .carousel-item-details p {
   display: flex;
   justify-content: center;
   font-family: var(--font-subtitle);
-  margin: 5px 0;
+  margin: 4px 0;
   font-size: 1em;
   color: #555;
 }
 
 @media (max-width: 390px) {
+  .carousel-container {
+    margin: 0px 20%;
+    padding: 3px 0;
+  }
+
   .carousel-streetart img {
     width: 100%;
     min-height: 10rem;
-    max-height: 15rem;
+    max-height: 10rem;
   }
+
   .carousel-item-details {
-    background: white;
+    color: #555;
     padding: 0.5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .h3 {
+    margin: 0px;
+    font-size: 1.2em;
   }
 }
