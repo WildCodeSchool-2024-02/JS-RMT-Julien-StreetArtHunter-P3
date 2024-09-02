@@ -13,19 +13,46 @@
   display: flex;
   justify-content: center;
   margin-right: 1rem;
-  width: 5rem;
-  height: 4rem;
+  width: 8rem;
+  height: 5rem;
 }
 
-.navigation {
+.navigation,
+.button {
   display: flex;
   gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 10px;
+}
 
-  .button {
+@media (max-width: 390px) {
+  .header {
+    display: flex;
+    background-color: var(--main-bg-color);
+    padding: 5px 5px;
+    height: 70px;
+    position: sticky;
+  }
+
+  .logo {
     display: flex;
     justify-content: center;
+    width: 6rem;
+    height: 4rem;
+  }
+
+  .navigation,
+  .button {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    padding: 10px;
-    height: 10px;
+    font-size: 1rem;
+    padding: 4px;
+    height: 8px;
+    width: 100px;
+    gap: 5px;
   }
 }
