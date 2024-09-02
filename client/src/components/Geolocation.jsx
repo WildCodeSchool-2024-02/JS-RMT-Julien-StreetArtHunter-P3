@@ -103,11 +103,13 @@ export default function Geolocation() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {/* <SetViewOnClick animateRef={animateRef} /> */}
         <ZoomControl position="bottomleft" />
         <MarkerClusterGroup
           chunkedLoading
           iconCreateFunction={createClusterCustomIcon}
         >
+          {/* Mapping through the markers */}
           {streetArts.map((streetArt) => (
             <Marker
               position={[streetArt.geolocation_y, streetArt.geolocation_x]}
@@ -115,17 +117,26 @@ export default function Geolocation() {
               key={streetArt.id}
             >
               <Popup>
-                <Link
-                  to={`/street-art-detail/${streetArt.id}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <h4>Titre de l'oeuvre: {streetArt.title}</h4>
-                  <p>Artiste: {streetArt.name}</p>
+                <div className="popup-content-wrapper">
+                  <h4 className="popup-title">Titre : {streetArt.title}</h4>
+                  <p className="popup-artist">Artiste: {streetArt.name}</p>
                   <img
                     src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
                     alt={streetArt.image_alt}
+                    className="popup-image"
                   />
-                </Link>
+                </div>
+                <div className="popup-buttons">
+                  <Link
+                    to={`/street-arts/${streetArt.id}`}
+                    className="more-info"
+                  >
+                    Détails
+                  </Link>
+                  <Link to="/hunter-game" className="validate">
+                    Valider
+                  </Link>
+                </div>
               </Popup>
             </Marker>
           ))}
