@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom"; // Assure-toi d'avoir installé et configuré React Router
+import { useNavigate } from "react-router-dom";
+import "../styles/back-button.css";
 
 function BackButton() {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ function BackButton() {
   };
 
   return (
-    <button onClick={handleClick} type="button" className="back-button">
+    <button className="back-button" onClick={handleClick} type="button">
       Retour
     </button>
   );
