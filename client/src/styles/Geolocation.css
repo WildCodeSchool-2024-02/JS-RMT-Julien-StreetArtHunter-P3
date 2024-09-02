@@ -1,26 +1,10 @@
 .mapContainer {
-  height: 60vh;
+  height: 50vh;
   width: 100%;
-}
-
-.leaflet-popup-content {
-  max-width: 100%;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .leaflet-bottom.leaflet-left .leaflet-control-zoom {
   display: none;
-}
-
-.leaflet-popup-content img {
-  max-width: 35vh;
-  max-height: 35vh;
-  height: auto;
-  border-radius: 0.5rem;
 }
 
 .cluster-icon {
@@ -54,14 +38,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.popup-title,
-.popup-artist {
-  font-family: var(--font-title);
-  font-size: 0.9em;
-  line-height: 0.2;
-  text-align: center;
+  padding: 0.5px;
 }
 
 .popup-image {
@@ -71,18 +48,30 @@
   border-radius: 0.5rem;
 }
 
+.popup-title,
+.popup-artist {
+  font-family: var(--font-title);
+  font-size: 0.9em;
+  line-height: 0;
+  text-align: center;
+}
+
 .popup-buttons {
   display: none;
 }
 
 @media (max-width: 390px) {
   .popup-content-wrapper {
-    width: 50vh;
-    height: 45vh;
+    width: 30vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .popup-artist,
+    .popup-title {
+      margin: 7px 0;
+    }
   }
 
   .popup-buttons {
@@ -96,7 +85,6 @@
     text-decoration: none;
     width: 60px;
     height: 17px;
-    border-radius: 5px;
     cursor: pointer;
     font-family: var(--font-title);
     font-size: 0.8em;
