@@ -68,6 +68,8 @@ const categoryActions = require("./controllers/categoryActions");
 
 router.get("/categories", checkCookie, checkAdmin, categoryActions.browse);
 
+router.post("/categories", categoryActions.create);
+
 router.delete(
   "/categories/:id",
   checkCookie,
