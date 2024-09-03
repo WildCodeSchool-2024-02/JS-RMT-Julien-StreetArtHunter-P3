@@ -74,6 +74,8 @@ router.post("/register", userActions.create);
 
 const seenActions = require("./controllers/seenActions");
 
-router.get("/views", seenActions.browse);
+router.get("/views", checkCookie, seenActions.browse);
+
+router.put("/views/:streetArtId", checkCookie, checkAdmin, seenActions.update);
 
 module.exports = router;

@@ -11,23 +11,31 @@ class SeenRepository extends AbstractRepository {
     // Execute the SQL SELECT query to retrieve all artists from the "artist" table
     const [rows] = await this.database.query(`SELECT 
     seen.streetart_id,
+    seen.user_id,
     seen.proof as proof_image,
     streetart.image_url as streetart_image,
     streetart.title,
     user.pseudo,
-    seen_status.label as seen_status_select
+    seen.seen_status_id as seen_status_select
 FROM 
     ${this.table}
 INNER JOIN 
     streetart ON seen.streetart_id = streetart.id
 INNER JOIN 
     user ON seen.user_id = user.id
-INNER JOIN 
-    seen_status ON seen.seen_status_id = seen_status.id;
 `);
 
     // Return the array of users
     return rows;
+  }
+
+  async update(payload, streetArtId) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET seen_status_id = ? WHERE streetart_id = ? AND user_id = ?`,
+      [payload.status, streetArtId, payload.user]
+    );
+
+    return result.affectedRows;
   }
 }
 module.exports = SeenRepository;

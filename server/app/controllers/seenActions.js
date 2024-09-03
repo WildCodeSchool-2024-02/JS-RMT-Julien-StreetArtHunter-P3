@@ -15,10 +15,25 @@ const browse = async (req, res) => {
   }
 };
 
+const update = async (req, res, next) => {
+  // Extract the seen data from the request body and params
+
+  try {
+    // Update the seen in the database
+    await tables.seen.update(req.body, req.params.streetArtId);
+
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
 // Ready to export the controller functions
 module.exports = {
   browse,
+  update,
 };

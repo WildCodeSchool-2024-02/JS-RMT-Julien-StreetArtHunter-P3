@@ -44,6 +44,7 @@ function Seen() {
               data={seen}
               key={seen.id}
               handleDelete={() => openModal(seen.id)}
+              noDelete
             />
           ))}
         </tbody>
