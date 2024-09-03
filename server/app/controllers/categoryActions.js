@@ -14,6 +14,22 @@ const browse = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+const create = async (req, res, next) => {
+  try {
+    // Extract the item data from the request body
+    const category = req.body;
+
+    // Create a new character entry in the database
+    const insertId = await tables.category.create(category);
+    // Respond with HTTP 201 (Created) since the creation was successful
+    res.status(201).json({ id: insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 const destroy = async (req, res) => {
   try {
     // Fetch the userId from the request parameters
@@ -37,4 +53,5 @@ const destroy = async (req, res) => {
 module.exports = {
   browse,
   destroy,
+  create,
 };

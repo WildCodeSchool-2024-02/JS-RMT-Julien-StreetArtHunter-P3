@@ -16,6 +16,17 @@ class CategoryRepository extends AbstractRepository {
     return rows;
   }
 
+  async create(category) {
+    // Execute the SQL INSERT query to add a new user to the "city" table
+    const [result] = await this.database.query(
+      `insert into ${this.table} (title) values (?)`,
+      [category.title]
+    );
+
+    // Return the ID of the newly inserted user
+    return result.insertId;
+  }
+
   async destroy(categoryID) {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await this.database.query(

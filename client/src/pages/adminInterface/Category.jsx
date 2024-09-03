@@ -4,6 +4,7 @@ import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
 import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
+import ModalCategory from "../../components/modalCategory/ModalCategory";
 import "../../styles/reactModal.css";
 
 Modal.setAppElement("#root");
@@ -12,8 +13,9 @@ function Category() {
   const [categories, setCategories] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
 
-  useEffect(() => {
+  const getCatergory = () => {
     connexion
       .get("api/categories")
       .then((response) => {
@@ -22,6 +24,9 @@ function Category() {
       .catch((error) => {
         console.error("There was an error fetching the category!", error);
       });
+  };
+  useEffect(() => {
+    getCatergory();
   }, []);
 
   const openModal = (categoryId) => {
@@ -33,6 +38,14 @@ function Category() {
     setSelectedCategoryId(null);
     setModalIsOpen(false);
   };
+  const openAddModal = () => {
+    setAddModalIsOpen(true);
+  };
+
+  const closeAddModal = () => {
+    setAddModalIsOpen(false);
+  };
+
   const handleDelete = () => {
     if (selectedCategoryId !== null) {
       connexion
@@ -49,9 +62,17 @@ function Category() {
     }
   };
 
+  const handleRefresh = () => {
+    getCatergory();
+    closeAddModal();
+  };
+
   return (
     <div className="admin-table-container">
       <h1>Categories</h1>
+      <button className="button" type="submit" onClick={openAddModal}>
+        Ajouter Catergorie
+      </button>
       <table className="admin-table">
         <thead>
           {categories[0] && (
@@ -78,6 +99,18 @@ function Category() {
         <DeleteModalConfirmation
           onDelete={handleDelete}
           onCancel={closeModal}
+        />
+      </Modal>
+      <Modal
+        isOpen={addModalIsOpen}
+        onRequestClose={closeAddModal}
+        className="ReactModal__Content"
+        overlayClassName="ReactModal_Overlay-StreetArt"
+        contentLabel="Add Street Art Modal"
+      >
+        <ModalCategory
+          handleRefresh={handleRefresh}
+          closeAddModal={closeAddModal}
         />
       </Modal>
     </div>

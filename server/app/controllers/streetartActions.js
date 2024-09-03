@@ -4,7 +4,13 @@ const tables = require("../../database/tables");
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const streetarts = await tables.streetart.readAll();
+    let streetarts = [];
+
+    if (req.query.type === "recent") {
+      streetarts = await tables.streetart.readRecent();
+    } else {
+      streetarts = await tables.streetart.readAll();
+    }
 
     // Respond with the items in JSON format
     res.status(200).json(streetarts);

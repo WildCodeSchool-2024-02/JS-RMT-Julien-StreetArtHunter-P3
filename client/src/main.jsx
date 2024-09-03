@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { LoginProvider } from "./context/LoginContext";
 
+import App from "./App";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Artist from "./pages/adminInterface/Artist";
@@ -11,17 +12,17 @@ import Category from "./pages/adminInterface/Category";
 import StreetArt from "./pages/adminInterface/StreetArt";
 import User from "./pages/adminInterface/User";
 import City from "./pages/adminInterface/City";
+import Seen from "./pages/adminInterface/Seen";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
-import App from "./App";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
-import Seen from "./pages/adminInterface/Seen";
+import HunterMobile from "./pages/HunterGame";
+import Register from "./pages/Register";
 
 import connexion from "./services/connexion";
 
 import "./App.css";
-import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -48,26 +49,42 @@ const router = createBrowserRouter([
             }),
       },
       {
-        path: "/street-art-detail/:id",
+        path: "/street-arts/:id",
         element: <Detail />,
-        loader: async ({ params }) => {
-          try {
-            const response = await fetch(
-              `${import.meta.env.VITE_API_URL}/api/streetarts/${params.id}`
-            );
-            if (!response.ok) {
-              throw new Error("Network response was not ok.");
-            }
-            const data = await response.json();
-            // Assurez-vous que data est bien un tableau
-            return Array.isArray(data) ? data : [data];
-          } catch (error) {
-            return []; // Retourner un tableau vide en cas d'erreur
-          }
-        },
+        loader: async ({ params }) =>
+          connexion
+            .get(`api/streetarts/${params.id}`)
+            .then((response) => response.data)
+            .catch((error) => {
+              console.error(
+                "Erreur lors de la récupération des données de StreetArt:",
+                error
+              );
+              return [];
+            }),
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />
       },
     ],
   },
+  {
+    path: "/hunter-game",
+    element: <HunterMobile />,
+    loader: () =>
+      connexion
+        .get("api/streetarts")
+        .then((response) => response.data)
+        .catch((error) => {
+          console.error(
+            "Erreur lors de la récupération des données de StreetArt:",
+            error
+          );
+          return [];
+        }),
+  },
+
   {
     path: "/admin/",
     element: <Admin />,
@@ -105,10 +122,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
-  },
-  {
-    path: "/gallery",
-    element: <Gallery />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));

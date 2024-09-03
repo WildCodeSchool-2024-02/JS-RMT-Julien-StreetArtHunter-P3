@@ -1,8 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import connexion from "../services/connexion";
-import ModalSelect from "./ModalSelect";
-import ModalButton from "./ModalButton";
+import connexion from "../../services/connexion";
+
+import ModalButton from "../modalShared/ModalButton";
+import ModalSelect from "../modalShared/ModalSelect";
+
 
 function ModalStreetArt({ handleRefresh, closeAddModal }) {
   const [newStreetArt, setNewStreetArt] = useState({
@@ -41,6 +43,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
       <form onSubmit={handleAddSubmit}>
         <input
           type="text"
+          aria-label=" streetArt titre"
           name="title"
           placeholder="Titre"
           value={newStreetArt.title}
@@ -49,6 +52,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         />
         <input
           type="text"
+          aria-label=" streetArt description"
           name="description"
           placeholder="Description"
           value={newStreetArt.description}
@@ -57,6 +61,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         />
         <input
           type="text"
+          aria-label=" streetArt geolocalisation_x"
           name="geolocation_x"
           placeholder="Geolocalisation X"
           value={newStreetArt.geolocation_x}
@@ -65,6 +70,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         />
         <input
           type="text"
+          aria-label=" streetArt geolocalisation y"
           name="geolocation_y"
           placeholder="Geolocalisation Y"
           value={newStreetArt.geolocation_y}
@@ -73,6 +79,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         />
         <input
           type="text"
+          aria-label=" streetArt image"
           name="image_url"
           placeholder="Image URL"
           value={newStreetArt.image_url}
@@ -82,6 +89,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         <ModalSelect
           handleInputChange={handleInputChange}
           url="cities"
+          aria-label="ville"
           name="city_id"
           value={newStreetArt.city_id}
           title="Sélectionne une ville"
@@ -90,12 +98,13 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         <ModalSelect
           handleInputChange={handleInputChange}
           url="artists"
+          aria-label="artiste"
           name="artist_id"
           value={newStreetArt.artist_id}
           title="Sélectionne un artiste"
           optionKey="name"
         />
-        <ModalButton closeAddModal={closeAddModal} />
+        <ModalButton closeAddModal={closeAddModal}  label="close button"/>
       </form>
     </div>
   );

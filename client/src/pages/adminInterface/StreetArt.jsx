@@ -4,7 +4,7 @@ import connexion from "../../services/connexion";
 import Rows from "../../components/tables/Rows";
 import Head from "../../components/tables/Head";
 import DeleteModalConfirmation from "../../components/DeleteModalConfirmation";
-import ModalStreetArt from "../../components/ModalStreetArt";
+import ModalStreetArt from "../../components/modalStreetArts/ModalStreetArt";
 import "../../styles/reactModal.css";
 import "../../styles/button.css";
 
