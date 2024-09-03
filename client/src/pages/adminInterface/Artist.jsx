@@ -27,7 +27,7 @@ function Artist() {
   };
 
   useEffect(() => {
-    getArtists()
+    getArtists();
   }, []);
 
   const openModal = (artistId) => {
@@ -53,7 +53,7 @@ function Artist() {
       connexion
         .delete(`api/artists/${selectedArtistId}`)
         .then(() => {
-          getArtists()
+          getArtists();
           closeModal();
         })
         .catch((error) => {

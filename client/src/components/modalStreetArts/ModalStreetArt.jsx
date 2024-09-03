@@ -38,7 +38,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
       await connexion.post(`api/streetarts`, formData);
       handleRefresh();
     } catch
-    (error) {
+      (error) {
       console.error("There was an error adding the new street art!", error);
     }
   };
