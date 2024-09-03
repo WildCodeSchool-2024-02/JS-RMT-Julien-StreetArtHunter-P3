@@ -6,23 +6,24 @@ body {
 }
 
 .container-detail {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 45% 50%; /* 40% pour l'image, 60% pour les détails */
+  grid-template-rows: auto auto;
+  gap: 40px; /* Espace entre les colonnes */
+  margin: 50px;
 }
 
 .streetart-image {
-  max-width: 50vw;
-  height: 30vw;
+  width: 100%; /* L'image prend toute la largeur de la première colonne */
+  height: 40vw; /* Conserve le ratio d'aspect de l'image */
   border-radius: 8px;
-  margin-top: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
 }
 
 .detail-streetart-container {
-  max-width: 100%;
+  grid-column: 2 / 3; /* Place les détails dans la deuxième colonne */
+  grid-row: 1 / 2; /* Place les détails dans la première ligne */
+  display: flex;
+  flex-direction: column; /* Aligne les détails en colonne */
   color: white;
 }
 
@@ -31,28 +32,30 @@ h4 {
   font-weight: bold;
   line-height: 1.5;
   text-align: left;
+  margin-bottom: 10px; /* Espace entre les éléments */
 }
 
 .description-container {
-  margin: 0px 5px;
-  margin-top: 130px;
-  width: 60%;
-  background-color: #ffffff;
-  opacity: 60%;
-  padding: 20px;
+  grid-column: 2 / 3; /* Place les détails dans la deuxième colonne */
+  grid-row: 1 / 2; /* Place la description sur la deuxième ligne */
+  align-self: flex-end;
+  margin-top: 10px;
+  background-color: white;
   border-radius: 8px;
+  opacity: 60%;
+  width: 70%;
+}
+
+.description-container > h5,
+.description-container > p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  padding: 3px;
 }
 
 .description-container > h5 {
   text-decoration: underline;
-  color: black;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.streetart-description {
-  color: black;
-  line-height: 1.2;
+  margin-top: 5px;
 }
 
 @media (max-width: 390px) {
@@ -61,8 +64,8 @@ h4 {
     grid-template-columns: 40% 60%; /* 40% pour l'image, 60% pour les détails */
     grid-template-rows: auto auto;
     gap: 10px; /* Espace entre les colonnes */
-    align-items: start; /* Aligne le contenu en haut */
-    margin-top: 0px;
+    align-items: center; /* Aligne le contenu en haut */
+    margin: 10px;
   }
 
   .streetart-image {
@@ -70,7 +73,7 @@ h4 {
     grid-row: 1 / 2; /* Place l'image dans la première ligne */
     width: 100%; /* L'image prend toute la largeur de sa colonne */
     height: 35vw;
-    margin: 8px;
+    margin: 0px;
   }
 
   .detail-streetart-container {
@@ -93,8 +96,6 @@ h4 {
   .description-container {
     grid-column: 1 / -1; /* Étend la description sur toute la largeur (les deux colonnes) */
     grid-row: 2 / 3; /* Place la description sur la deuxième ligne */
-    margin-top: 10px;
-    margin-left: 10px;
     width: 95%;
   }
 
@@ -102,6 +103,6 @@ h4 {
   .description-container > p {
     font-size: 0.9rem;
     margin-bottom: 0;
-    padding: 0px;
+    padding: 6px;
   }
 }

@@ -52,8 +52,9 @@
 .popup-artist {
   font-family: var(--font-title);
   font-size: 0.9em;
-  line-height: 0;
+  line-height: 0.8;
   text-align: center;
+  margin-bottom: 1px;
 }
 
 .popup-buttons {
