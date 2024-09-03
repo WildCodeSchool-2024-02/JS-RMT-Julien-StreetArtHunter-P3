@@ -4,11 +4,15 @@ import "../styles/form-register.css";
 
 function Register() {
   return (
-    <div className="register-connexion">
-      <img src={logo} alt="logo" />
-      <h2>Inscription</h2>
-      <FormRegister />
-    </div>
+    <>
+      <div className="head-register">
+        <img src={logo} alt="logo" className="register-logo" />
+      </div>
+      <div className="register-connexion">
+        <h2>Inscription</h2>
+        <FormRegister />
+      </div>
+    </>
   );
 }
 
