@@ -77,6 +77,7 @@
 @media (max-width: 390px) {
   .head-login {
     justify-content: center;
+    height: 100px;
   }
 
   .login-logo {
@@ -86,11 +87,11 @@
   }
 
   .login-connexion {
-    height: 70vh;
+    height: 85vh;
   }
 
   .login-connexion > h2 {
-    margin-bottom: 0px;
+    padding-bottom: 1px;
   }
 
   .form-connection input {
