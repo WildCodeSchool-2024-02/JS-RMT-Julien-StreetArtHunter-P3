@@ -18,6 +18,7 @@ import Gallery from "./pages/Gallery";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
 import HunterMobile from "./pages/HunterGame";
+import Result from "./pages/Result";
 import Register from "./pages/Register";
 
 import connexion from "./services/connexion";
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery />
+      },
+      {
+        path: "result",
+        element: <Result />,
       },
     ],
   },
