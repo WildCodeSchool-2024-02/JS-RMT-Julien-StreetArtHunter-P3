@@ -68,6 +68,8 @@ class StreetartRepository extends AbstractRepository {
           s.geolocation_y, 
           s.image_url, 
           s.image_alt, 
+          s.city_id,
+          s.artist_id,
           c.name AS city_name, 
           a.name AS artist_name
         FROM ${this.table} AS s
