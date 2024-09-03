@@ -1,9 +1,20 @@
+.head-login {
+  display: flex;
+  justify-content: flex-start;
+  height: 150px;
+}
+
+.login-logo {
+  width: 150px;
+  height: 100px;
+}
+
 .login-connexion {
   background-color: var(--main-bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   box-sizing: border-box;
   flex-direction: column;
@@ -64,6 +75,20 @@
 }
 
 @media (max-width: 390px) {
+  .head-login {
+    justify-content: center;
+  }
+
+  .login-logo {
+    width: 90px;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .login-connexion {
+    height: 70vh;
+  }
+
   .login-connexion > h2 {
     margin-bottom: 0px;
   }
