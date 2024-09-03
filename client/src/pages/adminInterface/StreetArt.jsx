@@ -72,7 +72,7 @@ function StreetArt() {
     <div className="admin-table-container">
       <h1>Street Arts</h1>
       <button className="button" type="submit" onClick={openAddModal}>
-        Ajouter StreetArt
+        Ajouter un StreetArt
       </button>
       <table className="admin-table">
         <thead>
