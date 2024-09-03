@@ -138,14 +138,6 @@ class StreetartRepository extends AbstractRepository {
     );
     return rows;
   }
-
-  async updateStreetarts(streetart) {
-    const [result] = await this.database.query(
-      `UPDATE ${this.table} SET image_url = ? WHERE id = ?`,
-      [streetart.image_url, streetart.id]
-    );
-    return result;
-  }
 }
 
 module.exports = StreetartRepository;
