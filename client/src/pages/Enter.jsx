@@ -3,7 +3,7 @@ import citybackground from "../assets/city-background.png";
 import logo from "../assets/logo.png";
 import "../App.css";
 import "../styles/home-enter.css";
-import "../styles/button.css";
+import "../styles/button-enter.css";
 
 function Enter() {
   return (
@@ -12,7 +12,7 @@ function Enter() {
       <section className="content">
         <img src={logo} className="title-image" alt="Street Art Hunter" />
         <Link to="/street-arts">
-          <p className="button">Entrer dans StreetArt Hunter</p>
+          <p className="button-enter">Entrer dans StreetArt Hunter</p>
         </Link>
       </section>
       <section className="about-section">
