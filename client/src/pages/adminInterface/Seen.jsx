@@ -35,7 +35,7 @@ function Seen() {
 
   return (
     <div className="admin-table-container">
-      <h1>Views</h1>
+      <h1>Vues</h1>
       <table className="admin-table">
         <thead>{views[0] && <Head data={views[0]} key={views[0].id} />}</thead>
         <tbody>

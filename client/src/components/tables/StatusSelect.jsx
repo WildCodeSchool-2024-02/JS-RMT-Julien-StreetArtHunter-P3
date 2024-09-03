@@ -3,16 +3,13 @@ import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
 
 function StatusSelect({ data, el }) {
-  // Set the initial status from the data, defaulting to 1 if not available
   const [status, setStatus] = useState(data[el]);
 
-  // Handle changes in the select dropdown
   const handleChange = (event) => {
     const newStatus = Number(event.target.value);
     setStatus(newStatus);
   };
 
-  // Effect to handle the status update on change
   useEffect(() => {
     if (status !== data[el]) {
       const updateStatus = async () => {
@@ -30,9 +27,26 @@ function StatusSelect({ data, el }) {
     }
   }, [status, data, el]);
 
+  const getStatusClass = () => {
+    switch (status) {
+      case 1:
+        return "status-pending";
+      case 2:
+        return "status-approved";
+      case 3:
+        return "status-rejected";
+      default:
+        return "";
+    }
+  };
+
   return (
     <td>
-      <select value={status} onChange={handleChange}>
+      <select
+        value={status}
+        onChange={handleChange}
+        className={`status-select ${getStatusClass()}`}
+      >
         <option value={1}>En attente</option>
         <option value={2}>Accepté</option>
         <option value={3}>Refusé</option>

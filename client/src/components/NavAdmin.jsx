@@ -25,7 +25,7 @@ function NavAdmin() {
           Villes
         </Link>
         <Link to="/admin/seen" className="nav-button">
-          Vue
+          Vues
         </Link>
       </nav>
     </div>
