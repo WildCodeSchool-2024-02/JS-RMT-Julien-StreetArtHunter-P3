@@ -88,30 +88,9 @@ const destroy = async (req, res) => {
   }
 };
 
-const updateStreetarts = async (req, res, next) => {
-  const imageUrl = `/upload/streetart/${req.file.filename}`;
-  const streetartId = req.params.id;
-
-  try {
-    const result = await tables.streetart.updateStreetarts({
-      image_url: imageUrl,
-      id: streetartId,
-    });
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: "Image non trouvée." });
-    }
-
-    return res.sendStatus(204);
-  } catch (err) {
-    return next(err);
-  }
-};
-
 module.exports = {
   browse,
   read,
   destroy,
   create,
-  updateStreetarts,
 };
