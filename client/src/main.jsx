@@ -45,7 +45,6 @@ const router = createBrowserRouter([
                 "Erreur lors de la récupération des données de StreetArt:",
                 error
               );
-              return [];
             }),
       },
       {

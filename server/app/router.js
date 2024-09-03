@@ -2,12 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
+const upload = require("./services/upload");
+
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
 
 const streetartActions = require("./controllers/streetartActions");
-
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
 const { validateLogin } = require("./services/validation/user");
 const { validateStreetart } = require("./services/validation/streetart");
@@ -33,6 +34,7 @@ router.post(
   "/streetarts",
   checkCookie,
   checkAdmin,
+  upload.single("streetart"),
   validateStreetart,
   streetartActions.create
 );

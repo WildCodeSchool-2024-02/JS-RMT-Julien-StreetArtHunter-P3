@@ -70,7 +70,7 @@ function City() {
     <div className="admin-table-container">
       <h1>Villes</h1>
       <button className="button" type="submit" onClick={openAddModal}>
-        Ajouter Ville
+        Ajouter une Ville
       </button>
       <table className="admin-table">
         <thead>
