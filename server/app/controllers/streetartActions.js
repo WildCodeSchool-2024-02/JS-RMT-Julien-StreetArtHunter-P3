@@ -55,7 +55,10 @@ const create = async (req, res, next) => {
     const streetart = req.body;
 
     // Create a new character entry in the database
-    const insertId = await tables.streetart.create(streetart);
+    const insertId = await tables.streetart.create(
+      streetart,
+      req.file.filename
+    );
     // Respond with HTTP 201 (Created) since the creation was successful
     res.status(201).json({ id: insertId });
   } catch (err) {

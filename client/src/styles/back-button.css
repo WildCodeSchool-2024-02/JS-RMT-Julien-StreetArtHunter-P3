@@ -1,0 +1,23 @@
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  padding: 7px;
+  border-radius: 2em;
+  outline: none;
+  font-family: var(--font-subtitle);
+  border: 1px solid #6b1381;
+  background-color: oklch(20% 0.0666 var(--hue));
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #9b4caf;
+}
+
+.back-button-logo {
+  width: 16px;
+  height: 16px;
+}

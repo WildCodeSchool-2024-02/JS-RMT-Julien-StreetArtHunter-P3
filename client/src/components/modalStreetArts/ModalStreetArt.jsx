@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
-
 import ModalButton from "../modalShared/ModalButton";
 import ModalSelect from "../modalShared/ModalSelect";
 
@@ -12,7 +11,6 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
     description: "",
     geolocation_x: null,
     geolocation_y: null,
-    image_url: "",
     city_id: null,
     artist_id: null,
   });
@@ -25,22 +23,30 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
     }));
   };
 
-  const handleAddSubmit = (e) => {
+  const inputRef = useRef();
+  const handleAddSubmit = async (e) => {
     e.preventDefault();
-    connexion
-      .post("api/streetarts", newStreetArt)
-      .then(() => {
-        handleRefresh();
-      })
-      .catch((error) => {
-        console.error("There was an error adding the new street art!", error);
-      });
+    try {
+      const formData = new FormData();
+      formData.append("streetart", inputRef.current.files[0]);
+      formData.append("title", newStreetArt.title);
+      formData.append("description", newStreetArt.description);
+      formData.append("geolocation_x", newStreetArt.geolocation_x);
+      formData.append("geolocation_y", newStreetArt.geolocation_y);
+      formData.append("city_id", newStreetArt.city_id);
+      formData.append("artist_id", newStreetArt.artist_id);
+      await connexion.post(`api/streetarts`, formData);
+      handleRefresh();
+    } catch
+      (error) {
+      console.error("There was an error adding the new street art!", error);
+    }
   };
 
   return (
     <div>
       <h2>Ajouter un nouveau StreetArt</h2>
-      <form onSubmit={handleAddSubmit}>
+      <form onSubmit={handleAddSubmit} encType="multipart/form-data">
         <input
           type="text"
           aria-label=" streetArt titre"
@@ -78,12 +84,12 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
           required
         />
         <input
-          type="text"
+          type="file"
           aria-label=" streetArt image"
           name="image_url"
           placeholder="Image URL"
           value={newStreetArt.image_url}
-          onChange={handleInputChange}
+          ref={inputRef}
           required
         />
         <ModalSelect
@@ -104,7 +110,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
           title="Sélectionne un artiste"
           optionKey="name"
         />
-        <ModalButton closeAddModal={closeAddModal}  label="close button"/>
+        <ModalButton closeAddModal={closeAddModal} />
       </form>
     </div>
   );

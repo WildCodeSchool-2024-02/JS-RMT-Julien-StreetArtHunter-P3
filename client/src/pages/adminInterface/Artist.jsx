@@ -27,7 +27,7 @@ function Artist() {
   };
 
   useEffect(() => {
-    getArtists()
+    getArtists();
   }, []);
 
   const openModal = (artistId) => {
@@ -53,7 +53,7 @@ function Artist() {
       connexion
         .delete(`api/artists/${selectedArtistId}`)
         .then(() => {
-          getArtists()
+          getArtists();
           closeModal();
         })
         .catch((error) => {
@@ -71,7 +71,7 @@ function Artist() {
     <div className="admin-table-container">
       <h1>Artistes</h1>
       <button className="button" type="submit" onClick={openAddModal}>
-        Ajouter Artist
+        Ajouter un Artist
       </button>
       <table className="admin-table">
         <thead>

@@ -102,7 +102,7 @@ class StreetartRepository extends AbstractRepository {
     return rows;
   }
 
-  async create(streetart) {
+  async create(streetart, filename) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
@@ -110,7 +110,7 @@ class StreetartRepository extends AbstractRepository {
         streetart.description,
         streetart.geolocation_x,
         streetart.geolocation_y,
-        streetart.image_url,
+        `assets/streetarts/${filename}`,
         streetart.city_id,
         streetart.artist_id,
       ]

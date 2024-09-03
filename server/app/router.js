@@ -2,12 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
+const upload = require("./services/upload");
+
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
 
 const streetartActions = require("./controllers/streetartActions");
-
 const { checkCookie, checkAdmin } = require("./services/checkAuth");
 const { validateLogin } = require("./services/validation/user");
 const { validateStreetart } = require("./services/validation/streetart");
@@ -33,6 +34,7 @@ router.post(
   "/streetarts",
   checkCookie,
   checkAdmin,
+  upload.single("streetart"),
   validateStreetart,
   streetartActions.create
 );
@@ -68,6 +70,8 @@ const categoryActions = require("./controllers/categoryActions");
 
 router.get("/categories", checkCookie, checkAdmin, categoryActions.browse);
 
+router.post("/categories", categoryActions.create);
+
 router.delete(
   "/categories/:id",
   checkCookie,
@@ -92,5 +96,11 @@ router.get("/cities", checkCookie, checkAdmin, cityActions.browse);
 router.delete("/cities/:id", checkCookie, checkAdmin, cityActions.destroy);
 
 router.post("/register", userActions.create);
+
+const seenActions = require("./controllers/seenActions");
+
+router.get("/views", checkCookie, seenActions.browse);
+
+router.put("/views/:streetArtId", checkCookie, checkAdmin, seenActions.update);
 
 module.exports = router;
