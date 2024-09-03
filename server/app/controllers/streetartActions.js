@@ -30,7 +30,6 @@ const read = async (req, res) => {
   try {
     // Fetch a single item by ID from the database
     const streetart = await tables.streetart.readById(id);
-
     if (streetart) {
       // Respond with the item in JSON format
       res.status(200).json(streetart);

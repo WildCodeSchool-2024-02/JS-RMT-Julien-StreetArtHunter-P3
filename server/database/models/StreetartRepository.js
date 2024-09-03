@@ -38,18 +38,19 @@ class StreetartRepository extends AbstractRepository {
     // Execute the SQL SELECT query to retrieve all streetarts from the "streetart" table
     const [rows] = await this.database.query(
       `SELECT 
-        s.id, 
-        s.title, 
-        s.geolocation_x, 
-        s.geolocation_y, 
-        s.image_url, 
-        s.image_alt, 
-        c.name AS city_name, 
-        a.name FROM 
-        ${this.table} AS s INNER JOIN 
-        artist AS a ON 
-        s.artist_id = a.id INNER JOIN
-        city AS c ON s.city_id = c.id `
+       s.id, 
+       s.title, 
+       s.geolocation_x, 
+       s.geolocation_y, 
+       s.image_url, 
+       s.image_alt, 
+       c.name AS city_name, 
+       a.name AS artist_name,
+       cat.title AS category_title
+     FROM ${this.table} AS s
+     INNER JOIN artist AS a ON s.artist_id = a.id
+     INNER JOIN city AS c ON s.city_id = c.id
+     INNER JOIN category AS cat ON s.category_id = cat.id`
     );
 
     // Return the array of streetarts
@@ -69,14 +70,15 @@ class StreetartRepository extends AbstractRepository {
           s.image_url, 
           s.image_alt, 
           c.name AS city_name, 
-          a.name AS artist_name
+          a.name AS artist_name,
+          cat.title AS category_title
         FROM ${this.table} AS s
         INNER JOIN artist AS a ON s.artist_id = a.id
         INNER JOIN city AS c ON s.city_id = c.id
+        INNER JOIN category AS cat ON s.category_id = cat.id
         WHERE s.id = ?`,
       [id]
     );
-
     return rows[0];
   }
 
@@ -104,13 +106,14 @@ class StreetartRepository extends AbstractRepository {
 
   async create(streetart) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, category_id, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         streetart.title,
         streetart.description,
         streetart.geolocation_x,
         streetart.geolocation_y,
         streetart.image_url,
+        streetart.category_id,
         streetart.city_id,
         streetart.artist_id,
       ]
