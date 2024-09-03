@@ -47,14 +47,26 @@ CREATE TABLE streetart (
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
+CREATE TABLE seen_status (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    label varchar(100)
+);
+
+INSERT INTO seen_status (label) VALUES ('En attente');
+INSERT INTO seen_status (label) VALUES ('Validé');
+INSERT INTO seen_status (label) VALUES ('Refusé');
+
 CREATE TABLE seen (
     user_id INT,
     streetart_id INT,
-    points INT,
+    seen_status_id INT NOT NULL DEFAULT 1,
+    proof VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE,
+    FOREIGN KEY (seen_status_id) REFERENCES seen_status(id)
 );
+
 
 INSERT INTO city (name) VALUES ('Paris');
 
@@ -325,12 +337,14 @@ VALUES (
         44.830324
     );
 
-INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (1, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "https://parisjetaime.com/data/layout_image/26190_Paris-Attitude-street-art--630x405--%C2%A9-Antoine-Buchet.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "https://www.boumbang.com/wp-content/uploads/2012/02/melbourne-street-art-51.jpg");
 
 INSERT INTO category (title) VALUES ('Graffiti');
 INSERT INTO category (title) VALUES ('Pochoirs');
 INSERT INTO category (title) VALUES ('Mosaïques');
-INSERT INTO category (title) VALUES ('Sculptures et installations urbaines');
+INSERT INTO category (title) VALUES ('Scultures et installations urbaines');
 INSERT INTO category (title) VALUES ('Fresques murales');
 INSERT INTO category (title) VALUES ('Street art 3D');
 INSERT INTO category (title) VALUES ('Stickering');

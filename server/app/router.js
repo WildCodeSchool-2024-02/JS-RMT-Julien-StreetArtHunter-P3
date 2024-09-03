@@ -95,4 +95,10 @@ router.delete("/cities/:id", checkCookie, checkAdmin, cityActions.destroy);
 
 router.post("/register", userActions.create);
 
+const seenActions = require("./controllers/seenActions");
+
+router.get("/views", checkCookie, seenActions.browse);
+
+router.put("/views/:streetArtId", checkCookie, checkAdmin, seenActions.update);
+
 module.exports = router;
