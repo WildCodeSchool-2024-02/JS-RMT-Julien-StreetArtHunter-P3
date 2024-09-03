@@ -6,6 +6,7 @@ function Detail() {
   if (!streetArt) {
     return <p>StreetArt non trouvé</p>;
   }
+
   return (
     <div>
       <section className="container-detail">
@@ -15,16 +16,16 @@ function Detail() {
           alt={streetArt.image_alt}
         />
         <div className="detail-streetart-container">
-          <h2>{streetArt.title}</h2>
+          <h3>{streetArt.title}</h3>
           <h3>{streetArt.category_title}</h3>
           <h4>{streetArt.city_name}</h4>
           <p> Artiste: {streetArt.artist_name}</p>
-          <div>
-            <h2>Description:</h2>
-            {streetArt.description && (
-              <p className="streetart-description">{streetArt.description}</p>
-            )}
-          </div>
+        </div>
+        <div className="description-container">
+          <h5>Description:</h5>
+          {streetArt.description && (
+            <p className="streetart-description">{streetArt.description}</p>
+          )}
         </div>
       </section>
     </div>
