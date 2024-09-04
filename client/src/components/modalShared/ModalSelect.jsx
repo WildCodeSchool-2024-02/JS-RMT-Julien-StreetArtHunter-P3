@@ -24,8 +24,8 @@ function AddModalSelect({
   }, [url]);
 
   return (
-    <select name={name} onChange={handleInputChange} required>
-      <option value={value}>{title}</option>
+    <select name={name} onChange={handleInputChange} required value={value}>
+      <option value="">{title}</option>
       {selection.map((select) => (
         <option key={select.id} value={select.id}>
           {select[optionKey]}

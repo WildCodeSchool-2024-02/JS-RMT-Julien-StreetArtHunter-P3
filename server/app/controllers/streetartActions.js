@@ -30,7 +30,6 @@ const read = async (req, res) => {
   try {
     // Fetch a single item by ID from the database
     const streetart = await tables.streetart.readById(id);
-
     if (streetart) {
       // Respond with the item in JSON format
       res.status(200).json(streetart);
@@ -55,10 +54,7 @@ const create = async (req, res, next) => {
     const streetart = req.body;
 
     // Create a new character entry in the database
-    const insertId = await tables.streetart.create(
-      streetart,
-      req.file.filename
-    );
+    const insertId = await tables.streetart.create(streetart, req.file);
     // Respond with HTTP 201 (Created) since the creation was successful
     res.status(201).json({ id: insertId });
   } catch (err) {
@@ -88,9 +84,26 @@ const destroy = async (req, res) => {
   }
 };
 
+// controllers/streetartActions.js
+const update = async (req, res, next) => {
+  try {
+    // Extract the item data from the request body
+    const streetart = req.body;
+
+    // Create a new character entry in the database
+    await tables.streetart.update(streetart, req.file, req.params.id);
+    // Respond with HTTP 201 (Created) since the creation was successful
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 module.exports = {
   browse,
   read,
   destroy,
   create,
+  update,
 };

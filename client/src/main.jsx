@@ -51,17 +51,18 @@ const router = createBrowserRouter([
       {
         path: "/street-arts/:id",
         element: <Detail />,
-        loader: async ({ params }) =>
-          connexion
-            .get(`api/streetarts/${params.id}`)
-            .then((response) => response.data)
-            .catch((error) => {
-              console.error(
-                "Erreur lors de la récupération des données de StreetArt:",
-                error
-              );
-              return [];
-            }),
+        loader: async ({ params }) => {
+          try {
+            const response = await connexion.get(`api/streetarts/${params.id}`);
+            return response.data;
+          } catch (error) {
+            console.error(
+              "Erreur lors de la récupération des données de StreetArt:",
+              error
+            );
+            return null;
+          }
+        },
       },
       {
         path: "/gallery",

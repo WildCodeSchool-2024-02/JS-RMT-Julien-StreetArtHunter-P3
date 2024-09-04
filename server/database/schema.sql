@@ -52,10 +52,6 @@ CREATE TABLE seen_status (
     label varchar(100)
 );
 
-INSERT INTO seen_status (label) VALUES ('En attente');
-INSERT INTO seen_status (label) VALUES ('Validé');
-INSERT INTO seen_status (label) VALUES ('Refusé');
-
 CREATE TABLE seen (
     user_id INT,
     streetart_id INT,
@@ -119,7 +115,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -132,6 +129,7 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
+
 INSERT INTO
     user (
         pseudo,
@@ -145,7 +143,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -158,7 +157,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -171,7 +171,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -184,7 +185,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -197,7 +199,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -210,7 +213,8 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    INSERT INTO
+
+INSERT INTO
     user (
         pseudo,
         email,
@@ -223,6 +227,7 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
+    
 INSERT INTO artist (name) VALUES ('Banksy');
 
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
@@ -237,11 +242,23 @@ INSERT INTO artist (name) VALUES ('Paola Delfin');
 
 INSERT INTO artist (name) VALUES ('Okuda');
 
+INSERT INTO category (title) VALUES ('Graffiti');
+INSERT INTO category (title) VALUES ('Pochoirs');
+INSERT INTO category (title) VALUES ('Mosaïques');
+INSERT INTO category (title) VALUES ('Sculptures et installations urbaines');
+INSERT INTO category (title) VALUES ('Fresques murales');
+INSERT INTO category (title) VALUES ('Street art 3D');
+INSERT INTO category (title) VALUES ('Stickering');
+INSERT INTO category (title) VALUES ('Art activiste');
+INSERT INTO category (title) VALUES ('Yarn bombing');
+
+
 INSERT INTO
     streetart (
         title,
         description,
         image_url,
+        category_id,
         city_id,
         artist_id,
         geolocation_x,
@@ -251,6 +268,7 @@ VALUES (
         'Chuuuttt',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/streetarts/Chuuuttt.jpg',
+        3,
         1,
         5,
         2.287592,
@@ -262,6 +280,7 @@ INSERT INTO
         title,
         description,
         image_url,
+        category_id,
         city_id,
         artist_id,
         geolocation_x,
@@ -271,6 +290,7 @@ VALUES (
         'Amor com as Mulheres',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/streetarts/amor-com-as-mulheres.jpg',
+        6,
         3,
         7,
         2.421488873012425,
@@ -282,6 +302,7 @@ INSERT INTO
         title,
         description,
         image_url,
+        category_id,
         city_id,
         artist_id,
         geolocation_x,
@@ -291,6 +312,7 @@ VALUES (
         'The cat',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/streetarts/the-cat.jpg',
+        5,
         1,
         4,
         2.317891232021214,
@@ -302,6 +324,7 @@ INSERT INTO
         title,
         description,
         image_url,
+        category_id,
         city_id,
         artist_id,
         geolocation_x,
@@ -311,6 +334,7 @@ VALUES (
         'Champagne Rat',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/streetarts/rat-champagne.jpg',
+        5,
         1,
         1,
         -3.698358,
@@ -322,6 +346,7 @@ INSERT INTO
         title,
         description,
         image_url,
+        category_id,
         city_id,
         artist_id,
         geolocation_x,
@@ -331,23 +356,19 @@ VALUES (
         'Petite fille, espoir',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
         'assets/streetarts/petite-fille-espoir.jpg',
+        8,
         4,
         5,
         -0.6032733,
         44.830324
     );
 
-INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
+INSERT INTO seen_status (label) VALUES ('En attente');
+INSERT INTO seen_status (label) VALUES ('Validé');
+INSERT INTO seen_status (label) VALUES ('Refusé');
+
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (1, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
 INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "https://parisjetaime.com/data/layout_image/26190_Paris-Attitude-street-art--630x405--%C2%A9-Antoine-Buchet.jpg");
 INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "https://www.boumbang.com/wp-content/uploads/2012/02/melbourne-street-art-51.jpg");
 
-INSERT INTO category (title) VALUES ('Graffiti');
-INSERT INTO category (title) VALUES ('Pochoirs');
-INSERT INTO category (title) VALUES ('Mosaïques');
-INSERT INTO category (title) VALUES ('Scultures et installations urbaines');
-INSERT INTO category (title) VALUES ('Fresques murales');
-INSERT INTO category (title) VALUES ('Street art 3D');
-INSERT INTO category (title) VALUES ('Stickering');
-INSERT INTO category (title) VALUES ('Art activiste');
-INSERT INTO category (title) VALUES ('Yarn bombing');
 

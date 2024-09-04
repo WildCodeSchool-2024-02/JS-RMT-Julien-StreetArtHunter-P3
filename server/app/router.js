@@ -39,6 +39,15 @@ router.post(
   streetartActions.create
 );
 
+router.put(
+  "/streetarts/:id",
+  checkCookie,
+  checkAdmin,
+  upload.single("streetart"),
+  validateStreetart,
+  streetartActions.update
+);
+
 const userActions = require("./controllers/userActions");
 
 // Route to get a list of users
