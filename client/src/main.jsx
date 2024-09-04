@@ -17,7 +17,7 @@ import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
-import HunterMobile from "./pages/HunterGame";
+import HunterGame from "./pages/HunterGame";
 import Result from "./pages/Result";
 import Register from "./pages/Register";
 import NotFound from "./components/NotFound";
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/hunter-game",
-    element: <HunterMobile />,
+    element: <HunterGame />,
     loader: () =>
       connexion
         .get("api/streetarts")

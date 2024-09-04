@@ -109,7 +109,12 @@ router.post("/register", userActions.create);
 const seenActions = require("./controllers/seenActions");
 
 router.get("/views", checkCookie, seenActions.browse);
-
+router.post(
+  "/views",
+  checkCookie,
+  upload.single("proof"),
+  seenActions.create
+);
 router.put("/views/:streetArtId", checkCookie, checkAdmin, seenActions.update);
 
 module.exports = router;

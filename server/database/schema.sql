@@ -16,10 +16,10 @@ CREATE TABLE city (
     points INT DEFAULT 0
 );
 
-CREATE TABLE artist ( 
-    id INT AUTO_INCREMENT PRIMARY KEY, 
-    name VARCHAR(255) NOT NULL, 
-    points INT DEFAULT 0 
+CREATE TABLE artist (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    points INT DEFAULT 0
 );
 
 CREATE TABLE category (
@@ -227,7 +227,7 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
-    
+
 INSERT INTO artist (name) VALUES ('Banksy');
 
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
@@ -370,5 +370,4 @@ INSERT INTO seen_status (label) VALUES ('Refusé');
 INSERT INTO seen (user_id, streetart_id, proof) VALUES (1, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
 INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "https://parisjetaime.com/data/layout_image/26190_Paris-Attitude-street-art--630x405--%C2%A9-Antoine-Buchet.jpg");
 INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "https://www.boumbang.com/wp-content/uploads/2012/02/melbourne-street-art-51.jpg");
-
 

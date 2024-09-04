@@ -69,5 +69,15 @@ INNER JOIN
 
     return result.affectedRows;
   }
+
+  async create(streetArtId, proof, userId) {
+    const [result] = await this.database.query(
+      `insert into ${this.table} (user_id, streetart_id, proof) values (?, ?, ?)`,
+      [userId, streetArtId, `assets/proofs/${proof}`]
+    );
+
+    // Return the ID of the newly inserted user
+    return result.affectedRows;
+  }
 }
 module.exports = SeenRepository;

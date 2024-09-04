@@ -7,8 +7,11 @@ export const useLogin = () => useContext(LoginContext);
 
 export function LoginProvider({ children }) {
   const [user, setUser] = useState();
+  const [streetArtToValidation, setStreetArtToValidation] = useState(null);
+
+  
   return (
-    <LoginContext.Provider value={{ user, setUser }}>
+    <LoginContext.Provider value={{ user, setUser, streetArtToValidation, setStreetArtToValidation }}>
       {children}
     </LoginContext.Provider>
   );
