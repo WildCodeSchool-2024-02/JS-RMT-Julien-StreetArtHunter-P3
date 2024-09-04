@@ -75,6 +75,7 @@ router.post(
 
 router.put(
   "/artists/:id",
+  validateArtist,
   artistActions.update
 );
 

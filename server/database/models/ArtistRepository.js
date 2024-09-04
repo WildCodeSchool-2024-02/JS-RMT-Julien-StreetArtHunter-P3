@@ -50,10 +50,10 @@ class ArtistRepository extends AbstractRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
-  async update(artist) {
+  async update(artist, id) {
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET name = ?, points = ? WHERE id = ?`,
-      [artist.name, artist.points, artist.id]
+      [artist.name, artist.points, id]
   );
     return result.affectedRows;
   }
