@@ -21,11 +21,10 @@ class ArtistRepository extends AbstractRepository {
   }
 
   // The Rs of CRUD - Read operations
-  /** 
+
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
       [id]
@@ -34,8 +33,6 @@ class ArtistRepository extends AbstractRepository {
     // Return the first row of the result, which represents the user
     return rows[0];
   }
-
-*/
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all artists from the "artist" table
