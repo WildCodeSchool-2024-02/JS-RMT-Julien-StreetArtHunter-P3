@@ -6,7 +6,7 @@ const browse = async (req, res) => {
   try {
     // Fetch all items from the database
     let seen = [];
-    if (req.auth.id_admin) {
+    if (req.auth.is_admin) {
       seen = await tables.seen.readAll();
     } else {
       seen = await tables.seen.readByUserId(req.auth);

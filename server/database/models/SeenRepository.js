@@ -39,7 +39,9 @@ INNER JOIN
     sst.label as status,
     (str.points + a.points + c.points) as points,
     c.name as city_name,
-    str.created_at 
+    str.created_at, 
+    a.name as artist_name
+
     FROM 
         ${this.table} as s
     INNER JOIN 
