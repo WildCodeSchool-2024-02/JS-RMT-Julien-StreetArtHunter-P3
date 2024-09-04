@@ -1,16 +1,51 @@
+import { useEffect, useState } from "react";
+import { useLogin } from "../context/LoginContext";
+import connexion from "../services/connexion";
 import "../styles/result.css";
-import resultLogo from "../assets/resultlogo.png";
 
 function Result() {
+  const { user } = useLogin();
+  const [results, setResults] = useState([]);
+
+  const fetchUserResults = async () => {
+    if (!user || !user.id) return;
+
+    try {
+      const response = await connexion.get("api/views");
+      setResults(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the street arts!", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserResults();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getStatusClass = (status) => {
+    switch (status.toLowerCase()) {
+      case "validé":
+        return "status-validated";
+      case "refusé":
+        return "status-rejected";
+      case "en attente":
+        return "status-pending";
+      default:
+        return "";
+    }
+  };
+
   return (
     <div className="result-container">
-      <img src={resultLogo} alt="Logo" className="result-logo" />
       <div className="result-content">
-        <h1>Résultats</h1>
         <table className="result-table">
-          <thead>
+          <thead className="head-table-result">
             <tr>
-              <th>Image</th>
+              <th>Votre image</th>
+              <th>Image Reference</th>
+              <th>Œuvre</th>
+              <th>Artiste</th>
               <th>Ville</th>
               <th>Date</th>
               <th>Statut</th>
@@ -18,13 +53,38 @@ function Result() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>image</td>
-              <td>Paris</td>
-              <td>01/01/2024</td>
-              <td>Complété</td>
-              <td>100</td>
-            </tr>
+            {results.length > 0 ? (
+              results.map((result) => (
+                <tr key={result.id}>
+                  <td className="td-result-image">
+                    <img
+                      src={`${import.meta.env.VITE_API_URL}/${result.streetart_image}`}
+                      alt={result.image_alt || "Street Art"}
+                      className="result-image"
+                    />
+                  </td>
+                  <td className="td-result-image">
+                    <img
+                      src={result.proof_image}
+                      alt={result.image_alt || "Street Art"}
+                      className="result-image"
+                    />
+                  </td>
+                  <td>{result.title}</td>
+                  <td>{result.artist_name}</td>
+                  <td>{result.city_name}</td>
+                  <td>{new Date(result.created_at).toLocaleDateString()}</td>
+                  <td className={getStatusClass(result.status)}>
+                    {result.status}
+                  </td>
+                  <td>{result.points}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8">Aucun résultat trouvé.</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

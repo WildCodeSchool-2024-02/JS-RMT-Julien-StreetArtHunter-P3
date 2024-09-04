@@ -58,7 +58,7 @@ router.delete("/users/:id", checkCookie, checkAdmin, userActions.destroy);
 
 router.post("/login", validateLogin, userActions.login);
 
-router.post("/users", userActions.create);
+router.post("/users", checkCookie, checkAdmin, userActions.create);
 
 const artistActions = require("./controllers/artistActions");
 
@@ -79,7 +79,7 @@ const categoryActions = require("./controllers/categoryActions");
 
 router.get("/categories", checkCookie, checkAdmin, categoryActions.browse);
 
-router.post("/categories", categoryActions.create);
+router.post("/categories", checkCookie, checkAdmin, categoryActions.create);
 
 router.delete(
   "/categories/:id",

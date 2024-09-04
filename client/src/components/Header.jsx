@@ -24,9 +24,14 @@ function Header() {
           Galerie
         </Link>
         {user ? (
-          <button type="button" className="button" onClick={handleLogout}>
-            Déconnexion
-          </button>
+          <>
+            <Link to="/result" className="button">
+              Success
+            </Link>
+            <button type="button" className="button" onClick={handleLogout}>
+              Déconnexion
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login" className="button">
