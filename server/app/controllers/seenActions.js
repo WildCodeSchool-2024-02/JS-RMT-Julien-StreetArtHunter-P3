@@ -5,7 +5,12 @@ const tables = require("../../database/tables");
 const browse = async (req, res) => {
   try {
     // Fetch all items from the database
-    const seen = await tables.seen.readAll();
+    let seen = [];
+    if (req.auth.id_admin) {
+      seen = await tables.seen.readAll();
+    } else {
+      seen = await tables.seen.readByUserId(req.auth);
+    }
 
     // Respond with the items in JSON format
     res.status(200).json(seen);
