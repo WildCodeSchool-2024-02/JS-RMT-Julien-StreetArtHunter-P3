@@ -16,6 +16,7 @@ const initialStreetArt = {
 
 function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
   const [newStreetArt, setNewStreetArt] = useState(initialStreetArt);
+  const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     if (updateId) {
@@ -24,7 +25,10 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
         .then((res) => setNewStreetArt(res.data))
         .catch((err) => console.error(err));
     }
-    return () => setNewStreetArt(initialStreetArt);
+    return () => {
+      setNewStreetArt(initialStreetArt);
+      setImagePreview(null);
+    };
   }, [updateId]);
 
   const handleInputChange = (e) => {
@@ -37,12 +41,28 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
 
   const inputRef = useRef();
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const formData = new FormData();
-      formData.append("streetart", inputRef.current.files[0]);
+      if (inputRef.current.files && inputRef.current.files.length > 0) {
+        formData.append("streetart", inputRef.current.files[0]);
+      }
+
       formData.append("title", newStreetArt.title);
       formData.append("description", newStreetArt.description);
       formData.append("geolocation_x", newStreetArt.geolocation_x);
@@ -107,13 +127,18 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
           name="image_url"
           placeholder="Image URL"
           ref={inputRef}
-          required={updateId}
+          onChange={handleImageChange}
+          required={updateId === null}
         />
-        {newStreetArt.image_url && (
-          <img
-            src={`${import.meta.env.VITE_API_URL}/${newStreetArt.image_url}`}
-            alt={newStreetArt.title}
-          />
+        {imagePreview ? (
+          <img src={imagePreview} alt="" />
+        ) : (
+          newStreetArt.image_url && (
+            <img
+              src={`${import.meta.env.VITE_API_URL}/${newStreetArt.image_url}`}
+              alt={newStreetArt.title}
+            />
+          )
         )}
         <ModalSelect
           handleInputChange={handleInputChange}
