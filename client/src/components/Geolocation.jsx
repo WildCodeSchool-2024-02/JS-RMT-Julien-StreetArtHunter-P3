@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.css";
 import { Icon, divIcon, point, Control } from "leaflet";
 import PropTypes from "prop-types";
 import LocationMarker from "./LocationMarker";
+import { useLogin } from "../context/LoginContext";
 import "leaflet-control-geocoder";
 import "../styles/searchBar.css";
 import "../styles/Geolocation.css";
@@ -34,6 +35,8 @@ RecenterAutomatically.propTypes = {
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
+  const { setStreetArtToValidation } = useLogin();
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
   const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
@@ -80,6 +83,11 @@ export default function Geolocation() {
     if (query) {
       handleSearch(query);
     }
+  };
+
+  const handleValidation = (streetArt) => {
+    setStreetArtToValidation(streetArt);
+    navigate("/hunter-game");
   };
 
   return (
@@ -135,9 +143,13 @@ export default function Geolocation() {
                   >
                     Détails
                   </Link>
-                  <Link to="/hunter-game" className="validate">
+                  <button
+                    className="validate"
+                    type="button"
+                    onClick={() => handleValidation(streetArt)}
+                  >
                     Valider
-                  </Link>
+                  </button>
                 </div>
               </Popup>
             </Marker>

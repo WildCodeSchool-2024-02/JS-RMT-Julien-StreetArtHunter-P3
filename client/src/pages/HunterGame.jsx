@@ -1,27 +1,15 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
+import { useLogin } from "../context/LoginContext";
 import "../styles/hunter-game.css";
 
-export default function HunterGame({ handleRefresh , proof }) {
+function HunterGame() {
   const [capturedImage, setCapturedImage] = useState(null); // Stocke l'image capturée
-  const [newStreetArt, setNewStreetArt] = useState({
-    id: proof?.id || "",
-    title: proof?.title || "",
-  });
   const [file, setFile] = useState(null); // Stocke le fichier sélectionné
-  const [isModalOpen, setIsModalOpen] = useState(false); // Gère l'affichage du modal
-
-  // Utilise l'ID et le titre du street art pour les pré-remplir lors de l'ouverture du modal
-  useEffect(() => {
-    if (proof) {
-      setNewStreetArt({
-        id: proof.id, // Pré-remplit l'ID
-        proof      });
-    }
-  }, [proof]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { streetArtToValidation } = useLogin();
+  const navigate = useNavigate(); // Gère l'affichage du modal
 
   // Gérer la capture d'image depuis l'input file
   const handleFileChange = (event) => {
@@ -38,15 +26,13 @@ export default function HunterGame({ handleRefresh , proof }) {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("streetart", file); // Envoie le fichier capturé
-      formData.append("id", newStreetArt.id); // Envoie l'ID ou l'URL du street art
-      formData.append("title", newStreetArt.title); // Envoie le titre du street art
+      formData.append("proof", file); // Envoie le fichier capturé
+      formData.append("id", streetArtToValidation.id); // Envoie l'ID ou l'URL du street art
 
-      await connexion.post(`api/proof`, formData);
-
-      handleRefresh(); // Rafraîchit si handleRefresh est fourni
+      await connexion.post(`api/views`, formData);
 
       setIsModalOpen(false); // Ferme le modal après soumission
+      navigate("/result");
     } catch (error) {
       console.error("There was an error adding the new street art!", error);
     }
@@ -86,6 +72,7 @@ export default function HunterGame({ handleRefresh , proof }) {
 
         {/* Input file pour capturer l'image */}
         <input
+          aria-label="capture du street art"
           type="file"
           accept="image/*"
           capture="environment"
@@ -109,27 +96,23 @@ export default function HunterGame({ handleRefresh , proof }) {
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Ajouter un Street Art</h2>
+            <h2>Valider la capture</h2>
             <form onSubmit={handleAddSubmit} encType="multipart/form-data">
-              <label>ID du Street Art (URL):</label>
+              <label htmlFor="id">ID du Street Art (URL):</label>
               <input
+                id="id"
                 type="text"
-                value={newStreetArt.id}
-                onChange={(e) =>
-                  setNewStreetArt({ ...newStreetArt, id: e.target.value })
-                }
-                placeholder="Entrez l'ID ou l'URL"
-                required
+                value={streetArtToValidation.id}
+                disabled="disabled"
+                aria-label="id du street art"
               />
-              <label>Titre de l'oeuvre:</label>
+              <label htmlFor="title">Titre de l'oeuvre:</label>
               <input
+                id="title"
                 type="text"
-                value={newStreetArt.title}
-                onChange={(e) =>
-                  setNewStreetArt({ ...newStreetArt, title: e.target.value })
-                }
-                placeholder="Titre de l'oeuvre"
-                required
+                value={streetArtToValidation.title}
+                disabled="disabled"
+                aria-label="titre du street art"
               />
               <div className="modal-buttons">
                 <button type="submit" className="submit-btn">
@@ -151,8 +134,4 @@ export default function HunterGame({ handleRefresh , proof }) {
   );
 }
 
-// PropTypes validation
-HunterGame.propTypes = {
-  handleRefresh: PropTypes.func, // Peut être fourni si nécessaire
-  proof: PropTypes.func,
-};
+export default HunterGame;
