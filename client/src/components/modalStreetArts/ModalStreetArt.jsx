@@ -1,19 +1,35 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
 import ModalButton from "../modalShared/ModalButton";
 import ModalSelect from "../modalShared/ModalSelect";
+import "../../styles/reactModal.css";
 
+const initialStreetArt = {
+  title: "",
+  description: "",
+  geolocation_x: null,
+  geolocation_y: null,
+  city_id: null,
+  artist_id: null,
+};
 
-function ModalStreetArt({ handleRefresh, closeAddModal }) {
-  const [newStreetArt, setNewStreetArt] = useState({
-    title: "",
-    description: "",
-    geolocation_x: null,
-    geolocation_y: null,
-    city_id: null,
-    artist_id: null,
-  });
+function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
+  const [newStreetArt, setNewStreetArt] = useState(initialStreetArt);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  useEffect(() => {
+    if (updateId) {
+      connexion
+        .get(`/api/streetarts/${updateId.id}`)
+        .then((res) => setNewStreetArt(res.data))
+        .catch((err) => console.error(err));
+    }
+    return () => {
+      setNewStreetArt(initialStreetArt);
+      setImagePreview(null);
+    };
+  }, [updateId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,21 +40,43 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
   };
 
   const inputRef = useRef();
-  const handleAddSubmit = async (e) => {
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const formData = new FormData();
-      formData.append("streetart", inputRef.current.files[0]);
+      if (inputRef.current.files && inputRef.current.files.length > 0) {
+        formData.append("streetart", inputRef.current.files[0]);
+      }
+
       formData.append("title", newStreetArt.title);
       formData.append("description", newStreetArt.description);
       formData.append("geolocation_x", newStreetArt.geolocation_x);
       formData.append("geolocation_y", newStreetArt.geolocation_y);
       formData.append("city_id", newStreetArt.city_id);
       formData.append("artist_id", newStreetArt.artist_id);
-      await connexion.post(`api/streetarts`, formData);
+
+      if (updateId) {
+        await connexion.put(`api/streetarts/${updateId.id}`, formData);
+      } else {
+        await connexion.post(`api/streetarts`, formData);
+      }
       handleRefresh();
-    } catch
-      (error) {
+    } catch (error) {
       console.error("There was an error adding the new street art!", error);
     }
   };
@@ -46,7 +84,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
   return (
     <div>
       <h2>Ajouter un nouveau StreetArt</h2>
-      <form onSubmit={handleAddSubmit} encType="multipart/form-data">
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input
           type="text"
           aria-label=" streetArt titre"
@@ -85,13 +123,23 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
         />
         <input
           type="file"
-          aria-label=" streetArt image"
+          aria-label="streetArt image"
           name="image_url"
           placeholder="Image URL"
-          value={newStreetArt.image_url}
           ref={inputRef}
-          required
+          onChange={handleImageChange}
+          required={updateId === null}
         />
+        {imagePreview ? (
+          <img src={imagePreview} alt="" />
+        ) : (
+          newStreetArt.image_url && (
+            <img
+              src={`${import.meta.env.VITE_API_URL}/${newStreetArt.image_url}`}
+              alt={newStreetArt.title}
+            />
+          )
+        )}
         <ModalSelect
           handleInputChange={handleInputChange}
           url="cities"
@@ -110,7 +158,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
           title="Sélectionne un artiste"
           optionKey="name"
         />
-        <ModalButton closeAddModal={closeAddModal} />
+        <ModalButton closeAddModal={closeAddModal} updateId />
       </form>
     </div>
   );
@@ -119,6 +167,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal }) {
 ModalStreetArt.propTypes = {
   handleRefresh: PropTypes.func.isRequired,
   closeAddModal: PropTypes.func.isRequired,
+  updateId: PropTypes.number.isRequired,
 };
 
 export default ModalStreetArt;

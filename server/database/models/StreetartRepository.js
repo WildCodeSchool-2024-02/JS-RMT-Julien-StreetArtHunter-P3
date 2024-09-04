@@ -69,6 +69,8 @@ class StreetartRepository extends AbstractRepository {
           s.geolocation_y, 
           s.image_url, 
           s.image_alt, 
+          s.city_id,
+          s.artist_id,
           c.name AS city_name, 
           a.name AS artist_name,
           cat.title AS category_title
@@ -140,6 +142,29 @@ class StreetartRepository extends AbstractRepository {
       [streetartID]
     );
     return rows;
+  }
+
+  async update(streetart, file, id) {
+    let sql = `UPDATE ${this.table} SET title = ?, description = ?, geolocation_x = ?, geolocation_y = ?, city_id = ?, artist_id = ?`;
+    const params = [
+      streetart.title,
+      streetart.description,
+      streetart.geolocation_x,
+      streetart.geolocation_y,
+      streetart.city_id,
+      streetart.artist_id,
+    ];
+
+    if (file?.filename) {
+      sql += `, image_url = ?`;
+      params.push(`assets/streetarts/${file?.filename}`);
+    }
+
+    sql += ` WHERE id = ?`;
+    params.push(id);
+
+    const [result] = await this.database.query(sql, params);
+    return result.affectedRows;
   }
 }
 
