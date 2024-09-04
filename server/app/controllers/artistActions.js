@@ -29,7 +29,16 @@ const create = async (req, res, next) => {
     next(err);
   }
 };
+const update = async (req, res, next) => {
+  try {
+    const artist = req.body;
 
+    await tables.artist.update(artist, req.params.id);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -59,4 +68,5 @@ module.exports = {
   browse,
   create,
   destroy,
+  update
 };

@@ -72,6 +72,12 @@ router.post(
   validateArtist,
   artistActions.create
 );
+
+router.put(
+  "/artists/:id",
+  artistActions.update
+);
+
 // Route to delete a list of artists
 router.delete("/artists/:id", checkCookie, checkAdmin, artistActions.destroy);
 

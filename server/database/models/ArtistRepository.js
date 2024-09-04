@@ -50,20 +50,13 @@ class ArtistRepository extends AbstractRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
-  /** 
-  async update(user) {
-    // Execute the SQL UPDATE query to update a specific category
+  async update(artist) {
     const [result] = await this.database.query(
-      `update ${this.table} set pseudo = ?, email = ? where id = ?`,
-      [user.pseudo, user.email, user.id]
-    );
-
-    // Return how many rows were affected
+      `UPDATE ${this.table} SET name = ?, points = ? WHERE id = ?`,
+      [artist.name, artist.points, artist.id]
+  );
     return result.affectedRows;
   }
-  //   ...
-  // }
-*/
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
