@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import connexion from "../../services/connexion";
 import ModalButton from "../modalShared/ModalButton";
 import ModalSelect from "../modalShared/ModalSelect";
+import "../../styles/reactModal.css";
 
 const initialStreetArt = {
   title: "",
@@ -102,7 +103,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
         />
         <input
           type="file"
-          aria-label=" streetArt image"
+          aria-label="streetArt image"
           name="image_url"
           placeholder="Image URL"
           ref={inputRef}
