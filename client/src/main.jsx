@@ -20,6 +20,7 @@ import Detail from "./pages/Detail";
 import HunterMobile from "./pages/HunterGame";
 import Result from "./pages/Result";
 import Register from "./pages/Register";
+import NotFound from "./components/NotFound";
 
 import connexion from "./services/connexion";
 
@@ -66,11 +67,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/gallery",
-        element: <Gallery />
+        element: <Gallery />,
       },
       {
         path: "result",
         element: <Result />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
@@ -127,6 +132,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
