@@ -112,7 +112,7 @@ class StreetartRepository extends AbstractRepository {
         streetart.description,
         streetart.geolocation_x,
         streetart.geolocation_y,
-        streetart.image_url,
+        `assets/streetarts/${filename}`,
         streetart.category_id,
         streetart.city_id,
         streetart.artist_id,
