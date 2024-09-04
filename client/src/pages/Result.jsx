@@ -40,7 +40,7 @@ function Result() {
     <div className="result-container">
       <div className="result-content">
         <table className="result-table">
-          <thead>
+          <thead className="head-table-result">
             <tr>
               <th>Votre image</th>
               <th>Image Reference</th>

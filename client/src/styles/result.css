@@ -29,8 +29,8 @@
   border-radius: 15px;
   overflow: hidden;
   border: 1px solid #ddd;
-  background-color: #1d0528; /* Fond pour contraster avec la couleur principale */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre subtile */
+  background-color: #1d0528;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .result-table th,
@@ -41,8 +41,8 @@
 }
 
 .result-table th {
-  background-color: #3b0a45; /* Variation plus foncée pour les en-têtes */
-  color: var(--main-text-color); /* Texte blanc pour un bon contraste */
+  background-color: #3b0a45;
+  color: var(--main-text-color);
   font-weight: bold;
 }
 
@@ -69,4 +69,32 @@
 .status-pending {
   color: orange;
   background-color: transparent;
+}
+@media (max-width: 390px) and (max-height: 844px) {
+  .result-container {
+    width: 100%;
+  }
+
+  .result-image {
+    min-height: 7rem;
+    max-height: 7rem;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .result-table {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .result-table th,
+  .result-table td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .head-table-result {
+    display: none;
+  }
 }
