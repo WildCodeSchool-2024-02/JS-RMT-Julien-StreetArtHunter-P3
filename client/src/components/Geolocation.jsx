@@ -120,11 +120,13 @@ export default function Geolocation() {
                 <div className="popup-content-wrapper">
                   <h4 className="popup-title">Titre : {streetArt.title}</h4>
                   <p className="popup-artist">Artiste: {streetArt.name}</p>
-                  <img
-                    src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
-                    alt={streetArt.image_alt}
-                    className="popup-image"
-                  />
+                  <Link to={`/street-arts/${streetArt.id}`}>
+                    <img
+                      src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                      alt={streetArt.image_alt}
+                      className="popup-image"
+                    />
+                  </Link>
                 </div>
                 <div className="popup-buttons">
                   <Link

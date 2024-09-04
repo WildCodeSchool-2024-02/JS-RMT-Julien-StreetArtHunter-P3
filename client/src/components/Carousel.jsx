@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -39,10 +39,12 @@ function Carousel() {
         <Slider {...settings}>
           {streetArts.map((streetart) => (
             <div key={streetart.id} className="carousel-streetart">
-              <img
-                src={`${import.meta.env.VITE_API_URL}/${streetart.image_url}`}
-                alt={streetart.image_alt}
-              />
+              <Link to={`/street-arts/${streetart.id}`}>
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/${streetart.image_url}`}
+                  alt={streetart.image_alt}
+                />
+              </Link>
               <div className="carousel-item-details">
                 <h3>{streetart.title}</h3>
                 <p>Artist: {streetart.name}</p>
