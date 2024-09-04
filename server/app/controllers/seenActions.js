@@ -29,6 +29,20 @@ const update = async (req, res, next) => {
     next(err);
   }
 };
+
+const create = async (req, res, next) => {
+  // Extract the seen data from the request body and params
+
+  try {
+    // Update the seen in the database
+    const result = await tables.seen.create(req.body.id, req.file.filename, req.auth.user_id);
+    // Respond with HTTP 204 (No Content)
+    res.status(201).json(result);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -36,4 +50,5 @@ const update = async (req, res, next) => {
 module.exports = {
   browse,
   update,
+  create,
 };
