@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { LoginProvider } from "./context/LoginContext";
 
+import App from "./App";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Artist from "./pages/adminInterface/Artist";
@@ -11,17 +12,18 @@ import Category from "./pages/adminInterface/Category";
 import StreetArt from "./pages/adminInterface/StreetArt";
 import User from "./pages/adminInterface/User";
 import City from "./pages/adminInterface/City";
+import Seen from "./pages/adminInterface/Seen";
 import Admin from "./pages/Layout/Admin";
 import Gallery from "./pages/Gallery";
-import App from "./App";
 import Enter from "./pages/Enter";
 import Detail from "./pages/Detail";
 import HunterMobile from "./pages/HunterGame";
+import Result from "./pages/Result";
+import Register from "./pages/Register";
 
 import connexion from "./services/connexion";
 
 import "./App.css";
-import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,6 @@ const router = createBrowserRouter([
                 "Erreur lors de la récupération des données de StreetArt:",
                 error
               );
-              return [];
             }),
       },
       {
@@ -65,7 +66,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/gallery",
-        element: <Gallery />,
+        element: <Gallery />
+      },
+      {
+        path: "result",
+        element: <Result />,
       },
     ],
   },
@@ -108,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: "cities",
         element: <City />,
+      },
+      {
+        path: "seen",
+        element: <Seen />,
       },
     ],
   },

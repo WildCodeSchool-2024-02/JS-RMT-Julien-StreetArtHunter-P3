@@ -104,7 +104,7 @@ class StreetartRepository extends AbstractRepository {
     return rows;
   }
 
-  async create(streetart) {
+  async create(streetart, filename) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (title, description, geolocation_x, geolocation_y, image_url, category_id, city_id, artist_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [

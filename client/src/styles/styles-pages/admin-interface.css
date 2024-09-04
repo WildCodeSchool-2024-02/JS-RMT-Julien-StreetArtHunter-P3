@@ -48,3 +48,37 @@
 .admin-table tr:hover {
   background-color: #f1f1f1;
 }
+.img_seen {
+  display: flex;
+  width: 100%;
+  min-height: 12rem;
+  max-height: 12rem;
+  object-fit: cover;
+  background-size: contain;
+}
+/* Style général pour le select */
+.status-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.status-pending {
+  background-color: #ffebcc;
+  color: #b36b00;
+}
+
+.status-approved {
+  background-color: #ccffd8;
+  color: #007f3d;
+}
+
+.status-rejected {
+  background-color: #ffcccc;
+  color: #cc0000;
+}

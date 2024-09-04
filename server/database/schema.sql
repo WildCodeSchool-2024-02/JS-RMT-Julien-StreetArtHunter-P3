@@ -47,14 +47,22 @@ CREATE TABLE streetart (
     FOREIGN KEY (category_id) REFERENCES category (id)
 );
 
+CREATE TABLE seen_status (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    label varchar(100)
+);
+
 CREATE TABLE seen (
     user_id INT,
     streetart_id INT,
-    points INT,
+    seen_status_id INT NOT NULL DEFAULT 1,
+    proof VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id, streetart_id),
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE
+    FOREIGN KEY (streetart_id) REFERENCES streetart (id) ON DELETE CASCADE,
+    FOREIGN KEY (seen_status_id) REFERENCES seen_status(id)
 );
+
 
 INSERT INTO city (name) VALUES ('Paris');
 
@@ -211,6 +219,7 @@ VALUES (
         '$argon2id$v=19$m=19456,t=2,p=1$IJmFzYqJmmkkJP2FaKwKRw$PKh00nB9Si9vaZ2I/xgzsRqtb4skuPLChhJNCWeizNc',
         0
     );
+    
 INSERT INTO artist (name) VALUES ('Banksy');
 
 INSERT INTO artist (name) VALUES ('Os Gêmeos');
@@ -250,7 +259,7 @@ INSERT INTO
 VALUES (
         'Chuuuttt',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
-        'assets/images/Chuuuttt.jpg',
+        'assets/streetarts/Chuuuttt.jpg',
         3,
         1,
         5,
@@ -272,7 +281,7 @@ INSERT INTO
 VALUES (
         'Amor com as Mulheres',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
-        'assets/images/amor-com-as-mulheres.jpg',
+        'assets/streetarts/amor-com-as-mulheres.jpg',
         6,
         3,
         7,
@@ -294,7 +303,7 @@ INSERT INTO
 VALUES (
         'The cat',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
-        'assets/images/the-cat.jpg',
+        'assets/streetarts/the-cat.jpg',
         5,
         1,
         4,
@@ -316,7 +325,7 @@ INSERT INTO
 VALUES (
         'Champagne Rat',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
-        'assets/images/rat-champagne.jpg',
+        'assets/streetarts/rat-champagne.jpg',
         5,
         1,
         1,
@@ -338,7 +347,7 @@ INSERT INTO
 VALUES (
         'Petite fille, espoir',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae ipsum non odio scelerisque vestibulum. Aliquam auctor mauris quis vestibulum hendrerit. Aliquam nec sapien id quam porta varius at vitae mauris. Ut elementum velit vel nulla mollis, et tincidunt eros tempus. Praesent finibus nunc sit amet ligula pharetra mattis. Aliquam erat volutpat. In a elit ac justo sodales vulputate. Aenean eget arcu a elit facilisis blandit quis at augue. Aenean fringilla urna vitae eleifend iaculis. Nullam vulputate tellus ut mattis ornare. Mauris at nunc aliquam, auctor ipsum sodales, ullamcorper dolor.',
-        'assets/images/petite-fille-espoir.jpg',
+        'assets/streetarts/petite-fille-espoir.jpg',
         8,
         4,
         5,
@@ -347,3 +356,11 @@ VALUES (
     );
 
 INSERT INTO seen (user_id, streetart_id, points) VALUES (1, 1, 20);
+
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (1, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "https://parisjetaime.com/data/layout_image/26190_Paris-Attitude-street-art--630x405--%C2%A9-Antoine-Buchet.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "https://www.boumbang.com/wp-content/uploads/2012/02/melbourne-street-art-51.jpg");
+
+INSERT INTO seen_status (label) VALUES ('En attente');
+INSERT INTO seen_status (label) VALUES ('Validé');
+INSERT INTO seen_status (label) VALUES ('Refusé');

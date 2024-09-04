@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import BackButton from "./BackButton";
 import "../styles/nav-admin.css";
 
 function NavAdmin() {
@@ -24,6 +25,10 @@ function NavAdmin() {
         <Link to="/admin/cities" className="nav-button">
           Villes
         </Link>
+        <Link to="/admin/seen" className="nav-button">
+          Vues
+        </Link>
+        <BackButton />
       </nav>
     </div>
   );
