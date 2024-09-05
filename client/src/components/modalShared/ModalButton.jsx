@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 
-function ModalButton({ closeAddModal, label }) {
+function ModalButton({ closeAddModal, label, updateId }) {
   return (
     <div>
-      <button type="submit">Ajouter {label}</button>
+      <button type="submit">
+        {updateId ? "Modifier" : "Ajouter"} {label}
+      </button>
       <button type="button" onClick={closeAddModal}>
         Annuler
       </button>
@@ -14,6 +16,7 @@ function ModalButton({ closeAddModal, label }) {
 ModalButton.propTypes = {
   closeAddModal: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
+  updateId: PropTypes.number.isRequired,
 };
 
 export default ModalButton;

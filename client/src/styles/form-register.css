@@ -1,13 +1,29 @@
+.head-register {
+  display: flex;
+  height: 150px;
+}
+
+.register-logo {
+  width: 150px;
+  height: 100px;
+}
+
 .register-connexion {
   background-color: var(--main-bg-color);
-  color: white;
-  font-family: var(--font-title), serif;
-  font-size: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 80vh;
+  width: 100vw;
   box-sizing: border-box;
   flex-direction: column;
+}
+
+.register-connexion > h2 {
+  color: white;
+  font-family: var(--font-title);
+  font-size: 3rem;
+  margin-bottom: 30px;
 }
 
 .form-register {
@@ -15,6 +31,7 @@
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: var(--font-subtitle), serif;
+  color: white;
   width: 60%;
 }
 
@@ -31,8 +48,8 @@
 }
 
 .form-register label {
-  font-size: 2rem;
-  text-align: center;
+  font-size: 1.75rem;
+  text-align: left;
 }
 
 .form-register input {
@@ -47,17 +64,30 @@
 .register-button {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  text-align: center;
+  margin-top: 3rem;
+  padding: 10px;
 }
 
-@media screen and (max-width: 480px) {
-  .register-connexion img {
-    width: 100%;
-    margin-top: 2rem;
+@media screen and (max-width: 390px) {
+  .head-register {
+    justify-content: center;
+    height: 90px;
   }
 
-  .register-connexion h2 {
-    font-size: 4rem;
+  .register-logo {
+    width: 90px;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .register-connexion {
+    height: 95vh;
+  }
+
+  .register-connexion > h2 {
+    margin: 0px;
+    padding: 0px;
   }
 
   .user-info {
@@ -69,11 +99,18 @@
   }
 
   .form-register label {
-    white-space: nowrap;
+    font-size: 1.5rem;
   }
 
   .form-register input {
-    margin: 0 auto;
-    width: 100%;
+    max-width: 100%;
+  }
+
+  .register-button {
+    margin-top: 3px;
+  }
+  .register-button button {
+    justify-content: center;
+    padding: 10px;
   }
 }

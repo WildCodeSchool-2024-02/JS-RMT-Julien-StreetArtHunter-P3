@@ -27,7 +27,7 @@ function Artist() {
   };
 
   useEffect(() => {
-    getArtists()
+    getArtists();
   }, []);
 
   const openModal = (artistId) => {
@@ -48,12 +48,19 @@ function Artist() {
     setAddModalIsOpen(false);
   };
 
+  const openUpdateModel = (id) => {
+    setSelectedArtistId(() => ({
+      id,
+    }));
+    openAddModal();
+  };
+
   const handleDelete = () => {
     if (selectedArtistId !== null) {
       connexion
         .delete(`api/artists/${selectedArtistId}`)
         .then(() => {
-          getArtists()
+          getArtists();
           closeModal();
         })
         .catch((error) => {
@@ -71,7 +78,7 @@ function Artist() {
     <div className="admin-table-container">
       <h1>Artistes</h1>
       <button className="button" type="submit" onClick={openAddModal}>
-        Ajouter Artist
+        Ajouter un Artist
       </button>
       <table className="admin-table">
         <thead>
@@ -83,6 +90,8 @@ function Artist() {
             data={artist}
             key={artist.id}
             handleDelete={() => openModal(artist.id)}
+            handleUpdate={() => openUpdateModel(artist.id)}
+            canUpdate
           />
         ))}
         </tbody>
@@ -109,6 +118,8 @@ function Artist() {
         <ModalArtist
           handleRefresh={handleRefresh}
           closeAddModal={closeAddModal}
+          updateId={selectedArtistId}
+
         />
       </Modal>
     </div>

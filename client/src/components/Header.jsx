@@ -3,7 +3,7 @@ import "../styles/header.css";
 import "../styles/button.css";
 import logo from "../assets/logo.png";
 import { useLogin } from "../context/LoginContext";
-
+import BackButton from "./BackButton";
 
 function Header() {
   const { user, setUser } = useLogin();
@@ -19,13 +19,19 @@ function Header() {
         <img src={logo} alt="logo" className="logo" />
       </Link>
       <nav className="navigation">
+        <BackButton />
         <Link to="/gallery" className="button">
           Galerie
         </Link>
         {user ? (
-          <button type="button" className="button" onClick={handleLogout}>
-            Déconnexion
-          </button>
+          <>
+            <Link to="/result" className="button">
+              Success
+            </Link>
+            <button type="button" className="button" onClick={handleLogout}>
+              Déconnexion
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login" className="button">
@@ -42,4 +48,3 @@ function Header() {
 }
 
 export default Header;
-

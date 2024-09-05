@@ -6,90 +6,103 @@ body {
 }
 
 .container-detail {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 45% 50%; /* 40% pour l'image, 60% pour les détails */
+  grid-template-rows: auto auto;
+  gap: 40px; /* Espace entre les colonnes */
+  margin: 50px;
 }
 
 .streetart-image {
-  width: auto;
-  max-height: 35rem;
+  width: 100%; /* L'image prend toute la largeur de la première colonne */
+  height: 40vw; /* Conserve le ratio d'aspect de l'image */
   border-radius: 8px;
-  margin: 50px;
-  margin-top: 40px;
 }
 
 .detail-streetart-container {
-  padding: 20px;
-  max-width: 100%;
+  grid-column: 2 / 3; /* Place les détails dans la deuxième colonne */
+  grid-row: 1 / 2; /* Place les détails dans la première ligne */
+  display: flex;
+  flex-direction: column; /* Aligne les détails en colonne */
   color: white;
 }
 
-h2 {
-  font-size: 1.5em;
-  margin-top: 10px;
-}
-
 h3,
-h4,
-p {
+h4 {
   font-weight: bold;
-  line-height: 2;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 10px; /* Espace entre les éléments */
 }
 
-.container-detail > .detail-streetart-container > div {
-  margin: 50px 5px;
-  margin-top: 150px;
-  width: 70%;
-  background-color: #ffffff;
-  opacity: 60%;
-  padding: 20px;
+.description-container {
+  grid-column: 2 / 3; /* Place les détails dans la deuxième colonne */
+  grid-row: 1 / 2; /* Place la description sur la deuxième ligne */
+  align-self: flex-end;
+  margin-top: 10px;
+  background-color: white;
   border-radius: 8px;
+  opacity: 60%;
+  width: 70%;
 }
 
-.container-detail > .detail-streetart-container > div > h2 {
+.description-container > h5,
+.description-container > p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  padding: 3px;
+}
+
+.description-container > h5 {
   text-decoration: underline;
-  color: black;
-  margin-top: 0;
-}
-
-.streetart-description {
-  color: black;
-  line-height: 1.2;
+  margin-top: 5px;
 }
 
 @media (max-width: 390px) {
   .container-detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 40% 60%; /* 40% pour l'image, 60% pour les détails */
+    grid-template-rows: auto auto;
+    gap: 10px; /* Espace entre les colonnes */
+    align-items: center; /* Aligne le contenu en haut */
+    margin: 10px;
   }
 
   .streetart-image {
-    width: 100%;
-    margin: 0;
+    grid-column: 1 / 2; /* Place l'image dans la première colonne */
+    grid-row: 1 / 2; /* Place l'image dans la première ligne */
+    width: 100%; /* L'image prend toute la largeur de sa colonne */
+    height: 35vw;
+    margin: 0px;
   }
 
   .detail-streetart-container {
+    grid-column: 2 / 3; /* Place les détails dans la deuxième colonne */
+    grid-row: 1 / 2; /* Place les détails dans la première ligne */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 3px;
+    flex-direction: column; /* Aligne les détails en colonne */
+    justify-content: flex-start;
+    margin: 10px;
   }
 
-  .container-detail > .detail-streetart-container > div {
-    margin-top: 0;
+  .detail-streetart-container > h3,
+  .detail-streetart-container > h4,
+  .detail-streetart-container > p {
+    font-size: 0.7rem;
+    margin: 8px;
     width: 100%;
-    background-color: #ffffff;
-    opacity: 60%;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  h2 {
-    font-size: 1em;
   }
 
-  p {
-    font-weight: 100;
+  .description-container {
+    grid-column: 1 / -1; /* Étend la description sur toute la largeur (les deux colonnes) */
+    grid-row: 2 / 3; /* Place la description sur la deuxième ligne */
+    width: 95%;
+  }
+
+  .description-container > h5,
+  .description-container > p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    padding: 6px;
   }
 }

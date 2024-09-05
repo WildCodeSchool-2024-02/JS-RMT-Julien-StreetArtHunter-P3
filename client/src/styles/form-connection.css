@@ -1,16 +1,32 @@
+.head-login {
+  display: flex;
+  justify-content: flex-start;
+  height: 150px;
+}
+
+.login-logo {
+  width: 150px;
+  height: 100px;
+}
+
 .login-connexion {
   background-color: var(--main-bg-color);
-  color: white;
-  font-family: var(--font-title);
-  font-size: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   box-sizing: border-box;
   flex-direction: column;
 }
+
+.login-connexion > h2 {
+  color: white;
+  font-family: var(--font-title);
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
 .form-connection {
   margin: 1.5rem;
   padding: 2rem;
@@ -18,13 +34,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: var(--font-subtitle);
 }
+
 .form-connection label {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   height: auto;
   font-size: 1.75rem;
-  align-items: center;
+  align-items: left;
   color: white;
 }
 
@@ -39,23 +56,44 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .box-button {
   display: flex;
   justify-content: center;
 }
+
 .form-connection button {
   margin-top: 3rem;
+  padding: 10px;
+  width: fit-content;
 }
+
 .popup-content {
   font-size: 1.5rem;
   margin-top: 3rem;
   font-family: var(--font-subtitle);
 }
+
 @media (max-width: 390px) {
-  .login-connexion {
-    height: 125vh;
-    width: 125vw;
+  .head-login {
+    justify-content: center;
+    height: 100px;
   }
+
+  .login-logo {
+    width: 90px;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .login-connexion {
+    height: 85vh;
+  }
+
+  .login-connexion > h2 {
+    padding-bottom: 1px;
+  }
+
   .form-connection input {
     width: 17rem;
     max-width: 100%;

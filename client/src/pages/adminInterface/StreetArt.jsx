@@ -47,6 +47,14 @@ function StreetArt() {
 
   const closeAddModal = () => {
     setAddModalIsOpen(false);
+    setSelectedStreetArtId(null);
+  };
+
+  const openUpdateModel = (id) => {
+    setSelectedStreetArtId(() => ({
+      id,
+    }));
+    openAddModal();
   };
 
   const handleDelete = () => {
@@ -72,7 +80,7 @@ function StreetArt() {
     <div className="admin-table-container">
       <h1>Street Arts</h1>
       <button className="button" type="submit" onClick={openAddModal}>
-        Ajouter StreetArt
+        Ajouter un StreetArt
       </button>
       <table className="admin-table">
         <thead>
@@ -86,6 +94,8 @@ function StreetArt() {
               data={streetArt}
               key={streetArt.id}
               handleDelete={() => openDeleteModal(streetArt.id)}
+              handleUpdate={() => openUpdateModel(streetArt.id)}
+              canUpdate
             />
           ))}
         </tbody>
@@ -114,6 +124,7 @@ function StreetArt() {
         <ModalStreetArt
           handleRefresh={handleRefresh}
           closeAddModal={closeAddModal}
+          updateId={selectedStreetArtId}
         />
       </Modal>
     </div>

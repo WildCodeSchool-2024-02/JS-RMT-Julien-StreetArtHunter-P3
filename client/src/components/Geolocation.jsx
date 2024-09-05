@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.css";
 import { Icon, divIcon, point, Control } from "leaflet";
 import PropTypes from "prop-types";
 import LocationMarker from "./LocationMarker";
+import { useLogin } from "../context/LoginContext";
 import "leaflet-control-geocoder";
 import "../styles/searchBar.css";
 import "../styles/Geolocation.css";
@@ -34,6 +35,8 @@ RecenterAutomatically.propTypes = {
 
 export default function Geolocation() {
   const streetArts = useLoaderData();
+  const { setStreetArtToValidation } = useLogin();
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [position, setPosition] = useState([48.8566, 2.3522]); // Position initiale
   const [zoom, setZoom] = useState(5); // Définir le zoom initial à 5
@@ -82,6 +85,11 @@ export default function Geolocation() {
     }
   };
 
+  const handleValidation = (streetArt) => {
+    setStreetArtToValidation(streetArt);
+    navigate("/hunter-game");
+  };
+
   return (
     <>
       <form className="search-form" onSubmit={handleSubmit}>
@@ -103,11 +111,13 @@ export default function Geolocation() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {/* <SetViewOnClick animateRef={animateRef} /> */}
         <ZoomControl position="bottomleft" />
         <MarkerClusterGroup
           chunkedLoading
           iconCreateFunction={createClusterCustomIcon}
         >
+          {/* Mapping through the markers */}
           {streetArts.map((streetArt) => (
             <Marker
               position={[streetArt.geolocation_y, streetArt.geolocation_x]}
@@ -115,17 +125,32 @@ export default function Geolocation() {
               key={streetArt.id}
             >
               <Popup>
-                <Link
-                  to={`/street-art-detail/${streetArt.id}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <h4>Titre de l'oeuvre: {streetArt.title}</h4>
-                  <p>Artiste: {streetArt.name}</p>
-                  <img
-                    src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
-                    alt={streetArt.image_alt}
-                  />
-                </Link>
+                <div className="popup-content-wrapper">
+                  <h4 className="popup-title">Titre : {streetArt.title}</h4>
+                  <p className="popup-artist">Artiste: {streetArt.name}</p>
+                  <Link to={`/street-arts/${streetArt.id}`}>
+                    <img
+                      src={`${import.meta.env.VITE_API_URL}/${streetArt.image_url}`}
+                      alt={streetArt.image_alt}
+                      className="popup-image"
+                    />
+                  </Link>
+                </div>
+                <div className="popup-buttons">
+                  <Link
+                    to={`/street-arts/${streetArt.id}`}
+                    className="more-info"
+                  >
+                    Détails
+                  </Link>
+                  <button
+                    className="validate"
+                    type="button"
+                    onClick={() => handleValidation(streetArt)}
+                  >
+                    Valider
+                  </button>
+                </div>
               </Popup>
             </Marker>
           ))}

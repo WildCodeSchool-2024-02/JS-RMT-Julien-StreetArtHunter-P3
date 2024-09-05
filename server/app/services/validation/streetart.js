@@ -5,7 +5,6 @@ const streetartSchema = Joi.object({
   description: Joi.string().required(),
   geolocation_x: Joi.number().precision(10, 6).required(),
   geolocation_y: Joi.number().precision(9, 6).required(),
-  image_url: Joi.string().max(255).required(),
   city_id: Joi.number().integer().required(),
   artist_id: Joi.number().integer().required(),
 });

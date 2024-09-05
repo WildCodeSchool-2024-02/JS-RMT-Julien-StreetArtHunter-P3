@@ -7,21 +7,18 @@ class CityRepository extends AbstractRepository {
     super({ table: "city" });
   }
 
-  /** 
   // The C of CRUD - Create operation
 
-  async create(user) {
-    // Execute the SQL INSERT query to add a new user to the "user" table
+  async create(city) {
+    // Execute the SQL INSERT query to add a new user to the "city" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (pseudo, email) values (?, ?)`,
-      [user.pseudo, user.email]
+      `insert into ${this.table} (name, points) values (?, ?)`,
+      [city.name, city.points]
     );
 
     // Return the ID of the newly inserted user
     return result.insertId;
   }
-
-*/
 
   // The Rs of CRUD - Read operations
   /** 
@@ -41,7 +38,7 @@ class CityRepository extends AbstractRepository {
 */
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all artists from the "artist" table
+    // Execute the SQL SELECT query to retrieve all artists from the "city" table
     const [rows] = await this.database.query(
       `select id, name, points from ${this.table}`
     );
