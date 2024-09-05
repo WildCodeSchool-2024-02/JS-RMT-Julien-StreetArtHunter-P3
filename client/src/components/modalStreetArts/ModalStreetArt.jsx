@@ -12,6 +12,7 @@ const initialStreetArt = {
   geolocation_y: null,
   city_id: null,
   artist_id: null,
+  category_id: null,
 };
 
 function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
@@ -69,6 +70,7 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
       formData.append("geolocation_y", newStreetArt.geolocation_y);
       formData.append("city_id", newStreetArt.city_id);
       formData.append("artist_id", newStreetArt.artist_id);
+      formData.append("category_id", newStreetArt.category_id);
 
       if (updateId) {
         await connexion.put(`api/streetarts/${updateId.id}`, formData);
@@ -158,7 +160,16 @@ function ModalStreetArt({ handleRefresh, closeAddModal, updateId }) {
           title="Sélectionne un artiste"
           optionKey="name"
         />
-        <ModalButton closeAddModal={closeAddModal} updateId />
+        <ModalSelect
+          handleInputChange={handleInputChange}
+          url="categories"
+          aria-label="categories"
+          name="category_id"
+          value={newStreetArt.category_id}
+          title="Sélectionne une catégorie"
+          optionKey="title"
+        />
+        <ModalButton closeAddModal={closeAddModal} updateId={updateId} />
       </form>
     </div>
   );
