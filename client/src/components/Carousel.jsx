@@ -47,7 +47,7 @@ function Carousel() {
               </Link>
               <div className="carousel-item-details">
                 <h3>{streetart.title}</h3>
-                <p>Artist: {streetart.name}</p>
+                <p>Artist: {streetart.artist_name}</p>
                 <p>City: {streetart.city_name}</p>
               </div>
             </div>

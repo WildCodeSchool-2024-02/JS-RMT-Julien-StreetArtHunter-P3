@@ -91,5 +91,7 @@
     font-size: 0.8em;
     color: black;
     text-align: center;
+    border: none;
+    background-color: transparent;
   }
 }

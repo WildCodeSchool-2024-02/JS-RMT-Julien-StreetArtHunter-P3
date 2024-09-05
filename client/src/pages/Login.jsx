@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import FormConnection from "../components/FormConnection";
 import logo from "../assets/logo.png";
 
@@ -7,7 +8,9 @@ function Login() {
   return (
     <>
       <div className="head-login">
-        <img src={logo} alt="logo" className="login-logo" />
+        <Link to="/street-arts" className="logo">
+          <img src={logo} alt="logo" className="login-logo" />
+        </Link>
       </div>
       <div className="login-connexion">
         <h2>Connexion</h2>

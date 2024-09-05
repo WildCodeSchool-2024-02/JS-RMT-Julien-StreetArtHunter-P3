@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 
 function FormRegister() {
@@ -10,6 +11,7 @@ function FormRegister() {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +42,8 @@ function FormRegister() {
         password: "",
         password_confirmation: "",
       });
+
+      navigate("/street-arts");
     } catch (err) {
       setError("Erreur lors de l'inscription.");
     }
