@@ -10,6 +10,7 @@ function NavAdmin() {
         <img src={logo} alt="logo" className="logo-nav" />
       </Link>
       <nav className="action-buttons">
+        <BackButton />
         <Link to="/admin/users" className="nav-button">
           Utilisateurs
         </Link>
@@ -28,7 +29,6 @@ function NavAdmin() {
         <Link to="/admin/seen" className="nav-button">
           Vues
         </Link>
-        <BackButton />
       </nav>
     </div>
   );
