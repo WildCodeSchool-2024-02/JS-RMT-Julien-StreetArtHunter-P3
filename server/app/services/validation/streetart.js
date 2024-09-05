@@ -7,6 +7,7 @@ const streetartSchema = Joi.object({
   geolocation_y: Joi.number().precision(9, 6).required(),
   city_id: Joi.number().integer().required(),
   artist_id: Joi.number().integer().required(),
+  category_id: Joi.number().integer().required(),
 });
 
 const validateStreetart = (req, res, next) => {

@@ -23,7 +23,6 @@ function ModalArtist({ handleRefresh, closeAddModal, updateId }) {
     };
   }, [updateId]);
 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewArtist((prevState) => ({
@@ -70,7 +69,11 @@ function ModalArtist({ handleRefresh, closeAddModal, updateId }) {
           value={newArtist.points}
           onChange={handleInputChange}
         />
-        <ModalButton closeAddModal={closeAddModal} label="nouvel artiste" updateId />
+        <ModalButton
+          closeAddModal={closeAddModal}
+          label="nouvel artiste"
+          updateId={updateId}
+        />
       </form>
     </div>
   );
