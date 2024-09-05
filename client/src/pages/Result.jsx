@@ -65,7 +65,7 @@ function Result() {
                   </td>
                   <td className="td-result-image">
                     <img
-                      src={result.proof_image}
+                      src={`${import.meta.env.VITE_API_URL}/${result.proof_image}`}
                       alt={result.image_alt || "Street Art"}
                       className="result-image"
                     />
