@@ -367,7 +367,7 @@ INSERT INTO seen_status (label) VALUES ('En attente');
 INSERT INTO seen_status (label) VALUES ('Validé');
 INSERT INTO seen_status (label) VALUES ('Refusé');
 
-INSERT INTO seen (user_id, streetart_id, proof) VALUES (1, 1, "https://elialutz.com/wp-content/uploads/2023/12/streetart-ecolo.jpg");
-INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "https://parisjetaime.com/data/layout_image/26190_Paris-Attitude-street-art--630x405--%C2%A9-Antoine-Buchet.jpg");
-INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "https://www.boumbang.com/wp-content/uploads/2012/02/melbourne-street-art-51.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 1, "assets/proofs/amor-com-as-mulheres.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (2, 2, "assets/proofs/amor-com-as-mulheres.jpg");
+INSERT INTO seen (user_id, streetart_id, proof) VALUES (3, 3, "assets/proofs/amor-com-as-mulheres.jpg");
 

@@ -4,7 +4,7 @@ const storage = multer.diskStorage({
   destination(req, file, cb) {
     if (file.fieldname === "streetart") {
       cb(null, "public/assets/streetarts");
-    } else if (file.fieldname === "proofs") {
+    } else if (file.fieldname === "proof") {
       cb(null, "public/assets/proofs");
     } else {
       cb(null, "public/");
