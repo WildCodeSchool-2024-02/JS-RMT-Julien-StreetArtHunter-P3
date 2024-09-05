@@ -7,10 +7,10 @@ const artistSchema = Joi.object({
 
 const validateArtist = (req, res, next) => {
   const { error } = artistSchema.validate(req.body);
-
   if (error) {
     res.status(422).json({ error: error.details[0].message });
   }
+  else
   next();
 };
 

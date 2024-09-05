@@ -27,7 +27,7 @@ router.delete(
   "/streetarts/:id",
   checkCookie,
   checkAdmin,
-  streetartActions.destroy
+  streetartActions.destroy,
 );
 
 router.post(
@@ -36,7 +36,7 @@ router.post(
   checkAdmin,
   upload.single("streetart"),
   validateStreetart,
-  streetartActions.create
+  streetartActions.create,
 );
 
 router.put(
@@ -45,7 +45,7 @@ router.put(
   checkAdmin,
   upload.single("streetart"),
   validateStreetart,
-  streetartActions.update
+  streetartActions.update,
 );
 
 const userActions = require("./controllers/userActions");
@@ -65,13 +65,22 @@ const artistActions = require("./controllers/artistActions");
 // Route to get a list of artists
 router.get("/artists", checkCookie, checkAdmin, artistActions.browse);
 
+router.get("/artists/:id", artistActions.read);
+
 router.post(
   "/artists",
   checkCookie,
   checkAdmin,
   validateArtist,
-  artistActions.create
+  artistActions.create,
 );
+
+router.put(
+  "/artists/:id",
+  validateArtist,
+  artistActions.update,
+);
+
 // Route to delete a list of artists
 router.delete("/artists/:id", checkCookie, checkAdmin, artistActions.destroy);
 
@@ -85,7 +94,7 @@ router.delete(
   "/categories/:id",
   checkCookie,
   checkAdmin,
-  categoryActions.destroy
+  categoryActions.destroy,
 );
 
 const cityActions = require("./controllers/cityActions");
@@ -95,7 +104,7 @@ router.post(
   checkCookie,
   checkAdmin,
   validateCity,
-  cityActions.create
+  cityActions.create,
 );
 
 // Route to get a list of cities

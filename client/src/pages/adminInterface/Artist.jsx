@@ -48,6 +48,13 @@ function Artist() {
     setAddModalIsOpen(false);
   };
 
+  const openUpdateModel = (id) => {
+    setSelectedArtistId(() => ({
+      id,
+    }));
+    openAddModal();
+  };
+
   const handleDelete = () => {
     if (selectedArtistId !== null) {
       connexion
@@ -83,6 +90,8 @@ function Artist() {
             data={artist}
             key={artist.id}
             handleDelete={() => openModal(artist.id)}
+            handleUpdate={() => openUpdateModel(artist.id)}
+            canUpdate
           />
         ))}
         </tbody>
@@ -109,6 +118,8 @@ function Artist() {
         <ModalArtist
           handleRefresh={handleRefresh}
           closeAddModal={closeAddModal}
+          updateId={selectedArtistId}
+
         />
       </Modal>
     </div>

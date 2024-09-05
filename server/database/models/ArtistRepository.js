@@ -21,11 +21,10 @@ class ArtistRepository extends AbstractRepository {
   }
 
   // The Rs of CRUD - Read operations
-  /** 
+
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where id = ?`,
       [id]
@@ -34,8 +33,6 @@ class ArtistRepository extends AbstractRepository {
     // Return the first row of the result, which represents the user
     return rows[0];
   }
-
-*/
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all artists from the "artist" table
@@ -50,20 +47,13 @@ class ArtistRepository extends AbstractRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
-  /** 
-  async update(user) {
-    // Execute the SQL UPDATE query to update a specific category
+  async update(artist, id) {
     const [result] = await this.database.query(
-      `update ${this.table} set pseudo = ?, email = ? where id = ?`,
-      [user.pseudo, user.email, user.id]
-    );
-
-    // Return how many rows were affected
+      `UPDATE ${this.table} SET name = ?, points = ? WHERE id = ?`,
+      [artist.name, artist.points, id]
+  );
     return result.affectedRows;
   }
-  //   ...
-  // }
-*/
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an user by its ID
